@@ -1,6 +1,7 @@
 import React from "react";
 import NavBarConfig from "./Template/NavBarConfig";
 import Grid from "./Template/Grid"
+import List from "./Template/List"
 import "components/Application.scss";
 import { useContext } from 'react';
 import ConfigProvider from "providers/ConfigProvider";

@@ -2,8 +2,10 @@ import React from "react"
 import "./GridItem.scss"
 export default class GridItem extends React.Component{
   render(){
+    let position = this.props.position
+    let grid = {x: 0, y: position, w: 12, h:2}
     return (
-        <div key={this.props.key} data-grid={{ x: this.props.position * 2, y: 0, w: 12, h: 2}}>
+        <div  className="wrapper" key={this.props.key} data-grid={grid}>
           <div>
           {this.props.primary_field}
           </div>
