@@ -5,8 +5,10 @@ import useApplicationData from "hooks/useApplicationData";
 import NavBarConfig from "./Template/NavBarConfig";
 import Grid from "./Template/Grid"
 import List from "./Template/List"
+import AppList from "./AppList";
+
 export default function Application() {
-  const { getApplicationData, setConfig,  state } = useApplicationData();
+  const { getApplicationData, setConfig,  state, setApp } = useApplicationData();
 
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
@@ -54,7 +56,9 @@ export default function Application() {
   return (
     <main className="layout">
       <section className="sidebar">
-        <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig}/>
+      <AppList apps={state.apps} app={state.app} setApp={setApp} />
+      <hr className="sidebar__separator sidebar--centered" />
+      <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig}/>
       </section>
       <section className="table">
       <Table tableHeaderArray={tableHeaderArray} tableDataArray={tableDataArray}/>
@@ -66,3 +70,4 @@ export default function Application() {
     </main>
   );
 }
+

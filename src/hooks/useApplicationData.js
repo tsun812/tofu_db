@@ -4,6 +4,7 @@ import axios from "axios";
 export default function useApplicationData() {
   
   const [state, setState] = useState({
+    app: "Dictionary",
     selectedApplication: "",
     currentApplication: [],
     applications: [],
@@ -47,5 +48,10 @@ export default function useApplicationData() {
       });
   }
 
-  return {getApplicationData, setApplication, state, setConfig};
+  function setApp(app) {
+    const newState = { ...state, app: app };
+    setState(newState);
+}
+
+  return {getApplicationData, setApplication, state, setConfig, setApp};
 };
