@@ -5,6 +5,7 @@ export default function useApplicationData() {
   
   const [state, setState] = useState({
     app: "Dictionary",
+    selectedApplication: "",
     currentApplication: [],
     applications: [],
     records: [],
