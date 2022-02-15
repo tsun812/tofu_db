@@ -1,16 +1,17 @@
 import React from "react";
 import "./NavBarConfig.scss"
 import NavBarConfigItem from "./NarBarConfigItem";
-import {useContext} from 'react'
-import {configContext} from 'providers/ConfigProvider.js'
-let configOptions = [{configName: "background_color", avatar: null}, {configName: "font", avatar: null}, {configName: "description", avatar: null}, {configName: "display_theme", avatar: null}, {configName: "app_name", avatar: null}, {configName: "img_url", avatar: null} ]
-export default function NavBarConfig() {
-  const {config, select} = useContext(configContext)
-  const listOfConfigs = configOptions.map(item => {
+//import {useContext} from 'react'
+//import {configContext} from 'providers/ConfigProvider.js'
+
+export default function NavBarConfig(props) {
+  //const {config, select} = useContext(configContext)
+  const listOfConfigs = props.configs.map(item => {
   
     return(<NavBarConfigItem
       configurationName = {item.configName}
-      selected = {item.configName === config}
+      selected = {item.configName === props.value}
+      setCurrent = {event => props.onChange(props.value)}
       />
   )})
   return(
