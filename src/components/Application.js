@@ -1,16 +1,21 @@
-import React from "react";
-
+import React from 'react'
+import AppList from './AppList'
 import "components/Application.scss";
+import useApplicationData from 'hooks/useApplicationData';
 
-export default function Application(props) {
+export default function Application() {
+  const {
+    state,
+    setApp,
+  } = useApplicationData();
   return (
-    <main className="layout">
-      <section className="sidebar">
-        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
-      </section>
-      <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
-      </section>
-    </main>
-  );
+ <main className="layout">
+  <section className="sidebar">
+    <hr className="sidebar__separator sidebar--centered" />
+      <nav className="sidebar__menu">
+        <AppList apps={state.apps} app={state.app} setApp={setApp} />
+      </nav>
+  </section>
+</main>
+  )
 }
