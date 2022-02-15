@@ -1,5 +1,6 @@
 import React from "react";
 import NavBarConfig from "./Template/NavBarConfig";
+import Grid from "./Template/Grid"
 import "components/Application.scss";
 import { useContext } from 'react';
 import ConfigProvider from "providers/ConfigProvider";
@@ -12,7 +13,7 @@ export default function Application(props) {
         <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig}/>
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        <Grid />
       </section>
     </main>
   );
