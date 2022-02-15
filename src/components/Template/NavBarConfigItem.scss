@@ -1,0 +1,19 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+.nav__bar {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &--selected {
+      background-color: darken($green, 5%);
+      color: $dark-background;
+
+      &:hover {
+        background-color: darken($green, 5%);
+      }
+    }
+  }
+}

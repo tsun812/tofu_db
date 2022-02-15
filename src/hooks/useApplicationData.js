@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
-
+  
   const [state, setState] = useState({
     selectedApplication: "",
     currentApplication: [],
     applications: [],
     records: [],
     fields: [],
-    values: []
+    values: [],
+    config: "background-color",
+    configs: [{configName: "background_color", avatar: null}, {configName: "font", avatar: null}, {configName: "description", avatar: null}, {configName: "display_theme", avatar: null}, {configName: "app_name", avatar: null}, {configName: "img_url", avatar: null} ]
 
   });
-
+  const setConfig = (config) => setState({ ...state, config });
   // get all the API datas we need
   useEffect(() => {
     Promise.all([
@@ -45,5 +47,5 @@ export default function useApplicationData() {
       });
   }
 
-  return { getApplicationData, setApplication, state };
+  return {getApplicationData, setApplication, state, setConfig};
 };

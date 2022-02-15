@@ -2,9 +2,11 @@ import React from "react";
 import "components/Application.scss";
 import Table from "./Table";
 import useApplicationData from "hooks/useApplicationData";
-
+import NavBarConfig from "./Template/NavBarConfig";
+import Grid from "./Template/Grid"
+import List from "./Template/List"
 export default function Application() {
-  const { getApplicationData, state } = useApplicationData();
+  const { getApplicationData, setConfig,  state } = useApplicationData();
 
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
@@ -48,14 +50,18 @@ export default function Application() {
 ];
   const tableDataArray = [["Alfreds Futterkiste", "Maria Anders", "Germany"],["Centro comercial Moctezuma", "Francisco Chang", "Mexico"],["Ernst Handel", "Roland Mendel", "Austria"]];
 
+
   return (
     <main className="layout">
       <section className="sidebar">
-        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
+        <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig}/>
       </section>
       <section className="table">
       <Table tableHeaderArray={tableHeaderArray} tableDataArray={tableDataArray}/>
         <button onClick={() => getApplicationData(1)}>Get data</button>
+        </section>
+      <section className="schedule">
+        <Grid />
       </section>
     </main>
   );
