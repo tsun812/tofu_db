@@ -40,7 +40,6 @@ export default function useApplicationData() {
   const getApplicationData = applicationID => {
     axios.get(`/api/applications/${applicationID}`)
       .then((all) => {
-        //console.log(all['data'])
         setState(prev => ({
           ...prev,
           currentApplication: all['data'],
@@ -48,10 +47,6 @@ export default function useApplicationData() {
       });
   }
 
-  function setApp(app) {
-    const newState = { ...state, app: app };
-    setState(newState);
-}
-
-  return {getApplicationData, setApplication, state, setConfig, setApp};
+  console.log(state.applications.map(a => a.app_name),"getapplication")
+  return {getApplicationData, setApplication, state, setConfig};
 };

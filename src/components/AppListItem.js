@@ -1,17 +1,16 @@
 import classNames from "classnames";
 import React from "react";
+import useApplicationData from "hooks/useApplicationData";
+import { useState } from "react";
+import { get } from "request";
 
 export default function AppListItem(props) {
-  const getAppLists = () => {
-    if (props.apps === 0) {
-      return "No apps exist yet"
-    }
-    else {return "From AppListItem"}
-  }
-
+  const { getApplicationData, setConfig,  state, setApplication } = useApplicationData();
+  const apps = state.applications.map( a => <li>{a.app_name}</li> )
   return (
-    <li onClick={() => props.setApp }>
-    <h3>{getAppLists()}</h3>
-    </li>
+    <h2>
+      {apps}
+    </h2>
   )
 }
+
