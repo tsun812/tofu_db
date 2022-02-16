@@ -1,6 +1,5 @@
 import React from "react"
 import GridLayout from "react-grid-layout";
-import GridItem from "./GridItem"
 import "./GridItem.scss"
 
 export default class Grid extends React.Component {
