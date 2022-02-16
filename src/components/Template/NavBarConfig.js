@@ -1,6 +1,7 @@
 import React from "react";
 import "./NavBarConfig.scss"
 import NavBarConfigItem from "./NarBarConfigItem";
+import Field from "./Field";
 //import {useContext} from 'react'
 //import {configContext} from 'providers/ConfigProvider.js'
 
@@ -14,12 +15,17 @@ export default function NavBarConfig(props) {
       setCurrent = {event => props.onChange(props.value)}
       />
   )})
+ 
   return(
     <section className="sidebar__text sidebar--centered">
       <h3>Customize your template</h3>
        <hr className="sidebar__separator" />
         <nav className="sidebar__menu">
           <ul>{listOfConfigs}</ul>  
+       
+          <Field fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField}/>
+          <Field fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField}/>
+       
         </nav>
         </section>
   );

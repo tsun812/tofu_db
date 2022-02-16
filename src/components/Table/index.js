@@ -1,17 +1,19 @@
 import React from 'react'
 import TableHeaderList from './TableHeaderList'
 import TableDataList from './TableDataList'
-export default function Table({tableHeaderArray, tableDataArray}) {
+export default function Table({tableHeaderArray, tableDataArray, deleteRow, deleteColumn}) {
   return (
     
 <table>
   <thead>
   <tr>
-    <TableHeaderList tableHeaderArray={tableHeaderArray}/>
+  <th></th>
+  <th>#</th>
+    <TableHeaderList tableHeaderArray={tableHeaderArray} deleteColumn={deleteColumn}/>
   </tr>
   </thead>
   <tbody>
-  <TableDataList tableDataArray={tableDataArray}/>
+  <TableDataList tableDataArray={tableDataArray} deleteRow={deleteRow}/>
   </tbody>
 </table>
   )
