@@ -41,7 +41,61 @@ export default function useApplicationData() {
       );
     })
   }, []);
-  
+
+
+  const createNewRow = applicationID => {
+    let params = {
+      position: 0,
+      application_id: applicationID
+    }
+    axios.post(`/api/records/`,params)
+    .then((all) => {
+      console.log(all['data'])
+      // setState(prev => ({
+      //   ...prev,
+      //   currentApplication: all['data'],
+      // }));
+    });
+  }
+
+  const deleteRow = recordID => {
+    axios.delete(`/api/records/${recordID}`)
+    .then((all) => {
+      console.log(all['data'])
+      // setState(prev => ({
+      //   ...prev,
+      //   currentApplication: all['data'],
+      // }));
+    });
+  }
+
+  const createNewColumn = applicationID => {
+    let params = {
+      field_name: "New Column",
+      field_type: "String",
+      application_id: applicationID
+    }
+    axios.post(`/api/fields/`,params)
+    .then((all) => {
+      console.log(all['data'])
+      // setState(prev => ({
+      //   ...prev,
+      //   currentApplication: all['data'],
+      // }));
+    });
+  }
+
+  const deleteColumn = recordID => {
+    axios.delete(`/api/fields/${recordID}`)
+    .then((all) => {
+      console.log(all['data'])
+      // setState(prev => ({
+      //   ...prev,
+      //   currentApplication: all['data'],
+      // }));
+    });
+  }
+
   //set day when user click on the name of the day, e.g."Monday"
   const setApplication = application => setState({ ...state, application });
 
@@ -61,5 +115,5 @@ export default function useApplicationData() {
     setState(newState);
 }
 
-  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField};
-};
+  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn};
+}
