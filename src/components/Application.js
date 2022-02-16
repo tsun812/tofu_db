@@ -5,9 +5,11 @@ import useApplicationData from "hooks/useApplicationData";
 import NavBarConfig from "./Template/NavBarConfig";
 import Grid from "./Template/Grid"
 import List from "./Template/List"
-import AppList from "./AppList";
+import AppList from "./AppList/AppList";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getFieldsById } from "helpers/selectors";
+import {BrowserRouter as Router, Link, Route, Routes, Navigate} from 'react-router-dom';
+
 
 export default function Application() {
   const { getApplicationData, setConfig,  state, setApp, setLayouts, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue} = useApplicationData();
@@ -22,7 +24,9 @@ export default function Application() {
   return (
     <main className="layout">
       <section className="sidebar">
-      <AppList apps={state.apps} app={state.app} setApp={setApp} />
+        <Router>
+          <AppList/>
+        </Router>
       <hr className="sidebar__separator sidebar--centered" />
       <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig} fields={fields} setPrimaryField={setPrimaryField} setSecondaryField={setSecondaryField}/>
       </section>
