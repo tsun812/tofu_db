@@ -50,22 +50,14 @@ export default function useApplicationData() {
     }
     axios.post(`/api/records/`,params)
     .then((all) => {
-      console.log(all['data'])
-      // setState(prev => ({
-      //   ...prev,
-      //   currentApplication: all['data'],
-      // }));
+      getApplicationData(applicationID)
     });
   }
 
-  const deleteRow = recordID => {
+  const deleteRow = (recordID, applicationID) => {
     axios.delete(`/api/records/${recordID}`)
     .then((all) => {
-      console.log(all['data'])
-      // setState(prev => ({
-      //   ...prev,
-      //   currentApplication: all['data'],
-      // }));
+      getApplicationData(applicationID)
     });
   }
 
@@ -77,25 +69,62 @@ export default function useApplicationData() {
     }
     axios.post(`/api/fields/`,params)
     .then((all) => {
-      console.log(all['data'])
-      // setState(prev => ({
-      //   ...prev,
-      //   currentApplication: all['data'],
-      // }));
+      getApplicationData(applicationID)
     });
   }
 
-  const deleteColumn = recordID => {
+  const deleteColumn = (recordID, applicationID) => {
     axios.delete(`/api/fields/${recordID}`)
     .then((all) => {
-      console.log(all['data'])
-      // setState(prev => ({
-      //   ...prev,
-      //   currentApplication: all['data'],
-      // }));
+      getApplicationData(applicationID)
     });
   }
 
+  //this update the state when user is typing in input
+    const updateFieldValue = (field_id, field_name) => {
+      const deepClone = JSON.parse(JSON.stringify(state.currentApplication))
+      deepClone['fields'][field_id]['field_name'] = field_name
+      setState(prev => ({
+        ...prev,
+        currentApplication: deepClone,
+      }));
+    }
+  // this save values to database
+  const saveFieldValue = (applicationID, field_id, field_name) => {
+    console.log(`field_id=>${field_id}`)
+    console.log('saved!')
+    let params = {
+      field_name: field_name
+    }
+    axios.put(`/api/fields/${field_id}`,params)
+    .then((all) => {
+      console.log(all)
+      getApplicationData(applicationID)
+    });
+  }
+
+  //this update the state when user is typing in input
+  const updateInputValue = (record_id, value_id, value) => {
+    const deepClone = JSON.parse(JSON.stringify(state.currentApplication))
+    deepClone.records[record_id].values[value_id].field_value = value
+    setState(prev => ({
+      ...prev,
+      currentApplication: deepClone,
+    }));
+  }
+
+  // this save values to database
+  const saveInputValue = (applicationID, value_id, value) => {
+    console.log('saved to database!')
+    let params = {
+      field_value: value
+    }
+    axios.put(`/api/values/${value_id}`,params)
+    .then((all) => {
+      getApplicationData(applicationID)
+    });
+  }
+  
   //set day when user click on the name of the day, e.g."Monday"
   const setApplication = application => setState({ ...state, application });
 
@@ -114,5 +143,5 @@ export default function useApplicationData() {
     setState(newState);
 }
 
-  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn};
+  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
 }

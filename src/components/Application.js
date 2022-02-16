@@ -10,11 +10,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getFieldsById } from "helpers/selectors";
 
 export default function Application() {
-  const { getApplicationData, setConfig,  state, setApp, setLayouts, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn} = useApplicationData();
+  const { getApplicationData, setConfig,  state, setApp, setLayouts, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue} = useApplicationData();
 
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
-
+  const applicationID = ((state.currentApplication.application_id)) ? state.currentApplication.application_id : "";
   let fetchItem = [{key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1}, {key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2}, {key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3}]
   let fields = getFieldsById(state,1)
   console.log(fields)
@@ -27,10 +27,7 @@ export default function Application() {
       <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig} fields={fields} setPrimaryField={setPrimaryField} setSecondaryField={setSecondaryField}/>
       </section>
       <section className="table">
-      <Table tableHeaderArray={tableHeaderArray} tableDataArray={tableRecordArray} deleteRow={deleteRow} deleteColumn={deleteColumn}/>
-        <button onClick={() => getApplicationData(1)}>Get data</button>
-        <button onClick={() => createNewRow(1)}>Add New Row</button>
-        <button onClick={() => createNewColumn(1)}>Add New Column</button>
+      <Table tableHeaderArray={tableHeaderArray} tableDataArray={tableRecordArray} deleteRow={deleteRow} deleteColumn={deleteColumn} getApplicationData={getApplicationData} createNewRow={createNewRow} createNewColumn={createNewColumn} application_id={applicationID} updateInputValue={updateInputValue} saveInputValue={saveInputValue} updateFieldValue={updateFieldValue} saveFieldValue={saveFieldValue}/>
         </section>
       <section className="schedule">
         <Grid setLayouts={setLayouts} layouts={layouts}/>
