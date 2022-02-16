@@ -6,9 +6,11 @@ import NavBarConfig from "./Template/NavBarConfig";
 import Grid from "./Template/Grid"
 import List from "./Template/List"
 import AppList from "./AppList";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function Application() {
-  const { getApplicationData, setConfig,  state, setApp } = useApplicationData();
+  const { getApplicationData, setConfig,  state, setApp, setLayouts, layouts, setPrimaryField, setSecondaryField} = useApplicationData();
 
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
@@ -51,21 +53,21 @@ export default function Application() {
     }
 ];
   const tableDataArray = [["Alfreds Futterkiste", "Maria Anders", "Germany"],["Centro comercial Moctezuma", "Francisco Chang", "Mexico"],["Ernst Handel", "Roland Mendel", "Austria"]];
-
-
+  let fetchItem = [{key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1}, {key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2}, {key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3}]
+  console.log(state.layouts)
   return (
     <main className="layout">
       <section className="sidebar">
       <AppList apps={state.apps} app={state.app} setApp={setApp} />
       <hr className="sidebar__separator sidebar--centered" />
-      <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig}/>
+      <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig} fields={state.fields} setPrimaryField={setPrimaryField} setSecondaryField={setSecondaryField}/>
       </section>
       <section className="table">
       <Table tableHeaderArray={tableHeaderArray} tableDataArray={tableDataArray}/>
         <button onClick={() => getApplicationData(1)}>Get data</button>
         </section>
       <section className="schedule">
-        <Grid />
+        <Grid setLayouts={setLayouts} layouts={layouts}/>
       </section>
     </main>
   );

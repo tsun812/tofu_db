@@ -12,10 +12,16 @@ export default function useApplicationData() {
     fields: [],
     values: [],
     config: "background-color",
-    configs: [{configName: "background_color", avatar: null}, {configName: "font", avatar: null}, {configName: "description", avatar: null}, {configName: "display_theme", avatar: null}, {configName: "app_name", avatar: null}, {configName: "img_url", avatar: null} ]
+    configs: [{configName: "background_color", avatar: null}, {configName: "font", avatar: null}, {configName: "description", avatar: null}, {configName: "display_theme", avatar: null}, {configName: "app_name", avatar: null}, {configName: "img_url", avatar: null} ],
+    layouts: {lg: []},
+    primary_field: "",
+    secondary_field:""
 
   });
   const setConfig = (config) => setState({ ...state, config });
+  const setLayouts = (layouts) => setState({ ...state, layouts});
+  const setPrimaryField = (primary_field) => setState({ ...state, primary_field});
+  const setSecondaryField = (secondary_field) => setState({ ...state, secondary_field});
   // get all the API datas we need
   useEffect(() => {
     Promise.all([
@@ -28,12 +34,15 @@ export default function useApplicationData() {
         ...prev,
         applications: all[0]['data'],
         records: all[1]['data'],
-        fields: all[2]['data'],
+        fields: all[2]['data']  ,
         values: all[3]['data']
-      }));
+      })
+      );
+      console.log(all[2]['data'])
+      console.log(state)
     })
   }, []);
-
+  
   //set day when user click on the name of the day, e.g."Monday"
   const setApplication = application => setState({ ...state, application });
 
@@ -53,5 +62,5 @@ export default function useApplicationData() {
     setState(newState);
 }
 
-  return {getApplicationData, setApplication, state, setConfig, setApp};
+  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField};
 };

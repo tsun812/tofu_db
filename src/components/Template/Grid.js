@@ -1,6 +1,5 @@
 import React from "react"
 import { Responsive as ResponsiveGridLayout } from 'react-grid-layout';
-import GridItem from "./GridItem"
 import { useState } from "react";
 import "./GridItem.scss"
 
@@ -16,12 +15,12 @@ export default function Grid(props){
       { id: '3', x: 3, y: 0, w: 12, h: 2 },
     ],
   };   
-  const [layouts, setLayouts] = useState(initialLayouts);
+  //const [layouts, setLayouts] = useState(initialLayouts);
   const onLayoutChange = (_, allLayouts) => {
-    setLayouts(allLayouts.md);
+    props.setLayouts(allLayouts.md);
   };
 
- console.log(layouts)
+ //console.log(layouts)
   let fetchItems = fetchItem.map(item => {
     let grid = {x:0, y:item.position, w:12, h:2}
     return (<div className="wrapper" key={item.key} data-grid={grid} >
@@ -34,7 +33,7 @@ export default function Grid(props){
   </div>
   )})
     return (
-      <ResponsiveGridLayout className="layout" layouts={layouts}
+      <ResponsiveGridLayout className="layout" layouts={props.layouts}
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
       cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}  rowHeight={30} width={1200} onLayoutChange={onLayoutChange}>
         {fetchItems}
