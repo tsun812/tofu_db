@@ -102,7 +102,6 @@ export default function useApplicationData() {
   const getApplicationData = applicationID => {
     axios.get(`/api/applications/${applicationID}`)
       .then((all) => {
-        //console.log(all['data'])
         setState(prev => ({
           ...prev,
           currentApplication: all['data'],
