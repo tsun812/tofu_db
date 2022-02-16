@@ -30,6 +30,7 @@ export default function useApplicationData() {
       axios.get('/api/fields'),
       axios.get('/api/values')
     ]).then((all) => {
+      console.log(all)
       setState(prev => ({
         ...prev,
         applications: all[0]['data'],
@@ -38,8 +39,6 @@ export default function useApplicationData() {
         values: all[3]['data']
       })
       );
-      console.log(all[2]['data'])
-      console.log(state)
     })
   }, []);
   

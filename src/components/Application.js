@@ -7,7 +7,7 @@ import Grid from "./Template/Grid"
 import List from "./Template/List"
 import AppList from "./AppList";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { getFieldsById } from "helpers/selectors";
 
 export default function Application() {
   const { getApplicationData, setConfig,  state, setApp, setLayouts, layouts, setPrimaryField, setSecondaryField} = useApplicationData();
@@ -54,13 +54,14 @@ export default function Application() {
 ];
   const tableDataArray = [["Alfreds Futterkiste", "Maria Anders", "Germany"],["Centro comercial Moctezuma", "Francisco Chang", "Mexico"],["Ernst Handel", "Roland Mendel", "Austria"]];
   let fetchItem = [{key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1}, {key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2}, {key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3}]
-  console.log(state.layouts)
+  let fields = getFieldsById(state,1)
+  console.log(fields)
   return (
     <main className="layout">
       <section className="sidebar">
       <AppList apps={state.apps} app={state.app} setApp={setApp} />
       <hr className="sidebar__separator sidebar--centered" />
-      <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig} fields={state.fields} setPrimaryField={setPrimaryField} setSecondaryField={setSecondaryField}/>
+      <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig} fields={fields} setPrimaryField={setPrimaryField} setSecondaryField={setSecondaryField}/>
       </section>
       <section className="table">
       <Table tableHeaderArray={tableHeaderArray} tableDataArray={tableDataArray}/>

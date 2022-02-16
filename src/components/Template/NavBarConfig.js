@@ -15,10 +15,7 @@ export default function NavBarConfig(props) {
       setCurrent = {event => props.onChange(props.value)}
       />
   )})
-  const listOfFields = props.fields.map(item => {
-    return(
-      <Field name={item.field_name} />
-    )})
+ 
   return(
     <section className="sidebar__text sidebar--centered">
       <h3>Customize your template</h3>
@@ -26,8 +23,8 @@ export default function NavBarConfig(props) {
         <nav className="sidebar__menu">
           <ul>{listOfConfigs}</ul>  
        
-          <Field/>
-          <Field/>
+          <Field fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField}/>
+          <Field fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField}/>
        
         </nav>
         </section>
