@@ -1,12 +1,17 @@
 import React from 'react'
 import TableDataListItem from './TableDataListItem'
 
-export default function TableDataList({ tableDataArray, deleteRow}) {
-  console.log(tableDataArray)
-  console.log(Array.isArray(tableDataArray))
+export default function TableDataList({ tableDataArray, deleteRow, updateInputValue, saveInputValue, application_id}) {
   return (
-    tableDataArray.map((rowData, index) =>{  
-      return <tr><button onClick={() => deleteRow(rowData.id)}>Delete</button><td>{index+1}</td><TableDataListItem rowData={rowData.values}/></tr>
+    Object.keys(tableDataArray).map((rowData, index) =>{  
+      return <tr>
+        <button onClick={() => deleteRow(tableDataArray[rowData].id, tableDataArray[rowData].application_id )}>❌</button>
+        <td>{index+1}</td>
+        <TableDataListItem 
+        rowData={tableDataArray[rowData].values} 
+        updateInputValue={updateInputValue} 
+        saveInputValue={saveInputValue} 
+        application_id={tableDataArray[rowData].application_id}/></tr>
     })
   )
 }
