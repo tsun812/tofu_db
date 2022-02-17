@@ -1,13 +1,16 @@
 import React from 'react'
 import AppListItem from './AppListItem'
-import "./AppListItem.scss"
+import "./AppList.scss"
+import CreateDelete from './CreateDelete'
 
 export default function AppList({getApplicationData}) {
   return (
-    <div  className='AppListItem'>
-      My Apps
-      <ul><AppListItem getApplicationData={getApplicationData}/></ul>
-    </div>
-   
-   )
+
+    <div className='AppList'>
+      <>
+      <AppListItem getApplicationData={getApplicationData}/>
+      <CreateDelete/>
+      </>
+      </div>
+  )
 }

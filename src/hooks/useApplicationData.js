@@ -21,8 +21,35 @@ export default function useApplicationData() {
   });
   const setConfig = (config) => setState({ ...state, config });
   const setLayouts = (layouts) => setState({ ...state, layouts});
-  const setPrimaryField = (primary_field) => setState({ ...state, primary_field});
-  const setSecondaryField = (secondary_field) => setState({ ...state, secondary_field});
+  const setPrimaryField = (update, applicationId) => {
+    console.log(update)
+    setState(prev => ({
+      ...prev,
+      primary_field:update
+    }));
+    console.log(state);
+    let params= {primary_field: update, id: applicationId}
+    return axios.put(`http://localhost:3000/api/applications`,params)
+    .then((all) => {
+      console.log(all)
+    });
+  };
+
+  const setSecondaryField = (update, applicationId) => {
+    console.log(update)
+    setState(prev => ({
+      ...prev,
+      secondary_field:update
+    }));
+    console.log(state);
+    let params= {secondary_field: update, id:applicationId}
+    return axios.put(`http://localhost:3000/api/applications`,params)
+    .then((all) => {
+      console.log(all)
+    });
+  };
+
+  
   // get all the API datas we need
   useEffect(() => {
     Promise.all([
@@ -63,7 +90,7 @@ export default function useApplicationData() {
     }
     axios.post(`/api/records/`,params)
     .then((all) => {
-      getApplicationData(applicationID)
+      getApplicationData(applicationID) 
     });
   }
 
@@ -114,6 +141,8 @@ export default function useApplicationData() {
     });
   }
 
+ 
+
   //this update the state when user is typing in input
   const updateInputValue = (record_id, value_id, value) => {
     const deepClone = JSON.parse(JSON.stringify(state.currentApplication))
@@ -136,6 +165,8 @@ export default function useApplicationData() {
     });
   }
   
+  
+
   //set day when user click on the name of the day, e.g."Monday"
   const setApplication = application_id => {
     getApplicationData(application_id)
@@ -152,11 +183,26 @@ export default function useApplicationData() {
       });
   }
 
-  function setApp(app) {
-    const newState = { ...state, app: app };
-    setState(newState);
+const createNewApplication = applicationID => {
+  let params = {
+   applicationID: "",
+}
+  axios.post(`/api/applications/`,params)
+  .then((all) => {
+    getApplicationData(applicationID)
+  });
 }
 
+const deleteApplication = applicationID => {
+axios.delete(`/api/applications/${applicationID}`)
+.then((all) => {
+  setState(prev => ({
+    ...prev,
+    applications: all['data'],
+  }));
+});  
+}
 
-  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
+  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, createNewApplication, deleteApplication, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
+
 }

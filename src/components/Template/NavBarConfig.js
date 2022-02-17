@@ -18,13 +18,13 @@ export default function NavBarConfig(props) {
  
   return(
     <section className="sidebar__text sidebar--centered">
-      <h3>Customize your template</h3>
+      <ul>Customize your template</ul>
        <hr className="sidebar__separator" />
         <nav className="sidebar__menu">
-          <ul>{listOfConfigs}</ul>  
+          
        
-          <Field fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField}/>
-          <Field fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField}/>
+          <Field key={1} fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField}/>
+          <Field key={2} fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField}/>
        
         </nav>
         </section>

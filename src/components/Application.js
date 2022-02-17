@@ -11,7 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getFieldsById } from "helpers/selectors";
 import {BrowserRouter as Router, Link, Route, Routes, Navigate} from 'react-router-dom';
 
-
 export default function Application() {
   const { getApplicationData, setConfig,  state, setApp, setLayouts, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication} = useApplicationData();
 
@@ -20,8 +19,9 @@ export default function Application() {
   const applicationID =  state.selectedApplication
   let fetchItem = [{key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1}, {key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2}, {key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3}]
   let fields = getFieldsById(state,1)
-  // console.log(fields)
-  console.log(state)
+
+  // setPrimaryField("Building")
+  // console.log(state.primary_field)
   return (
     <main className="layout">
       <section className="sidebar">
