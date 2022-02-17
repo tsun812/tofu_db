@@ -20,7 +20,8 @@ export default function Application() {
   let fetchItem = [{key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1}, {key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2}, {key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3}]
   let fields = getFieldsById(state,1)
   console.log(fields)
-
+  // setPrimaryField("Building")
+  // console.log(state.primary_field)
   return (
     <main className="layout">
       <section className="sidebar">
