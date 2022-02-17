@@ -20,8 +20,35 @@ export default function useApplicationData() {
   });
   const setConfig = (config) => setState({ ...state, config });
   const setLayouts = (layouts) => setState({ ...state, layouts});
-  const setPrimaryField = (primary_field) => setState({ ...state, primary_field});
-  const setSecondaryField = (secondary_field) => setState({ ...state, secondary_field});
+  const setPrimaryField = (update, applicationId) => {
+    console.log(update)
+    setState(prev => ({
+      ...prev,
+      primary_field:update
+    }));
+    console.log(state);
+    let params= {primary_field: update, id: applicationId}
+    return axios.put(`http://localhost:3000/api/applications`,params)
+    .then((all) => {
+      console.log(all)
+    });
+  };
+
+  const setSecondaryField = (update, applicationId) => {
+    console.log(update)
+    setState(prev => ({
+      ...prev,
+      secondary_field:update
+    }));
+    console.log(state);
+    let params= {secondary_field: update, id:applicationId}
+    return axios.put(`http://localhost:3000/api/applications`,params)
+    .then((all) => {
+      console.log(all)
+    });
+  };
+
+  
   // get all the API datas we need
   useEffect(() => {
     Promise.all([
@@ -103,6 +130,8 @@ export default function useApplicationData() {
     });
   }
 
+ 
+
   //this update the state when user is typing in input
   const updateInputValue = (record_id, value_id, value) => {
     const deepClone = JSON.parse(JSON.stringify(state.currentApplication))
@@ -125,8 +154,10 @@ export default function useApplicationData() {
     });
   }
   
+  
+
   //set day when user click on the name of the day, e.g."Monday"
-  const setApplication = application => setState({ ...state, application });
+  const setApplication = application => {setState({ ...state, application })};
 
   const getApplicationData = applicationID => {
     axios.get(`/api/applications/${applicationID}`)
