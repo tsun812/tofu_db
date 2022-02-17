@@ -203,6 +203,6 @@ axios.delete(`/api/applications/${applicationID}`)
 });  
 }
 
-  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, createNewApplication, deleteApplication, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
+  return {getApplicationData, setApplication, state, setConfig, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, createNewApplication, deleteApplication, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
 
 }
