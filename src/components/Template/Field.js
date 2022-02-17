@@ -8,7 +8,7 @@ export default function Field(props) {
   
   const handleSelect =(evtKey) => {
     if(props.setPrimaryField) {
-      props.setPrimaryField(evtKey)
+      props.setPrimaryField(evtKey, 1)
       
       console.log(evtKey)
     }

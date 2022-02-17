@@ -29,7 +29,7 @@ export default function useApplicationData() {
     }));
     console.log(state);
     let params= {primary_field: update, id: applicationId}
-    return axios.put(`http://localhost:3000/api/applications`,params)
+    return axios.put(`http://localhost:3000/api/applications/${applicationId}`,params)
     .then((all) => {
       console.log(all)
     });
@@ -43,7 +43,7 @@ export default function useApplicationData() {
     }));
     console.log(state);
     let params= {secondary_field: update, id:applicationId}
-    return axios.put(`http://localhost:3000/api/applications`,params)
+    return axios.put(`http://localhost:3000/api/applications/${applicationId}`,params)
     .then((all) => {
       console.log(all)
     });
