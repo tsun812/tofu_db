@@ -17,8 +17,10 @@ export default function useApplicationData() {
     primary_field: "",
     secondary_field:"",
     editStatus: "Loaded",
+    selectedRecords: {}
 
   });
+  let appId = parseInt(state.selectedApplication)
   const setConfig = (config) => setState({ ...state, config });
   const setLayouts = (layouts) => setState({ ...state, layouts});
   const setPrimaryField = (update, applicationId) => {
@@ -49,6 +51,8 @@ export default function useApplicationData() {
     });
   };
 
+ 
+
   
   // get all the API datas we need
   useEffect(() => {
@@ -56,7 +60,8 @@ export default function useApplicationData() {
       axios.get('/api/applications'),
       axios.get('/api/records'),
       axios.get('/api/fields'),
-      axios.get('/api/values')
+      axios.get('/api/values'),
+      axios.get(`http://localhost:3000/api/recordBySelectedFields/1`)
     ]).then((all) => {
       console.log('loading all data from API')
       console.log(all)
@@ -65,7 +70,8 @@ export default function useApplicationData() {
         applications: all[0]['data'],
         records: all[1]['data'],
         fields: all[2]['data']  ,
-        values: all[3]['data']
+        values: all[3]['data'],
+        selectedRecords: all[4]['data'].records
       })
       );
     })

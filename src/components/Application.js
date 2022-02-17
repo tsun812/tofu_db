@@ -19,7 +19,8 @@ export default function Application() {
   const applicationID =  state.selectedApplication
   let fetchItem = [{key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1}, {key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2}, {key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3}]
   let fields = getFieldsById(state,1)
-
+  console.log(state.selectedApplication)
+   console.log(state.selectedRecords)
   // setPrimaryField("Building")
   // console.log(state.primary_field)
   return (
@@ -37,7 +38,7 @@ export default function Application() {
         <button onClick={() => console.log(applicationID)}>Check applicationID</button>
         </section>
       <section className="schedule">
-        <Grid setLayouts={setLayouts} layouts={layouts}/>
+        <Grid setLayouts={setLayouts} layouts={layouts} selectedRecords={state.selectedRecords}/>
       </section>
     </main>
   );
