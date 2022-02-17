@@ -50,7 +50,7 @@ export default function useApplicationData() {
     }
     axios.post(`/api/records/`,params)
     .then((all) => {
-      getApplicationData(applicationID)
+      getApplicationData(applicationID) 
     });
   }
 
@@ -138,10 +138,25 @@ export default function useApplicationData() {
       });
   }
 
-  function setApp(app) {
-    const newState = { ...state, app: app };
-    setState(newState);
+const createNewApplication = applicationID => {
+  let params = {
+   applicationID: "",
+}
+  axios.post(`/api/applications/`,params)
+  .then((all) => {
+    getApplicationData(applicationID)
+  });
 }
 
-  return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
+const deleteApplication = applicationID => {
+axios.delete(`/api/applications/${applicationID}`)
+.then((all) => {
+  setState(prev => ({
+    ...prev,
+    applications: all['data'],
+  }));
+});  
+}
+
+  return {getApplicationData, setApplication, state, setConfig, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, createNewApplication, deleteRow, deleteColumn, deleteApplication, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
 }

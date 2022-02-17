@@ -1,0 +1,43 @@
+.tofu {
+    font-size: 100px;
+  vertical-align: middle;
+}
+.AppList {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font: bold;
+    font-size:large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 1.5em;
+}
+
+.delete_button {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete_button:hover {
+    transform: scale(1.5);
+    }
+
+.app_name {
+    color: white;
+}
+
+.app_name:hover {
+    color: coral;
+}
+
+.create {
+    color:white;
+}
+
+.logo {
+    color: white;
+}
+
+.logo:hover {
+    color: coral
+}
