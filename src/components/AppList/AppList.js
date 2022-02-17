@@ -1,13 +1,15 @@
 import React from 'react'
 import AppListItem from './AppListItem'
-import "./AppListItem.scss"
+import "./AppList.scss"
+import CreateDelete from './CreateDelete'
 
 export default function AppList() {
   return (
-    <div  className='AppListItem'>
-      My Apps
-      <ul><AppListItem/></ul>
-    </div>
-   
-   )
+    <div className='AppList'>
+      <>
+      <AppListItem/>
+      <CreateDelete/>
+      </>
+      </div>
+  )
 }

@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getFieldsById } from "helpers/selectors";
 import {BrowserRouter as Router, Link, Route, Routes, Navigate} from 'react-router-dom';
 
-
 export default function Application() {
   const { getApplicationData, setConfig,  state, setApp, setLayouts, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue} = useApplicationData();
 

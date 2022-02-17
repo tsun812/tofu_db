@@ -18,7 +18,7 @@ export default function NavBarConfig(props) {
  
   return(
     <section className="sidebar__text sidebar--centered">
-      <h3>Customize your template</h3>
+      <ul>Customize your template</ul>
        <hr className="sidebar__separator" />
         <nav className="sidebar__menu">
           
