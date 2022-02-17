@@ -15,7 +15,8 @@ export default function useApplicationData() {
     configs: [{configName: "background_color", avatar: null}, {configName: "font", avatar: null}, {configName: "description", avatar: null}, {configName: "display_theme", avatar: null}, {configName: "app_name", avatar: null}, {configName: "img_url", avatar: null} ],
     layouts: {lg: []},
     primary_field: "",
-    secondary_field:""
+    secondary_field:"",
+    editStatus: "Loaded",
 
   });
   const setConfig = (config) => setState({ ...state, config });
@@ -30,6 +31,7 @@ export default function useApplicationData() {
       axios.get('/api/fields'),
       axios.get('/api/values')
     ]).then((all) => {
+      console.log('loading all data from API')
       console.log(all)
       setState(prev => ({
         ...prev,
@@ -42,6 +44,17 @@ export default function useApplicationData() {
     })
   }, []);
 
+
+  // useEffect(()=>{
+  //   const application = state.currentApplication
+  //   console.log('application_id')
+  //   console.log('useEffecthere')
+  //   console.log(application)
+  //   setState(prev => ({
+  //     ...prev,
+  //     currentApplication: application,
+  //   }));
+  // }, [state.currentApplication])
 
   const createNewRow = applicationID => {
     let params = {
@@ -91,14 +104,12 @@ export default function useApplicationData() {
     }
   // this save values to database
   const saveFieldValue = (applicationID, field_id, field_name) => {
-    console.log(`field_id=>${field_id}`)
-    console.log('saved!')
+    console.log('Field value saved to API!')
     let params = {
       field_name: field_name
     }
     axios.put(`/api/fields/${field_id}`,params)
     .then((all) => {
-      console.log(all)
       getApplicationData(applicationID)
     });
   }
@@ -126,13 +137,16 @@ export default function useApplicationData() {
   }
   
   //set day when user click on the name of the day, e.g."Monday"
-  const setApplication = application => setState({ ...state, application });
+  const setApplication = application_id => {
+    getApplicationData(application_id)
+  };
 
   const getApplicationData = applicationID => {
     axios.get(`/api/applications/${applicationID}`)
       .then((all) => {
         setState(prev => ({
           ...prev,
+          selectedApplication: applicationID,
           currentApplication: all['data'],
         }));
       });
@@ -142,6 +156,7 @@ export default function useApplicationData() {
     const newState = { ...state, app: app };
     setState(newState);
 }
+
 
   return {getApplicationData, setApplication, state, setConfig, setApp, setLayouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue};
 }

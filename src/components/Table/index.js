@@ -1,7 +1,8 @@
 import React from 'react'
 import TableHeaderList from './TableHeaderList'
 import TableDataList from './TableDataList'
-export default function Table({ tableHeaderArray, tableDataArray, deleteRow, deleteColumn, getApplicationData, createNewRow, createNewColumn, application_id, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue}) {
+
+export default function Table({ tableHeaderArray, tableDataArray, deleteRow, deleteColumn, getApplicationData, createNewRow, createNewColumn, application_id, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, editStatus}) {
   return (
     <>
       <table>
@@ -13,12 +14,12 @@ export default function Table({ tableHeaderArray, tableDataArray, deleteRow, del
           </tr>
         </thead>
         <tbody>
-          <TableDataList tableDataArray={tableDataArray} deleteRow={deleteRow} updateInputValue={updateInputValue} saveInputValue={saveInputValue} application_id={application_id} />
+          <TableDataList tableDataArray={tableDataArray} deleteRow={deleteRow} updateInputValue={updateInputValue} saveInputValue={saveInputValue} application_id={application_id} editStatus={editStatus} />
         </tbody>
       </table>
-      <button onClick={() => getApplicationData(1)}>Get data</button>
-      <button onClick={() => createNewRow(1)}>Add New Row</button>
-      <button onClick={() => createNewColumn(1)}>Add New Column</button>
+      <button onClick={() => getApplicationData(application_id)}>Get data</button>
+      <button onClick={() => createNewRow(application_id)}>Add New Row</button>
+      <button onClick={() => createNewColumn(application_id)}>Add New Column</button>
     </>
   )
 }

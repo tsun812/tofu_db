@@ -1,6 +1,6 @@
 import React from 'react'
 export default function TableHeaderListItem({ application_id, field_value, field_id, deleteColumn, updateFieldValue, saveFieldValue}) {
-  console.log(`field_id =>${field_id}`)
+  // console.log(`field_id =>${field_id}`)
   return (
     <th 
     className="field" 
