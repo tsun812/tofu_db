@@ -8,5 +8,6 @@ export default function AppMenu({setMode}) {
       <button class="btn btn-primary" onClick={() => setMode("Default")}>Back</button>
       <button class="btn btn-primary" onClick={() => setMode("AppDetails-Data")}>Data</button>
       <button class="btn btn-primary" onClick={() => setMode("AppDetails-Customize")}>Customization</button>
+      <button class="btn btn-primary" onClick={() => setMode("AppDetails-Customize")}>Visit Website</button>
     </>);
 }
