@@ -40,9 +40,8 @@ export default function Application() {
             fields={fields}
             setPrimaryField={setPrimaryField}
             setSecondaryField={setSecondaryField}
-            updateApplicationData={updateApplicationData}
-            applicationID={applicationID}
-            AppName={state.selectedApplicationName}
+
+            applicationID={appId}
           />
         </section>
         <div className="body">
