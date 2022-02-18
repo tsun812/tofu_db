@@ -25,7 +25,7 @@ export default function Grid(props){
  for (const [key, value] of Object.entries(props.selectedRecords)) {
   //let fetchItems = fetchItem.map(item => {
     let grid = {x:0, y:value.position, w:12, h:2}
-    console.log(value)
+    //console.log(value)
     res.push(<div className="wrapper" key={key} data-grid={grid} >
     <div>
     {value.primary}
@@ -35,7 +35,7 @@ export default function Grid(props){
     </div>
   </div>
   )}
-  console.log(res)
+  //console.log(res)
     return (
       <ResponsiveGridLayout className="layout" layouts={props.layouts}
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}

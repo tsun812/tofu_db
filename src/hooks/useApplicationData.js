@@ -20,36 +20,48 @@ export default function useApplicationData() {
       { configName: "img_url", avatar: null },
     ],
     layouts: { lg: [] },
-    primary_field: "",
-    secondary_field: "",
+    primary_field: null,
+    secondary_field: null,
     editStatus: "Loaded",
     selectedRecords: {},
   });
-  let appId = parseInt(state.selectedApplication);
+  
+
+  let appId = parseInt(state.selectedApplication)
+  const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
   const setLayouts = (layouts) => setState({ ...state, layouts });
+
   const setPrimaryField = (update, applicationId) => {
-    setState((prev) => ({
-      ...prev,
-      primary_field: update,
-    }));
-    let params = { primary_field: update, id: applicationId };
-    return axios
-      .put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    console.log("before api call", update)
+    
+    setState({...state,
+      primary_field: update
+    })
+    let params = {primary_field: update}
+    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
+       
+        console.log("after api call", state)
+        window.location.reload()
       });
+
+    
   };
+  
 
   const setSecondaryField = (update, applicationId) => {
-    setState((prev) => ({
-      ...prev,
-      secondary_field: update,
-    }));
-    let params = { secondary_field: update, id: applicationId };
-    return axios
-      .put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    console.log(update)
+    setState({...state,
+      secondary_field: update
+    })
+    let params = {secondary_field: update}
+    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
+       console.log(state)
+       window.location.reload()
       });
+
   };
 
   // get all the API datas we need
