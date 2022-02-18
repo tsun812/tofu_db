@@ -1,4 +1,5 @@
 import React from 'react'
+import { Form } from 'react-bootstrap'
 
 export default function TableDataListItem({ rowData, updateInputValue, saveInputValue, application_id }) {
   return (
@@ -7,7 +8,7 @@ export default function TableDataListItem({ rowData, updateInputValue, saveInput
         data-field-id={rowData[value].field_id}
         data-record-id={rowData[value].record_id}
         data-value-id={rowData[value].id}>
-        <input
+        <Form.Control
           type="text"
           value={rowData[value].field_value}
           onChange={(event) => updateInputValue(rowData[value].record_id, rowData[value].id, event.target.value)}

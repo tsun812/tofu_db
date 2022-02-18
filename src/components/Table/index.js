@@ -1,6 +1,7 @@
 import React from "react";
 import TableHeaderList from "./TableHeaderList";
 import TableDataList from "./TableDataList";
+import { Button } from "react-bootstrap";
 
 export default function Table({
   tableHeaderArray,
@@ -42,6 +43,11 @@ export default function Table({
               application_id={application_id}
             />
             <th>
+              <Button
+                onClick={() => createNewColumn(application_id)}
+              >
+                Add New Column
+              </Button>
             </th>
           </tr>
         </thead>
@@ -56,12 +62,11 @@ export default function Table({
           />
         </tbody>
       </table>
-      <button
-        class="btn btn-primary"
+      <Button
         onClick={() => createNewRow(application_id)}
       >
         Add New Row
-      </button>
+      </Button>
     </>
   );
 }

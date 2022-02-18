@@ -35,11 +35,6 @@ export default function AppListItem(props) {
   ));
     return (
       <p>
-        <Link className="logo" style={{ textDecoration: "none" }} to="/">
-          <h1>
-            TOFU DB<span className="tofu">🧈</span>
-          </h1>
-        </Link>
         <br></br>
         <h2>My Apps </h2>
         <br></br> {apps}

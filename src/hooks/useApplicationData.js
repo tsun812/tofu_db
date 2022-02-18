@@ -73,12 +73,23 @@ export default function useApplicationData() {
 
   };
 
-  const updateApplicationData = (applicationID, fieldname ,data) =>{
+  const updateApplicationData = (fieldName ,data) =>{
+    const deepClone = JSON.parse(JSON.stringify(state.currentApplication));
+    deepClone.application[fieldName] = data;
+    console.log(deepClone)
+    setState((prev) => ({
+      ...prev,
+      currentApplication: deepClone,
+    }));
+  }
+
+  const saveApplicationData = (applicationID, fieldname ,data) =>{
     let params = {
       [fieldname]: data,
     };
     axios.put(`/api/applications/${applicationID}`, params)
     .then((all) => {
+      console.log('application data saved to database.')
       getApplicationData(applicationID);
     });
   }
@@ -283,5 +294,6 @@ export default function useApplicationData() {
     updateFieldValue,
     saveFieldValue,
     updateApplicationData,
+    saveApplicationData
   };
 }

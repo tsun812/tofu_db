@@ -26,6 +26,14 @@
   &__lhl {
     margin-top: 2rem;
   }
+  &__logo {
+    color: white;
+  }
+  &__tofu {
+   
+    font-size: 100px;
+  }
+
 }
 
 .schedule {
@@ -41,4 +49,7 @@
   flex-direction: column;
   padding-left: 5em;
   overflow-x: scroll;
+  &--button{
+    align-self: center
+  }
 }
