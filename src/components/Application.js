@@ -36,8 +36,7 @@ export default function Application() {
     <Router>
       <main className="layout">
         <section className="sidebar">
-          <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} />
-          <hr className="sidebar__separator sidebar--centered" />
+        {mode === "Data" && <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} />}
           {mode === "Customization" &&
             <NavBarConfig
               value={state.config}
