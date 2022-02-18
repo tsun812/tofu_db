@@ -15,12 +15,13 @@ import {
 
 export default function Application() {
 
-  const { getApplicationData, setConfig, state, setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData} = useApplicationData();
+  const { getApplicationData, setConfig, state, setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData} = useApplicationData();
 
   console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
   const applicationID = state.selectedApplication
+  const applicationName= state.currentApplication.application ? state.currentApplication.application.app_name : "";
   const applicationDescription = state.currentApplication.application ? state.currentApplication.application.description : "";
   const applicationBackgroundImage = state.currentApplication.application ? state.currentApplication.application.img_url : "";
   const applicationFontSize = state.currentApplication.application ? state.currentApplication.application.font : "";
@@ -46,12 +47,13 @@ export default function Application() {
             setSecondaryField={setSecondaryField}
             updateApplicationData={updateApplicationData}
             applicationID={applicationID}
-            appName={state.selectedApplicationName}
+            appName={applicationName}
             appDescription={applicationDescription}
             appBackgroundImage={applicationBackgroundImage}
             appFontSize={applicationFontSize}
             applicationTheme={applicationTheme}
             applicationID={appId}
+            saveApplicationData={saveApplicationData}
           />
         </section>
         <div className="body">
