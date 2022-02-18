@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "components/Application.scss";
 import Table from "./Table";
 import useApplicationData from "hooks/useApplicationData";
@@ -14,14 +14,14 @@ import {
 } from "react-router-dom";
 
 export default function Application() {
-
-  const { getApplicationData, setConfig, state, setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData} = useApplicationData();
+  const [mode, setMode] = useState("Data");
+  const { getApplicationData, setConfig, state, setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData } = useApplicationData();
 
   console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
   const applicationID = state.selectedApplication
-  const applicationName= state.currentApplication.application ? state.currentApplication.application.app_name : "";
+  const applicationName = state.currentApplication.application ? state.currentApplication.application.app_name : "";
   const applicationDescription = state.currentApplication.application ? state.currentApplication.application.description : "";
   const applicationBackgroundImage = state.currentApplication.application ? state.currentApplication.application.img_url : "";
   const applicationFontSize = state.currentApplication.application ? state.currentApplication.application.font : "";
@@ -36,55 +36,66 @@ export default function Application() {
     <Router>
       <main className="layout">
         <section className="sidebar">
-          <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications}/>
+          <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} />
           <hr className="sidebar__separator sidebar--centered" />
-          <NavBarConfig
-            value={state.config}
-            configs={state.configs}
-            onChange={setConfig}
-            fields={fields}
-            setPrimaryField={setPrimaryField}
-            setSecondaryField={setSecondaryField}
-            updateApplicationData={updateApplicationData}
-            applicationID={applicationID}
-            appName={applicationName}
-            appDescription={applicationDescription}
-            appBackgroundImage={applicationBackgroundImage}
-            appFontSize={applicationFontSize}
-            applicationTheme={applicationTheme}
-            applicationID={appId}
-            saveApplicationData={saveApplicationData}
-          />
+          {mode === "Customization" &&
+            <NavBarConfig
+              value={state.config}
+              configs={state.configs}
+              onChange={setConfig}
+              fields={fields}
+              setPrimaryField={setPrimaryField}
+              setSecondaryField={setSecondaryField}
+              updateApplicationData={updateApplicationData}
+              applicationID={applicationID}
+              appName={applicationName}
+              appDescription={applicationDescription}
+              appBackgroundImage={applicationBackgroundImage}
+              appFontSize={applicationFontSize}
+              applicationTheme={applicationTheme}
+              applicationID={appId}
+              saveApplicationData={saveApplicationData}
+            />
+          }
         </section>
         <div className="body">
+          <section>
+            <button class="btn btn-primary" onClick={() => setMode("Data")}>Data</button>
+            <button class="btn btn-primary" onClick={() => setMode("Customization")}>Customization</button>
+          </section>
+          {mode === "Data" &&
           <section className="table">
-          <Table
-            tableHeaderArray={tableHeaderArray}
-            tableDataArray={tableRecordArray}
-            deleteRow={deleteRow}
-            deleteColumn={deleteColumn}
-            getApplicationData={getApplicationData}
-            createNewRow={createNewRow}
-            createNewColumn={createNewColumn}
-            application_id={applicationID}
-            updateInputValue={updateInputValue}
-            saveInputValue={saveInputValue}
-            updateFieldValue={updateFieldValue}
-            saveFieldValue={saveFieldValue}
-            editStatus={state.editStatus}
-            tableTitle={state.selectedApplicationName}
-          />
-          <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
-        <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
-        </section>
-        <section className="schedule">
-          <Grid
-            setPositions={setPositions}
-            layouts={layouts}
-            selectedRecords={state.selectedRecords}
-          />
-        </section></div>
-        
+            <Table
+              tableHeaderArray={tableHeaderArray}
+              tableDataArray={tableRecordArray}
+              deleteRow={deleteRow}
+              deleteColumn={deleteColumn}
+              getApplicationData={getApplicationData}
+              createNewRow={createNewRow}
+              createNewColumn={createNewColumn}
+              application_id={applicationID}
+              updateInputValue={updateInputValue}
+              saveInputValue={saveInputValue}
+              updateFieldValue={updateFieldValue}
+              saveFieldValue={saveFieldValue}
+              editStatus={state.editStatus}
+              tableTitle={state.selectedApplicationName}
+            />
+            <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
+            <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
+          </section>
+          }
+          {mode === "Customization" &&
+          <section className="schedule">
+            <Grid
+              setPositions={setPositions}
+              layouts={layouts}
+              selectedRecords={state.selectedRecords}
+            />
+          </section>
+          }
+          </div>
+
       </main>
     </Router>
   );
