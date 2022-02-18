@@ -59,6 +59,7 @@ export default function Application() {
             updateFieldValue={updateFieldValue}
             saveFieldValue={saveFieldValue}
             editStatus={state.editStatus}
+            tableTitle={state.selectedApplicationName}
           />
           <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
         <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
