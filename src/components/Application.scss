@@ -46,8 +46,10 @@
 }
 
 .table {
+  min-width: 700px;
+  max-width: 2000px;
   padding-left: 3em;
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 .body {
@@ -57,4 +59,23 @@
   &--button{
     align-self: center
   }
+}
+
+.form-control {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.form-input {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.top-buttons {
+  padding-top: 2em;
+  padding-left: 3em;
+}
+
+.bottom-buttons {
+  padding-top: 1em;
 }

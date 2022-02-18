@@ -22,7 +22,7 @@ export default function Table({
   return (
     <>
       <h1>{tableTitle}</h1>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th>
@@ -36,13 +36,7 @@ export default function Table({
               saveFieldValue={saveFieldValue}
               application_id={application_id}
             />
-            <th>
-              <Button
-                onClick={() => createNewColumn(application_id)}
-              >
-                Add New Column
-              </Button>
-            </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -56,11 +50,14 @@ export default function Table({
           />
         </tbody>
       </table>
-      <Button
-        onClick={() => createNewRow(application_id)}
-      >
-        Add New Row
+    <section className="bottom-buttons">
+        <Button onClick={() => createNewColumn(application_id)}>
+        Add New Column
       </Button>
+      <Button onClick={() => createNewRow(application_id)}>Add New Row</Button>
+      </section>
     </>
+      
   );
 }
+      
