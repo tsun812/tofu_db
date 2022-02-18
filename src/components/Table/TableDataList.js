@@ -6,7 +6,9 @@ export default function TableDataList({ tableDataArray, deleteRow, updateInputVa
   return (
     Object.keys(tableDataArray).map((rowData, index) => {
       return <tr>
+        <td>
         <Button variant="outline-danger" onClick={() => deleteRow(tableDataArray[rowData].id, application_id)}>Delete</Button>
+        </td>
         <td>{index + 1}</td>
         <TableDataListItem
           rowData={tableDataArray[rowData].values}
