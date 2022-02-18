@@ -19,7 +19,7 @@ export default function useApplicationData() {
       { configName: "app_name", avatar: null },
       { configName: "img_url", avatar: null },
     ],
-    layouts: { lg: [] },
+    positions: null,
     primary_field: null,
     secondary_field: null,
     editStatus: "Loaded",
@@ -30,7 +30,16 @@ export default function useApplicationData() {
   let appId = parseInt(state.selectedApplication)
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
-  const setLayouts = (layouts) => setState({ ...state, layouts });
+
+  const setPositions = (id, position) => {
+
+      let params = {position: position}
+      return axios.put(`http://localhost:3000/api/records/${id}`, params)
+      .then((all) => {
+       console.log(state);
+      });
+    }
+
 
   const setPrimaryField = (update, applicationId) => {
     console.log("before api call", update)
@@ -55,6 +64,7 @@ export default function useApplicationData() {
     setState({...state,
       secondary_field: update
     })
+
     let params = {secondary_field: update}
     return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
@@ -194,14 +204,29 @@ export default function useApplicationData() {
   };
 
   const getApplicationData = (applicationID) => {
+
     axios.get(`/api/applications/${applicationID}`)
     .then((all) => {
       setState((prev) => ({
         ...prev,
         selectedApplicationName: all["data"].application.app_name,
         selectedApplication: applicationID,
-        currentApplication: all["data"],
+        currentApplication: all["data"]
       }));
+     Promise.all([
+        
+      axios.get(`http://localhost:3000/api/fields`)
+     ])
+      .then(all =>{
+        setState(prev => ({
+          ...prev,
+        fields: all[0]['data'],
+        //selectedRecords: all[1]['data'].records,
+       
+        })
+        );
+        console.log(state.selectedRecords)
+      })
     });
   };
 
@@ -233,7 +258,7 @@ export default function useApplicationData() {
     setApplication,
     state,
     setConfig,
-    setLayouts,
+    setPositions,
     setPrimaryField,
     setSecondaryField,
     createNewRow,
