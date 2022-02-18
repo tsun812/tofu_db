@@ -64,34 +64,42 @@ export default function Application() {
           }
         </section>
         <div className="body">
-          <section className="table-section">
-          <Table
-            tableHeaderArray={tableHeaderArray}
-            tableDataArray={tableRecordArray}
-            deleteRow={deleteRow}
-            deleteColumn={deleteColumn}
-            getApplicationData={getApplicationData}
-            createNewRow={createNewRow}
-            createNewColumn={createNewColumn}
-            application_id={applicationID}
-            updateInputValue={updateInputValue}
-            saveInputValue={saveInputValue}
-            updateFieldValue={updateFieldValue}
-            saveFieldValue={saveFieldValue}
-            editStatus={state.editStatus}
-            tableTitle={state.selectedApplicationName}
-          />
-          <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
-        <button class="mary" onClick={() => console.log(applicationID)}>Check applicationID</button>
-        </section>
-        <section className="schedule">
-          <Grid
-            setPositions={setPositions}
-            layouts={layouts}
-            selectedRecords={state.selectedRecords}
-          />
-        </section></div>
-        
+          <section>
+            <button className="btn btn-primary" onClick={() => setMode("Data")}>Data</button>
+            <button className="btn btn-primary" onClick={() => setMode("Customization")}>Customization</button>
+          </section>
+          {mode === "Data" &&
+          <section className="table">
+            <Table
+              tableHeaderArray={tableHeaderArray}
+              tableDataArray={tableRecordArray}
+              deleteRow={deleteRow}
+              deleteColumn={deleteColumn}
+              getApplicationData={getApplicationData}
+              createNewRow={createNewRow}
+              createNewColumn={createNewColumn}
+              application_id={applicationID}
+              updateInputValue={updateInputValue}
+              saveInputValue={saveInputValue}
+              updateFieldValue={updateFieldValue}
+              saveFieldValue={saveFieldValue}
+              editStatus={state.editStatus}
+              tableTitle={state.selectedApplicationName}
+            />
+            <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
+            <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
+          </section>
+          }
+          {mode === "Customization" &&
+          <section>
+            <Grid
+              setPositions={setPositions}
+              layouts={layouts}
+              selectedRecords={state.selectedRecords}
+            />
+          </section>
+          }
+        </div>
 
       </main>
     </Router>

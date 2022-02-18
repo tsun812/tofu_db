@@ -22,7 +22,7 @@ export default function useApplicationData() {
     positions: null,
     primary_field: null,
     secondary_field: null,
-    // editStatus: "Loaded",
+    editStatus: "Loaded",
     selectedRecords: {},
   });
   const hello = () =>{console.log("hello")}

@@ -22,16 +22,10 @@ export default function Table({
   return (
     <>
       <h1>{tableTitle}</h1>
-      <table className="table">
+      <table class="table">
         <thead>
           <tr>
             <th>
-              <button
-                class="btn btn-primary"
-                onClick={() => createNewColumn(application_id)}
-              >
-                Add New Column
-              </button>
               <>{editStatus}</>
             </th>
             <th>#</th>
