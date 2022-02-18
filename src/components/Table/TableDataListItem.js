@@ -9,6 +9,7 @@ export default function TableDataListItem({ rowData, updateInputValue, saveInput
         data-record-id={rowData[value].record_id}
         data-value-id={rowData[value].id}>
         <Form.Control
+          className="form-input"
           type="text"
           value={rowData[value].field_value}
           onChange={(event) => updateInputValue(rowData[value].record_id, rowData[value].id, event.target.value)}

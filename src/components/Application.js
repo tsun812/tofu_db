@@ -64,7 +64,7 @@ export default function Application() {
           }
         </section>
         <div className="body">
-          <section>
+          <section className="top-buttons">
             <button className="btn btn-primary" onClick={() => setMode("Data")}>Data</button>
             <button className="btn btn-primary" onClick={() => setMode("Customization")}>Customization</button>
           </section>
