@@ -36,6 +36,12 @@ export default function Application() {
     <Router>
       <main className="layout">
         <section className="sidebar">
+        <div   className="sidebar--centered" style={{ textDecoration: "none" }}>
+          <h1 className="sidebar__logo"  >
+            TOFU DB
+          </h1>
+          <span className="sidebar__tofu">🧈</span>
+        </div>
         {mode === "Data" && <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} />}
           {mode === "Customization" &&
             <NavBarConfig
@@ -59,8 +65,8 @@ export default function Application() {
         </section>
         <div className="body">
           <section>
-            <button class="btn btn-primary" onClick={() => setMode("Data")}>Data</button>
-            <button class="btn btn-primary" onClick={() => setMode("Customization")}>Customization</button>
+            <button className="btn btn-primary" onClick={() => setMode("Data")}>Data</button>
+            <button className="btn btn-primary" onClick={() => setMode("Customization")}>Customization</button>
           </section>
           {mode === "Data" &&
           <section className="table">
@@ -85,7 +91,7 @@ export default function Application() {
           </section>
           }
           {mode === "Customization" &&
-          <section className="schedule">
+          <section>
             <Grid
               setPositions={setPositions}
               layouts={layouts}
@@ -93,7 +99,7 @@ export default function Application() {
             />
           </section>
           }
-          </div>
+        </div>
 
       </main>
     </Router>
