@@ -17,7 +17,14 @@ export default function Grid(props){
   };   
   //const [layouts, setLayouts] = useState(initialLayouts);
   const onLayoutChange = (_, allLayouts) => {
-    props.setLayouts(allLayouts.md);
+    //props.setLayouts(allLayouts.md)
+    allLayouts.md.forEach(item=>{
+      let yAxis = item['y']
+      let recordId = parseInt(item['i'])
+      
+      props.setPositions(recordId, yAxis)
+   })
+  
   };
 
  //console.log(layouts)
