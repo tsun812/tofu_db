@@ -12,7 +12,10 @@ export default function AppListItem(props) {
       <Link
         className="app_name"
         to={`app/${array[key].id}`}
-        onClick={() => props.getApplicationData(array[key].id)}
+        onClick={() => {
+          props.getApplicationData(array[key].id);
+          props.setMode("AppDetails-Data");
+        }}
         style={{ textDecoration: "none" }}
       >
         {array[key].app_name}
