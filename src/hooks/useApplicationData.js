@@ -34,7 +34,8 @@ export default function useApplicationData() {
       return axios.put(`http://localhost:3000/api/records/${id}`, params)
       .then((all) => {
        console.log(state);
-      });
+       getApplicationData(id)
+       });
     }
 
 
@@ -226,6 +227,9 @@ export default function useApplicationData() {
   const getApplicationData = (applicationID) => {
     Promise.all([
     axios.get(`/api/applications/${applicationID}`),
+    axios.get(`/api/records/`),
+    axios.get(`/api/fields/`),
+    axios.get(`/api/values/`),
     axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
     ])
     .then((all) => {
@@ -234,7 +238,10 @@ export default function useApplicationData() {
         selectedApplicationName: all[0]["data"].application.app_name,
         selectedApplication: applicationID,
         currentApplication: all[0]["data"],
-        selectedRecords: all[1]["data"].records
+        records: all[1]['data'],
+        fields: all[2]['data'],
+        values: all[3]['data'],
+        selectedRecords: all[4]["data"].records,
       }));
 
         
