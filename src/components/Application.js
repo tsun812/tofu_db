@@ -21,7 +21,8 @@ export default function Application() {
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
   const applicationID = state.selectedApplication
   let fetchItem = [{ key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1 }, { key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2 }, { key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3 }]
-  let fields = getFieldsById(state, 1)
+  let appId = parseInt(state.selectedApplication)
+  let fields = getFieldsById(state, appId)
   //console.log(state.selectedApplication)
   //console.log(state.selectedRecords)
   // setPrimaryField("Building")
