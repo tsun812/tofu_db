@@ -55,6 +55,7 @@ export default function useApplicationData() {
     setState({...state,
       secondary_field: update
     })
+
     let params = {secondary_field: update}
     return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
@@ -194,12 +195,28 @@ export default function useApplicationData() {
   };
 
   const getApplicationData = (applicationID) => {
-    axios.get(`/api/applications/${applicationID}`).then((all) => {
+  
+    axios.get(`/api/applications/${applicationID}`)
+    .then((all) => {
       setState((prev) => ({
         ...prev,
         selectedApplication: applicationID,
-        currentApplication: all["data"],
+        currentApplication: all["data"]
       }));
+     Promise.all([
+        
+      axios.get(`http://localhost:3000/api/fields`)
+     ])
+      .then(all =>{
+        setState(prev => ({
+          ...prev,
+        fields: all[0]['data'],
+        //selectedRecords: all[1]['data'].records,
+       
+        })
+        );
+        console.log(state.selectedRecords)
+      })
     });
   };
 
