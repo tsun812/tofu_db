@@ -11,7 +11,6 @@ export default function TableHeaderListItem({ application_id, field_value, field
           value={field_value}
           onChange={(event) => updateFieldValue(field_id, event.target.value)}
           onBlur={(event) => saveFieldValue(application_id, field_id, event.target.value)}
-          class="form-control"
           aria-label="Text input with dropdown button" />
 
         <DropdownButton
