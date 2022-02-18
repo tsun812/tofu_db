@@ -55,22 +55,34 @@ export default function useApplicationData() {
   // get all the API datas we need
   useEffect(() => {
     Promise.all([
-      axios.get("/api/applications"),
-      axios.get("/api/records"),
-      axios.get("/api/fields"),
-      axios.get("/api/values"),
-      axios.get(`http://localhost:3000/api/recordBySelectedFields/1`),
+      axios.get('/api/applications'),
+      axios.get('/api/records'),
+      axios.get('/api/fields'),
+      axios.get('/api/values'),
+      axios.get(`http://localhost:3000/api/recordBySelectedFields/1`)
     ]).then((all) => {
-      console.log("loading all data from API");
-      setState((prev) => ({
+      console.log('loading all data from API')
+      console.log(all[0]['data'])
+      console.log('after all data from API')
+      // load first app's data if there are apps
+      let first_application
+      if (all[0]['data'].length > 0) {
+        first_application = all[0]['data'][0]['id']
+      } else {
+        first_application = null
+      }
+      getApplicationData(first_application)
+      setState(prev => ({
         ...prev,
-        applications: all[0]["data"],
-        records: all[1]["data"],
-        fields: all[2]["data"],
-        values: all[3]["data"],
-        selectedRecords: all[4]["data"].records,
-      }));
-    });
+        applications: all[0]['data'],
+        records: all[1]['data'],
+        fields: all[2]['data'],
+        values: all[3]['data'],
+        selectedRecords: all[4]['data'].records,
+        selectedApplication: first_application
+      })
+      );
+    })
   }, []);
 
   // useEffect(()=>{
