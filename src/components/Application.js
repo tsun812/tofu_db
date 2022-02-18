@@ -51,6 +51,7 @@ export default function Application() {
             appBackgroundImage={applicationBackgroundImage}
             appFontSize={applicationFontSize}
             applicationTheme={applicationTheme}
+            applicationID={appId}
           />
         </section>
         <div className="body">
