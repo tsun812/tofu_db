@@ -258,7 +258,6 @@ export default function useApplicationData() {
       }));
     });
   };
-
   return {
     getApplicationData,
     setApplication,
