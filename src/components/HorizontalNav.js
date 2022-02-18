@@ -8,7 +8,7 @@ export default function HorizontalNav({setMode}) {
         <Nav.Link eventKey="Data" onClick={() => setMode("Data")}>Data</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="Customization" onClick={() => setMode("Customization")}>Customization</Nav.Link>
+        <Nav.Link eventKey="Customization" onClick={() => setMode("Customization")}>Settings</Nav.Link>
       </Nav.Item>
     </Nav>
   )

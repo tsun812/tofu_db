@@ -26,7 +26,8 @@ export default function NavBarConfig(props) {
  
   return(
     <section className="sidebar__text sidebar--centered">
-      <Link className="customize" style={{ textDecoration: "none" }} to="app/customize">Customize app</Link>
+      <h2>App Settings</h2>
+      <hr></hr>
         <nav className="sidebar__menu">
 
           <Field key={1} fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField} applicationID={props.applicationID}/>
