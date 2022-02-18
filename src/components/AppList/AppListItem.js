@@ -7,16 +7,18 @@ import { get } from "request";
 import { Link } from "react-router-dom";
 
 export default function AppListItem(props) {
-  const { state, deleteApplication } = useApplicationData();
-  const apps = state.applications.map((key) => (
+  console.log("!!!!!!!!!!!!!!!!!!!")
+  console.log(props.applications_array)
+  const array = props.applications_array
+  const apps = Object.keys(array).map((key) => (
     <>
       <Link
         className="app_name"
-        to={`app/${key.id}`}
-        onClick={() => props.getApplicationData(key.id)}
+        to={`app/${array[key].id}`}
+        onClick={() => props.getApplicationData(array[key].id)}
         style={{ textDecoration: "none" }}
       >
-        {key.app_name}
+        {array[key].app_name}
       </Link>{" "}
       &nbsp;&nbsp;
       <button
@@ -27,7 +29,7 @@ export default function AppListItem(props) {
           maxWidth: "70px",
           maxHeight: "30px",
         }}
-        onClick={() => deleteApplication(key.id)}
+        onClick={() => props.deleteApplication(array[key].id)}
       >
         Delete
       </button>
