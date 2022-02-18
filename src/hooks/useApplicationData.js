@@ -200,7 +200,7 @@ export default function useApplicationData() {
       console.log(all,"all")
       setState((prev) => ({
         ...prev,
-        applications: all["data"],
+        applications: all["data"]
       }));
     });
   };

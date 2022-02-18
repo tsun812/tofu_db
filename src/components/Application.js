@@ -35,6 +35,7 @@ export default function Application() {
     updateFieldValue,
     saveFieldValue,
     createNewApplication,
+    deleteApplication,
   } = useApplicationData();
 
   const tableHeaderArray = state.currentApplication.fields
@@ -65,7 +66,7 @@ export default function Application() {
     <Router>
       <main className="layout">
         <section className="sidebar">
-          <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} />
+          <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications}/>
           <hr className="sidebar__separator sidebar--centered" />
           <NavBarConfig
             value={state.config}
