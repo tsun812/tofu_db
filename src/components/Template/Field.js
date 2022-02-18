@@ -7,14 +7,17 @@ export default function Field(props) {
   const {state} = useApplicationData()
   
   const handleSelect =(evtKey) => {
+    console.log("hello")
+    let id = parseInt(props.appId)
+    
     if(props.name === "Primary field" && evtKey) {
-      props.setPrimaryField(evtKey, 1)
+     
+      props.setPrimaryField(evtKey, id)
       
     }
     else if(props.name === "Secondary field" && evtKey ){
-        props.setSecondaryField(evtKey, 1)
-        //console.log(evtKey)
-       // console.log(state)
+        props.setSecondaryField(evtKey, id)
+        
       }
     
      // console.log(evtKey)

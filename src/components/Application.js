@@ -43,6 +43,7 @@ export default function Application() {
             fields={fields}
             setPrimaryField={setPrimaryField}
             setSecondaryField={setSecondaryField}
+            appId={applicationID}
           />
         </section>
         <section className="table">

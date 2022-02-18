@@ -27,10 +27,10 @@ export default function useApplicationData() {
   });
   
 
-  let appId = parseInt(state.selectedApplication)
+  
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
-
+  const idNumber = parseInt(state.selectedApplication)
   const setPositions = (id, position) => {
 
       let params = {position: position}
@@ -42,8 +42,7 @@ export default function useApplicationData() {
 
 
   const setPrimaryField = (update, applicationId) => {
-    console.log("before api call", update)
-    
+    console.log("before api call", applicationId)
     setState({...state,
       primary_field: update
     })
