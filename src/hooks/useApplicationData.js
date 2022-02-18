@@ -27,7 +27,7 @@ export default function useApplicationData() {
   });
   
 
-  let appId = parseInt(state.selectedApplication)
+ 
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
 

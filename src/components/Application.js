@@ -39,6 +39,7 @@ export default function Application() {
             fields={fields}
             setPrimaryField={setPrimaryField}
             setSecondaryField={setSecondaryField}
+            applicationID={appId}
           />
         </section>
         <div className="body">

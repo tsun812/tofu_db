@@ -24,8 +24,8 @@ export default function NavBarConfig(props) {
         <nav className="sidebar__menu">
           
        
-          <Field key={1} fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField}/>
-          <Field key={2} fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField}/>
+          <Field key={1} fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField} applicationID={props.applicationID}/>
+          <Field key={2} fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField} applicationID={props.applicationID}/>
 
           <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
