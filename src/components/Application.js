@@ -3,13 +3,19 @@ import "components/Application.scss";
 import Table from "./Table";
 import useApplicationData from "hooks/useApplicationData";
 import NavBarConfig from "./Template/NavBarConfig";
-import Grid from "./Template/Grid"
-import List from "./Template/List"
+import Grid from "./Template/Grid";
+import List from "./Template/List";
 import AppList from "./AppList/AppList";
 import Status from "./Table/Status";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
-import { BrowserRouter as Router, Link, Route, Routes, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 
 export default function Application() {
   const { getApplicationData, setConfig, state,
@@ -23,25 +29,48 @@ export default function Application() {
   //console.log(state.selectedApplication)
   //console.log(state.selectedRecords)
   // setPrimaryField("Building")
-  // console.log(state.primary_field)
   return (
-    <main className="layout">
-      <section className="sidebar">
-        <Router>
-          <AppList getApplicationData={getApplicationData} />
-        </Router>
-        <hr className="sidebar__separator sidebar--centered" />
-        <NavBarConfig value={state.config} configs={state.configs} onChange={setConfig} fields={fields} setPrimaryField={setPrimaryField} setSecondaryField={setSecondaryField} />
-      </section>
-      <section className="table">
-        <Table tableHeaderArray={tableHeaderArray} tableDataArray={tableRecordArray} deleteRow={deleteRow} deleteColumn={deleteColumn} getApplicationData={getApplicationData} createNewRow={createNewRow} createNewColumn={createNewColumn} application_id={applicationID} updateInputValue={updateInputValue} saveInputValue={saveInputValue} updateFieldValue={updateFieldValue} saveFieldValue={saveFieldValue} editStatus={state.editStatus} />
-        {/* <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
-        <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button> */}
-      </section>
-      <section className="schedule">
-        <Grid setLayouts={setLayouts} layouts={layouts} selectedRecords={state.selectedRecords} />
-      </section>
-    </main>
+    <Router>
+      <main className="layout">
+        <section className="sidebar">
+          <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications}/>
+          <hr className="sidebar__separator sidebar--centered" />
+          <NavBarConfig
+            value={state.config}
+            configs={state.configs}
+            onChange={setConfig}
+            fields={fields}
+            setPrimaryField={setPrimaryField}
+            setSecondaryField={setSecondaryField}
+          />
+        </section>
+        <section className="table">
+          <Table
+            tableHeaderArray={tableHeaderArray}
+            tableDataArray={tableRecordArray}
+            deleteRow={deleteRow}
+            deleteColumn={deleteColumn}
+            getApplicationData={getApplicationData}
+            createNewRow={createNewRow}
+            createNewColumn={createNewColumn}
+            application_id={applicationID}
+            updateInputValue={updateInputValue}
+            saveInputValue={saveInputValue}
+            updateFieldValue={updateFieldValue}
+            saveFieldValue={saveFieldValue}
+            editStatus={state.editStatus}
+          />
+          <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
+        <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
+        </section>
+        <section className="schedule">
+          <Grid
+            setLayouts={setLayouts}
+            layouts={layouts}
+            selectedRecords={state.selectedRecords}
+          />
+        </section>
+      </main>
+    </Router>
   );
 }
-
