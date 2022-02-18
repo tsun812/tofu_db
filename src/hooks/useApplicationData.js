@@ -46,9 +46,11 @@ export default function useApplicationData() {
     let params = {primary_field: update}
     return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
-       
+        console.log('alllllllllllllllllllll')
+        console.log(all)
         console.log("after api call", state)
-        window.location.reload()
+        getApplicationData(applicationId);
+        // window.location.reload()
       });
 
     
