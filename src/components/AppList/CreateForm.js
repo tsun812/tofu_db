@@ -3,20 +3,31 @@ import { Form, Button } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
 
 export default function CreateForm({ createNewApplication }) {
-  const [value, setValue] = useState()
+  const [value, setValue] = useState();
   return (
     <>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>App Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter App Name" onChange={e => setValue(e.target.value)}/>
+          <Form.Control
+            type="text"
+            placeholder="Enter App Name"
+            onChange={(e) => setValue(e.target.value)}
+          />
         </Form.Group>
         <div className="createcancel">
           <Button
             variant="primary"
             type="button"
             // onClick={(event) => createNewApplication(event.target.value)}
-            onClick={() => createNewApplication(value)}>Create
+            onClick={() => createNewApplication(value)}
+          ><Link
+          className="cancelbutton"
+          to="/"
+          style={{ textDecoration: "none" }}
+        >
+            Create
+            </Link>
           </Button>
           <Button variant="danger" type="submit">
             <Link

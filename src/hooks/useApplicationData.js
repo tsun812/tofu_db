@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
-    app: "Dictionary",
+    selectedApplicationName: "",
     selectedApplication: "",
     currentApplication: [],
     applications: [],
@@ -27,7 +27,11 @@ export default function useApplicationData() {
   });
   
 
+<<<<<<< HEAD
   
+=======
+ 
+>>>>>>> master
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
   const idNumber = parseInt(state.selectedApplication)
@@ -203,11 +207,12 @@ export default function useApplicationData() {
   };
 
   const getApplicationData = (applicationID) => {
-  
+
     axios.get(`/api/applications/${applicationID}`)
     .then((all) => {
       setState((prev) => ({
         ...prev,
+        selectedApplicationName: all["data"].application.app_name,
         selectedApplication: applicationID,
         currentApplication: all["data"]
       }));
