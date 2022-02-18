@@ -34,11 +34,11 @@ export default function NavBarConfig(props) {
 
           <Form>
           <AppID applicationID={props.applicationID}/>
-          <AppName appName={props.appName}/>
-          <Description appDescription={props.appDescription}/>
-          <BackgroundImage appBackgroundImage={props.appBackgroundImage}/>
-          <Font appFontSize={props.appFontSize}/>
-          <Theme applicationTheme={props.applicationTheme}/>
+          <AppName appName={props.appName} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
+          <Description appDescription={props.appDescription} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
+          <BackgroundImage appBackgroundImage={props.appBackgroundImage} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
+          <Font appFontSize={props.appFontSize} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
+          <Theme applicationTheme={props.applicationTheme} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
         </Form>
 
         </nav>
