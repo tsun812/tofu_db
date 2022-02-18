@@ -7,7 +7,9 @@ export default function Field(props) {
   const {state} = useApplicationData()
   
   const handleSelect =(evtKey) => {
-    console.log("hello")
+    console.log("hello1")
+    console.log(evtKey)
+    console.log("hello2")
     let id = parseInt(props.applicationID)
     if(props.name === "Primary field" && evtKey) {
       props.setPrimaryField(evtKey, id)
@@ -26,13 +28,14 @@ export default function Field(props) {
   }
   const options = props.fields.map((item, index)=>{
     return(
-    <Dropdown.Item href="#/action-1" key={index}  eventKey={item} >{item}</Dropdown.Item>
+    <Dropdown.Item  key={index}  eventKey={item} >{item}</Dropdown.Item> 
+    // href="#/action-1"
     )
   }
   )
   
   return (
-    <Dropdown onSelect={handleSelect}>
+    <Dropdown onSelect={(evtKey) => handleSelect(evtKey)}>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         {props.name}
       </Dropdown.Toggle>
