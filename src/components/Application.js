@@ -19,7 +19,7 @@ import {
 
 export default function Application() {
   const { getApplicationData, setConfig, state,
-     setApp, setLayouts, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication} = useApplicationData();
+     setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication} = useApplicationData();
   console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
@@ -66,7 +66,7 @@ export default function Application() {
         </section>
         <section className="schedule">
           <Grid
-            setLayouts={setLayouts}
+            setPositions={setPositions}
             layouts={layouts}
             selectedRecords={state.selectedRecords}
           />

@@ -19,7 +19,7 @@ export default function useApplicationData() {
       { configName: "app_name", avatar: null },
       { configName: "img_url", avatar: null },
     ],
-    layouts: { lg: [] },
+    positions: null,
     primary_field: null,
     secondary_field: null,
     editStatus: "Loaded",
@@ -30,7 +30,16 @@ export default function useApplicationData() {
   let appId = parseInt(state.selectedApplication)
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
-  const setLayouts = (layouts) => setState({ ...state, layouts });
+
+  const setPositions = (id, position) => {
+
+      let params = {position: position}
+      return axios.put(`http://localhost:3000/api/records/${id}`, params)
+      .then((all) => {
+       console.log(state);
+      });
+    }
+
 
   const setPrimaryField = (update, applicationId) => {
     console.log("before api call", update)
@@ -248,7 +257,7 @@ export default function useApplicationData() {
     setApplication,
     state,
     setConfig,
-    setLayouts,
+    setPositions,
     setPrimaryField,
     setSecondaryField,
     createNewRow,
