@@ -35,7 +35,10 @@
 }
 
 .logo {
+    display: flex;
     color: white;
+    flex-direction: column;
+    
 }
 
 .logo:hover {
