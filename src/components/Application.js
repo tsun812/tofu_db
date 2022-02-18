@@ -14,8 +14,8 @@ import {
 } from "react-router-dom";
 
 export default function Application() {
-  const { getApplicationData, setConfig, state,
-     setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication} = useApplicationData();
+  const { getApplicationData, setConfig, state, setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication} = useApplicationData();
+
   console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
@@ -41,7 +41,8 @@ export default function Application() {
             setSecondaryField={setSecondaryField}
           />
         </section>
-        <section className="table">
+        <div className="body">
+          <section className="table">
           <Table
             tableHeaderArray={tableHeaderArray}
             tableDataArray={tableRecordArray}
@@ -67,7 +68,8 @@ export default function Application() {
             layouts={layouts}
             selectedRecords={state.selectedRecords}
           />
-        </section>
+        </section></div>
+        
       </main>
     </Router>
   );
