@@ -28,13 +28,14 @@ export default function useApplicationData() {
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
   const idNumber = parseInt(state.selectedApplication)
-  const setPositions = (id, position) => {
+  const setPositions = (id, position, applicationId) => {
 
       let params = {position: position}
       return axios.put(`http://localhost:3000/api/records/${id}`, params)
       .then((all) => {
        console.log(state);
-      });
+       getApplicationData(applicationId)
+       });
     }
 
 
@@ -226,6 +227,9 @@ export default function useApplicationData() {
   const getApplicationData = (applicationID) => {
     Promise.all([
     axios.get(`/api/applications/${applicationID}`),
+    // axios.get(`/api/records/`),
+    // axios.get(`/api/fields/`),
+    // axios.get(`/api/values/`),
     axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
     ])
     .then((all) => {
@@ -234,7 +238,7 @@ export default function useApplicationData() {
         selectedApplicationName: all[0]["data"].application.app_name,
         selectedApplication: applicationID,
         currentApplication: all[0]["data"],
-        selectedRecords: all[1]["data"].records
+        selectedRecords: all[1]["data"].records,
       }));
 
         

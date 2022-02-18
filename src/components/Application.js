@@ -96,6 +96,7 @@ export default function Application() {
               setPositions={setPositions}
               layouts={layouts}
               selectedRecords={state.selectedRecords}
+              application_id={applicationID}
             />
           </section>
           }
