@@ -21,10 +21,16 @@ export default function Table({
   return (
     <>
       <h1>{tableTitle}</h1>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th>
+              <button
+                class="btn btn-primary"
+                onClick={() => createNewColumn(application_id)}
+              >
+                Add New Column
+              </button>
               <>{editStatus}</>
             </th>
             <th>#</th>
@@ -36,12 +42,6 @@ export default function Table({
               application_id={application_id}
             />
             <th>
-              <button
-                class="btn btn-primary"
-                onClick={() => createNewColumn(application_id)}
-              >
-                Add New Column
-              </button>
             </th>
           </tr>
         </thead>

@@ -55,7 +55,7 @@ export default function Application() {
           />
         </section>
         <div className="body">
-          <section className="table">
+          <section className="table-section">
           <Table
             tableHeaderArray={tableHeaderArray}
             tableDataArray={tableRecordArray}
@@ -73,7 +73,7 @@ export default function Application() {
             tableTitle={state.selectedApplicationName}
           />
           <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
-        <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
+        <button class="mary" onClick={() => console.log(applicationID)}>Check applicationID</button>
         </section>
         <section className="schedule">
           <Grid
