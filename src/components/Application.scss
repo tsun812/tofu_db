@@ -44,11 +44,16 @@
   padding: 0 $spacing;
   width: 100%;
 }
+
+.table {
+  padding-left: 3em;
+  padding-top: 2em;
+}
+
 .body {
   display: flex;
   flex-direction: column;
   padding-left: 5em;
-  overflow-x: scroll;
   &--button{
     align-self: center
   }
