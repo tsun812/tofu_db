@@ -7,6 +7,7 @@ import Grid from "./Template/Grid";
 import List from "./Template/List";
 import AppList from "./AppList/AppList";
 import Status from "./Table/Status";
+import HorizontalNav from "./HorizontalNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
 import {
@@ -65,8 +66,7 @@ export default function Application() {
         </section>
         <div className="body">
           <section className="top-buttons">
-            <button className="btn btn-primary" onClick={() => setMode("Data")}>Data</button>
-            <button className="btn btn-primary" onClick={() => setMode("Customization")}>Customization</button>
+          <HorizontalNav setMode={setMode}/>
           </section>
           {mode === "Data" &&
           <section className="table">
