@@ -22,16 +22,8 @@ export default function NavBarConfig(props) {
     <section className="sidebar__text sidebar--centered">
       <Link className="customize" style={{ textDecoration: "none" }} to="app/customize">Customize app</Link>
         <nav className="sidebar__menu">
-          
-       
-<<<<<<< HEAD
-          <Field key={1} fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField} appId={props.appId}/>
-          <Field key={2} fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField} appId={props.appId}/>
-=======
           <Field key={1} fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField} applicationID={props.applicationID}/>
           <Field key={2} fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField} applicationID={props.applicationID}/>
->>>>>>> master
-
           <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>App ID</Form.Label>

@@ -25,13 +25,6 @@ export default function useApplicationData() {
     editStatus: "Loaded",
     selectedRecords: {},
   });
-  
-
-<<<<<<< HEAD
-  
-=======
- 
->>>>>>> master
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
   const idNumber = parseInt(state.selectedApplication)
