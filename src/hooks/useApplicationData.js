@@ -74,6 +74,16 @@ export default function useApplicationData() {
 
   };
 
+  const updateApplicationData = (applicationID, fieldname ,data) =>{
+    let params = {
+      [fieldname]: data,
+    };
+    axios.put(`/api/applications/${applicationID}`, params)
+    .then((all) => {
+      getApplicationData(applicationID);
+    });
+  }
+
   // get all the API datas we need
   useEffect(() => {
     Promise.all([
@@ -271,5 +281,6 @@ export default function useApplicationData() {
     saveInputValue,
     updateFieldValue,
     saveFieldValue,
+    updateApplicationData,
   };
 }
