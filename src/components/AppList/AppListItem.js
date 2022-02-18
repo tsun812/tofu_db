@@ -7,8 +7,7 @@ import { get } from "request";
 import { Link } from "react-router-dom";
 
 export default function AppListItem(props) {
-  console.log("!!!!!!!!!!!!!!!!!!!")
-  console.log(props.applications_array)
+
   const array = props.applications_array
   const apps = Object.keys(array).map((key) => (
     <>
