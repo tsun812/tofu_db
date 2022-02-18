@@ -12,7 +12,9 @@ export default function TableDataListItem({ rowData, updateInputValue, saveInput
           type="text"
           value={rowData[value].field_value}
           onChange={(event) => updateInputValue(rowData[value].record_id, rowData[value].id, event.target.value)}
-          onBlur={(event) => saveInputValue(application_id, rowData[value].id, event.target.value)} />
+          onBlur={(event) => saveInputValue(application_id, rowData[value].id, event.target.value)}
+          className="form-input"
+        />
       </td>
     })
   )
