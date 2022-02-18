@@ -1,15 +1,15 @@
 import React from 'react'
 import { Form } from "react-bootstrap";
-
-export default function Theme() {
+export default function Theme({applicationTheme}) {
+console.log(applicationTheme)
   return (
     <>
       <Form.Label>Display theme</Form.Label>
-      <Form.Select aria-label="Default select example">
-        <option value="1">List</option>
-        <option value="2">Grid</option>
-        <option value="3">Cards</option>
-        <option value="4">Table</option>
+      <Form.Select aria-label="Default select example" value={applicationTheme}>
+        <option value="List">List</option>
+        <option value="Grid">Grid</option>
+        <option value="Card">Cards</option>
+        <option value="Table">Table</option>
       </Form.Select>
     </>
   )

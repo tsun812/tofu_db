@@ -21,6 +21,10 @@ export default function Application() {
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
   const tableRecordArray = ((state.currentApplication.records)) ? state.currentApplication.records : [];
   const applicationID = state.selectedApplication
+  const applicationDescription = state.currentApplication.application ? state.currentApplication.application.description : "";
+  const applicationBackgroundImage = state.currentApplication.application ? state.currentApplication.application.img_url : "";
+  const applicationFontSize = state.currentApplication.application ? state.currentApplication.application.font : "";
+  const applicationTheme = state.currentApplication.application ? state.currentApplication.application.display_theme : "";
   let fetchItem = [{ key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1 }, { key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2 }, { key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3 }]
   let appId = parseInt(state.selectedApplication)
   let fields = getFieldsById(state, appId)
@@ -42,7 +46,11 @@ export default function Application() {
             setSecondaryField={setSecondaryField}
             updateApplicationData={updateApplicationData}
             applicationID={applicationID}
-            AppName={state.selectedApplicationName}
+            appName={state.selectedApplicationName}
+            appDescription={applicationDescription}
+            appBackgroundImage={applicationBackgroundImage}
+            appFontSize={applicationFontSize}
+            applicationTheme={applicationTheme}
           />
         </section>
         <div className="body">
