@@ -2,9 +2,10 @@ import React from 'react'
 import TableHeaderList from './TableHeaderList'
 import TableDataList from './TableDataList'
 
-export default function Table({ tableHeaderArray, tableDataArray, deleteRow, deleteColumn, getApplicationData, createNewRow, createNewColumn, application_id, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, editStatus}) {
+export default function Table({ tableHeaderArray, tableDataArray, deleteRow, deleteColumn, getApplicationData, createNewRow, createNewColumn, application_id, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, editStatus, tableTitle}) {
   return (
     <>
+    <h1>{tableTitle}</h1>
       <table class="table">
         <thead>
           <tr>

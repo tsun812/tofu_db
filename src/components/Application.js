@@ -11,10 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
 import {
   BrowserRouter as Router,
-  Link,
-  Route,
-  Routes,
-  Navigate,
 } from "react-router-dom";
 
 export default function Application() {
@@ -60,6 +56,7 @@ export default function Application() {
             updateFieldValue={updateFieldValue}
             saveFieldValue={saveFieldValue}
             editStatus={state.editStatus}
+            tableTitle={state.selectedApplicationName}
           />
           <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
         <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
