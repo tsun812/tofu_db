@@ -10,6 +10,7 @@
 
   &--centered {
     align-self: center;
+    font-size: larger;
   }
 
   &__separator {
@@ -27,4 +28,11 @@
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
+}
+
+.customize {
+  display: flex;
+  color:white;
+  padding-left: 1.5em;
+  padding-bottom: 1em;
 }

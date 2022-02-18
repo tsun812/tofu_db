@@ -3,6 +3,7 @@ import "./NavBarConfig.scss"
 import NavBarConfigItem from "./NarBarConfigItem";
 import Field from "./Field";
 import { Form } from "react-bootstrap";
+import {Link} from "react-router-dom"
 //import {useContext} from 'react'
 //import {configContext} from 'providers/ConfigProvider.js'
 
@@ -19,8 +20,7 @@ export default function NavBarConfig(props) {
  
   return(
     <section className="sidebar__text sidebar--centered">
-      <ul>Customize your template</ul>
-       <hr className="sidebar__separator" />
+      <Link className="customize" style={{ textDecoration: "none" }} to="app/customize">Customize app</Link>
         <nav className="sidebar__menu">
           
        
