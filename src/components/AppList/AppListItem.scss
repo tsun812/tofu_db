@@ -1,0 +1,49 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+.app_name {
+  display: flex;
+  color: white;
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  justify-content: left;
+  font-size: 1.5em;
+  height: 100%;
+  display: inline-block;
+  word-wrap: break-word;
+
+  @include fade;
+
+  color: #8395a7;
+  height: 5rem;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  
+  &--selected {
+      color: $dark-background;
+      background-color: $white;
+      border-radius: 16px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-bottom: 1.5em;
+      padding-top: 1.5em;
+      padding-left: 2em;
+      user-select: none;
+      display: inline-block;
+      word-wrap: break-word;
+    }
+}
+
+.app_name:hover {
+  color: coral;
+  background-color: #ee5253;
+  cursor: pointer;
+  border-radius: 16px;
+  color: white;
+}

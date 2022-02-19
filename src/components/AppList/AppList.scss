@@ -31,31 +31,6 @@
     transform: scale(1.5);
     }
 
-.app_name {
-    display: flex;
-    color: white;
-    padding-bottom: 1em;
-    padding-top: 1em;
-    justify-content: left;
-    font-size: large;
-    
-    &--selected {
-        color: $dark-background;
-        background-color: $white;
-        border-radius: 16px;
-        height: 65px;
-        display: flex;
-        align-items: center;
-        padding-left: 2px;
-        padding-right: 1rem;
-        user-select: none;
-      }
-}
-
-.app_name:hover {
-    color: coral;
-}
-
 .create {
     color: white;
     margin-top: 3em;
