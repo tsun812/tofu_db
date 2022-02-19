@@ -230,11 +230,11 @@ export default function useApplicationData() {
     if (applicationID){
     Promise.all([
     axios.get(`/api/applications/${applicationID}`),
-    // axios.get(`/api/records/`),
-    // axios.get(`/api/fields/`),
-    // axios.get(`/api/values/`),
     axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
     axios.get(`/api/applications`),
+    axios.get(`/api/records/`),
+    axios.get(`/api/fields/`),
+    axios.get(`/api/values/`),
     ])
     .then((all) => {
       //console.log('get Application Data Ran!')
@@ -244,7 +244,10 @@ export default function useApplicationData() {
         selectedApplication: applicationID,
         currentApplication: all[0]["data"],
         selectedRecords: all[1]["data"].records,
-        applications: all[2]["data"]
+        applications: all[2]["data"],
+        records: all[3]["data"],
+        fields: all[4]["data"],
+        values: all[5]["data"]
       }));
 
         
