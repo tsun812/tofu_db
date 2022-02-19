@@ -106,9 +106,6 @@ export default function useApplicationData() {
         axios.get('/api/fields'),
         axios.get('/api/values'),
       ]).then((all) => {
-        console.log('loading all data from API')
-        console.log(all[0]['data'])
-        console.log('after all data from API')
         // load first app's data if there are apps
         let first_application
         if (all[0]['data'].length > 0) {
@@ -117,11 +114,15 @@ export default function useApplicationData() {
             .then((all) => {
               setState(prev => ({
                 ...prev,
-                selectedRecords: all[0]
+                selectedRecords: all.data.records
               }));
             })
         } else {
           first_application = null
+          setState(prev => ({
+            ...prev,
+            selectedRecords: null
+          }));
         }
         getApplicationData(first_application)
         setState(prev => ({
