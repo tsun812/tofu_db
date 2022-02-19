@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form } from "react-bootstrap";
-import { useState } from 'react';
 
 export default function Font({appFontSize, updateApplicationData, saveApplicationData, applicationID}) {
   return (
