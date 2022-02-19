@@ -11,6 +11,7 @@ import HorizontalNav from "./HorizontalNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
 import Header from "./Template/Header";
+import Sort from "./Template/Sort";
 import {
   BrowserRouter as Router,Link
 } from "react-router-dom";
@@ -110,7 +111,8 @@ export default function Application() {
             url={applicationBackgroundImage} 
             description={applicationDescription} 
             application_id={applicationID}/>
-            <Grid
+            <Sort/>
+            <List
               setPositions={setPositions}
               layouts={layouts}
               selectedRecords={state.selectedRecords}

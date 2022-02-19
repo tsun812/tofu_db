@@ -1,26 +1,25 @@
 import React from "react"
-import GridLayout from "react-grid-layout";
 import "./GridItem.scss"
+import "./List.scss"
+export default function Grid(props){
 
-export default class Grid extends React.Component {
-  
-  render(){
-  let fetchItem = [{key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1}, {key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2}, {key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3}]
-  let fetchItems = fetchItem.map(item => {
-    let grid = {x:0, y:item.position, w:12, h:2}
-    return (<div className="wrapper" key={item.key} data-grid={grid} >
+ //console.log(layouts)
+ let res = []
+ if(props.selectedRecords){
+ for (const [key, value] of Object.entries(props.selectedRecords)) {
+    res.push(<li className="wrapper" key={key}>
     <div>
-    {item.primary_field}
+    {value.primary}
     </div>
     <div>
-    {item.secondary_field}
+    {value.secondary}
     </div>
-  </div>
-  )})
+  </li>
+  )}
+ }
+  //console.log(res)
     return (
-      <GridLayout className="layout" cols={12} rowHeight={30} width={1200}>
-        {fetchItems}
-      </GridLayout>
+     <ul>{res}</ul>
     )
-    }
+    
 }

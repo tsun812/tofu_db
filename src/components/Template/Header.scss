@@ -15,7 +15,8 @@
   padding-top: 1em;
   width: 500px;
   height: 400px;
-  align-self: center;
+  align-self: flex-start;
+  padding-left: 1em;
 }
 
 .title {
@@ -32,5 +33,5 @@
   -webkit-background-clip: text;
   color: transparent;
   font-family: monospace, monospace;
-  margin-left:-1em;
+  //margin-left:-1em;
 }
