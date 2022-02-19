@@ -1,9 +1,9 @@
 import React from 'react'
 import { Nav } from "react-bootstrap";
 
-export default function HorizontalNav({setMode}) {
+export default function HorizontalNav({setMode, mode}) {
   return (
-    <Nav variant="pills" defaultActiveKey="Data">
+    <Nav variant="pills" activeKey={mode}>
       <Nav.Item>
         <Nav.Link eventKey="Data" onClick={() => setMode("Data")}>Data</Nav.Link>
       </Nav.Item>
