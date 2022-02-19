@@ -11,12 +11,12 @@ import HorizontalNav from "./HorizontalNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router,Link
 } from "react-router-dom";
 
 export default function Application() {
   const [mode, setMode] = useState("Data");
-  const { getApplicationData, setConfig, state, setApp, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData } = useApplicationData();
+  const { getApplicationData, setConfig, state, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData } = useApplicationData();
 
   console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
@@ -38,12 +38,12 @@ export default function Application() {
       <main className="layout">
         <section className="sidebar">
         <div   className="sidebar--centered" style={{ textDecoration: "none" }}>
-          <h1 className="sidebar__logo"  >
+          <Link to="/" className="sidebar__logo" style={{ textDecoration: "none" }} >
             TOFU DB
-          </h1>
           <span className="sidebar__tofu">🧈</span>
+          </Link>
         </div>
-        {mode === "Data" && <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} />}
+        {mode === "Data" && <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} applicationName={applicationName} setApplication={setApplication}/>}
           {mode === "Customization" &&
             <NavBarConfig
               value={state.config}

@@ -6,43 +6,24 @@ import { get } from "request";
 import { Link } from "react-router-dom";
 
 export default function AppListItem(props) {
-  const { selected } = props;
+  const {appID, appName, getApplicationData, deleteApplication, selected, setApplication} = props;
+
   const appnameclass = classNames("app_name", {
     "app_name--selected": selected,
   });
-  const array = props.applications_array;
-  const apps = Object.keys(array).map((key) => (
-    <>
-      <Link
-        className="app_name"
-        to={`app/${array[key].id}`}
-        onClick={() => props.getApplicationData(array[key].id)}
+
+    return (
+      <>
+        <Link
+        className={appnameclass}
+        to={`app/${appID}`}
+        onClick={() => {setApplication(appID)}}
         style={{ textDecoration: "none" }}
       >
-        {array[key].app_name}
+        {appName}
       </Link>{" "}
-      &nbsp;&nbsp;
-      <button
-        className="delete_button"
-        style={{
-          color: "white",
-          backgroundColor: "#222f3e",
-          maxWidth: "70px",
-          maxHeight: "30px",
-        }}
-        onClick={() => {props.deleteApplication(array[key].id)}}
-      >
-        Delete
-      </button>
-      <br></br>
-    </>
-  ));
-    return (
-      <p>
-        <br></br>
-        <h2>My Apps </h2>
-        <br></br> {apps}
-      </p>
+      </>
+      
     );
   };
 
