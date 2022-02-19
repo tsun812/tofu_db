@@ -10,6 +10,7 @@ import Status from "./Table/Status";
 import HorizontalNav from "./HorizontalNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
+import Header from "./Template/Header";
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
@@ -92,6 +93,7 @@ export default function Application() {
           }
           {mode === "Customization" &&
           <section>
+            <Header url={applicationBackgroundImage} application_id={applicationID}/>
             <Grid
               setPositions={setPositions}
               layouts={layouts}
