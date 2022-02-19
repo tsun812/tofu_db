@@ -233,6 +233,7 @@ export default function useApplicationData() {
     axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
     ])
     .then((all) => {
+      console.log('get Application Data Ran!')
       setState((prev) => ({
         ...prev,
         selectedApplicationName: all[0]["data"].application.app_name,
@@ -273,12 +274,10 @@ export default function useApplicationData() {
 
   const deleteApplication = (applicationID) => {
     axios.delete(`/api/applications/${applicationID}`).then((all) => {
-      setState((prev) => ({
-        ...prev,
-        applications: all["data"],
-      }));
+      getApplicationData(applicationID)
     });
   };
+  
   return {
     getApplicationData,
     setApplication,

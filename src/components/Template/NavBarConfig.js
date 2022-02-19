@@ -8,6 +8,7 @@ import Description from "./Descripition";
 import BackgroundImage from "./BackgroundImage";
 import Font from "./Font";
 import Theme from "./theme";
+import Delete from "./Delete";
 import { Form } from "react-bootstrap";
 import {Link} from "react-router-dom"
 //import {useContext} from 'react'
@@ -38,6 +39,8 @@ export default function NavBarConfig(props) {
           <BackgroundImage appBackgroundImage={props.appBackgroundImage} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
           <Font appFontSize={props.appFontSize} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
           <Theme applicationTheme={props.applicationTheme} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
+          <hr></hr>
+          <Delete deleteApplication={props.deleteApplication} applicationID={props.applicationID}/>
         </Form>
 
         </nav>
