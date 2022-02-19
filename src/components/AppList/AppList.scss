@@ -5,6 +5,11 @@
     font-size: 100px;
   vertical-align: middle;
 }
+.myAppstitle{
+    padding: auto;
+    margin-left:20px;
+    margin-right: 20px;
+}
 .AppList {
     display: flex;
     justify-content: space-between;
@@ -14,7 +19,7 @@
     font: bold;
     font-size: small;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-left: 1.5em;
+    
 }
 
 .delete_button {
