@@ -39,7 +39,7 @@ export default function Field(props) {
       <Form.Label>{props.name}</Form.Label>
       <Dropdown onSelect={(evtKey) => handleSelect(evtKey)}>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          {props.name}
+          {props.selected}
         </Dropdown.Toggle>
 
         <Dropdown.Menu  >
