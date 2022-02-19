@@ -11,6 +11,7 @@ export default function TableDataList({ tableDataArray, deleteRow, updateInputVa
         </td>
         <td className='align-middle'>{index + 1}</td>
         <TableDataListItem
+          key={tableDataArray[rowData].id}
           rowData={tableDataArray[rowData].values}
           updateInputValue={updateInputValue}
           saveInputValue={saveInputValue}
