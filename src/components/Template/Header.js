@@ -6,7 +6,7 @@ export default function Header(props) {
   return(
     <div className="container" >
      <h2 className="title">{props.title}</h2>
-     <img src={props.url} alt="banner-img" className="imgBanner"/>
+     {props.url && <img src={props.url} alt="banner-img" className="imgBanner"/>}
     </div>
   );
 }

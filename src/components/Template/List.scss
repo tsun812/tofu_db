@@ -1,0 +1,12 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+.wrapper {
+  border: 2px solid #ffa94d;
+  border-radius: 5px;
+  background-color: #ffd8a8;
+  padding: 1em;
+  margin-top:1em;
+  margin-left: 3em;
+  color: #d9480f;
+  max-width: 100%;
+}
