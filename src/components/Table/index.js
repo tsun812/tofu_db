@@ -53,7 +53,7 @@ export default function Table({
     <section className="bottom-buttons">
         <Button onClick={() => createNewColumn(application_id)}>
         Add New Column
-      </Button>
+      </Button>{' '}
       <Button onClick={() => createNewRow(application_id)}>Add New Row</Button>
       </section>
     </>
