@@ -71,6 +71,10 @@ export default function Application() {
               mode={mode}
             />
           }
+            <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
+            <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
+            <button class="btn btn-primary" onClick={() => console.log(mode)}>Check Mode</button>
+            <button class="btn btn-primary" onClick={() => console.log(state.selectedRecords)}>Check selectedRecords</button>
         </section>
         <div className="body">
           <section className="top-buttons">
@@ -94,9 +98,6 @@ export default function Application() {
               editStatus={state.editStatus}
               tableTitle={state.selectedApplicationName}
             />
-            <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
-            <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
-            <button class="btn btn-primary" onClick={() => console.log(mode)}>Check Mode</button>
           </section>
           }
           {mode === "Customization" &&
