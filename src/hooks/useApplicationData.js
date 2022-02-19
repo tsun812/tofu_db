@@ -33,22 +33,23 @@ export default function useApplicationData() {
       let params = {position: position}
       return axios.put(`http://localhost:3000/api/records/${id}`, params)
       .then((all) => {
-       console.log(state);
+       //console.log(state);
        getApplicationData(applicationId)
        });
     }
 
 
   const setPrimaryField = (update, applicationId) => {
-    console.log("before api call", applicationId)
+    //console.log("before api call", applicationId)
     setState({...state,
       primary_field: update
     })
     let params = {primary_field: update}
     return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
-        console.log(all)
-        console.log("after api call", state)
+        //console.log('alllllllllllllllllllll')
+        //console.log(all)
+        //console.log("after api call", state)
         getApplicationData(applicationId);
         // window.location.reload()
       });
@@ -66,7 +67,7 @@ export default function useApplicationData() {
     let params = {secondary_field: update}
     return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
-       console.log(state)
+       //console.log(state)
        getApplicationData(applicationId);
        
       });
@@ -76,7 +77,7 @@ export default function useApplicationData() {
   const updateApplicationData = (fieldName ,data) =>{
     const deepClone = JSON.parse(JSON.stringify(state.currentApplication));
     deepClone.application[fieldName] = data;
-    console.log(deepClone)
+    //console.log(deepClone)
     setState((prev) => ({
       ...prev,
       currentApplication: deepClone,
@@ -89,7 +90,7 @@ export default function useApplicationData() {
     };
     axios.put(`/api/applications/${applicationID}`, params)
     .then((all) => {
-      console.log('application data saved to database.')
+      //console.log('application data saved to database.')
       getApplicationData(applicationID);
     });
   }
@@ -182,7 +183,7 @@ export default function useApplicationData() {
   };
   // this save values to database
   const saveFieldValue = (applicationID, field_id, field_name) => {
-    console.log("Field value saved to API!");
+    //console.log("Field value saved to API!");
     let params = {
       field_name: field_name,
     };
@@ -203,7 +204,7 @@ export default function useApplicationData() {
 
   // this save values to database
   const saveInputValue = (applicationID, value_id, value) => {
-    console.log("saved to database!");
+    //console.log("saved to database!");
     setState((prev) => ({
       ...prev,
       editStatus: "Saving...",
@@ -235,7 +236,7 @@ export default function useApplicationData() {
     axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
     ])
     .then((all) => {
-      console.log('get Application Data Ran!')
+      //console.log('get Application Data Ran!')
       setState((prev) => ({
         ...prev,
         selectedApplicationName: all[0]["data"].application.app_name,
@@ -255,7 +256,7 @@ export default function useApplicationData() {
        
         })
         );
-        console.log(state.selectedRecords)
+        //console.log(state.selectedRecords)
       })
     });
   } else {
@@ -268,8 +269,8 @@ export default function useApplicationData() {
       app_name: applicationName
     };
     axios.post(`/api/applications/`, params).then((all) => {
-      console.log("allllllllllllllll")
-      console.log(all,"all")
+      //console.log("allllllllllllllll")
+      //console.log(all,"all")
       setState((prev) => ({
         ...prev,
         applications: all["data"]

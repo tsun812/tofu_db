@@ -5,7 +5,7 @@ export default function BackgroundImage({appBackgroundImage, updateApplicationDa
   return (
 
     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-      <Form.Label>Image banner</Form.Label>
+      <Form.Label>Image Banner</Form.Label>
       <Form.Control type="url" value={appBackgroundImage} placeholder="Image URL" onChange={(event) => updateApplicationData("img_url" ,event.target.value)} onBlur={(event) => saveApplicationData(applicationID, "img_url", event.target.value)}/>
     </Form.Group>
   )

@@ -30,6 +30,7 @@ export default function Grid(props){
 
  //console.log(layouts)
  let res = []
+ if(props.selectedRecords){
  for (const [key, value] of Object.entries(props.selectedRecords)) {
   //let fetchItems = fetchItem.map(item => {
     let grid = {x:0, y:value.position, w:12, h:2}
@@ -43,6 +44,7 @@ export default function Grid(props){
     </div>
   </div>
   )}
+ }
   //console.log(res)
     return (
       <ResponsiveGridLayout className="layout" layouts={props.layouts}
