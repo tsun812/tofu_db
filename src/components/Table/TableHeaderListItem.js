@@ -6,7 +6,7 @@ export default function TableHeaderListItem({ application_id, field_value, field
   // console.log(`field_id =>${field_id}`)
   return (
     <th>
-      <InputGroup className="mb-3">
+      <InputGroup className="">
         <FormControl type="text"
           value={field_value}
           onChange={(event) => updateFieldValue(field_id, event.target.value)}
