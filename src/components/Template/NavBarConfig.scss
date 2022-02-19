@@ -22,6 +22,7 @@
 
   &__menu {
     flex: 1;
+    min-width: 200px;
   }
 
   &__text {
@@ -35,4 +36,10 @@
   color:white;
   padding-left: 1.5em;
   padding-bottom: 1em;
+}
+
+.app-setting {
+  padding: auto;
+  margin-left:20px;
+  margin-right: 20px;
 }

@@ -26,7 +26,8 @@ export default function NavBarConfig(props) {
   )})
  
   return(
-    <section className="sidebar__text sidebar--centered">
+    <div className="app-setting">
+      <section className="sidebar__text sidebar--centered">
       <h2>App Settings</h2>
       <hr></hr>
         <nav className="sidebar__menu">
@@ -45,5 +46,7 @@ export default function NavBarConfig(props) {
 
         </nav>
         </section>
+        </div>
+    
   );
 }

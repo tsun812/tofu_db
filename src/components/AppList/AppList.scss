@@ -32,7 +32,7 @@
     padding-bottom: 1em;
     padding-top: 1em;
     justify-content: left;
-    font-size: x-large;
+    font-size: large;
     
     &--selected {
         color: $dark-background;
@@ -52,10 +52,19 @@
 }
 
 .create {
-    color:white;
+    color: white;
     margin-top: 3em;
     font-size: x-large;
     float: left;
+}
+
+.create-font {
+    color: black
+}
+
+.create:hover {
+    background-color: coral;    
+    color: white;
 }
 
 .sidebar__logo {

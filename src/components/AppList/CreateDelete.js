@@ -5,13 +5,13 @@ import useApplicationData from "hooks/useApplicationData";
 
 export default function CreateDelete({ createNewApplication }) {
   const create = (
-    <Link
-      className="create"
+  <button className="create"><Link
+      className="create-font"
       to="/app/create"
-      style={{ textDecoration: "none" }}
+      style={{ textDecoration: "none"}}
     >
       Create a New app
-    </Link>
+    </Link></button>  
   );
   return (
     <>
