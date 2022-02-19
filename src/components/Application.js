@@ -97,7 +97,11 @@ export default function Application() {
           }
           {mode === "Customization" &&
           <section>
-            <Header url={applicationBackgroundImage} application_id={applicationID}/>
+            <Header 
+            title={applicationName}
+            url={applicationBackgroundImage} 
+            description={applicationDescription} 
+            application_id={applicationID}/>
             <Grid
               setPositions={setPositions}
               layouts={layouts}

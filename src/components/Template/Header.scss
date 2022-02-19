@@ -1,0 +1,36 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1em;
+  margin-left: 3em;
+}
+
+.imgBanner {
+  padding-top: 1em;
+  width: 500px;
+  height: 400px;
+  align-self: center;
+}
+
+.title {
+  padding-top: 1em;
+  background-image: linear-gradient(
+    to left,
+    violet,
+    indigo,
+    blue,
+    green,
+    orange,
+    red
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: monospace, monospace;
+  margin-left:-1em;
+}
