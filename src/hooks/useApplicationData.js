@@ -47,7 +47,6 @@ export default function useApplicationData() {
     let params = {primary_field: update}
     return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
       .then((all) => {
-        console.log('alllllllllllllllllllll')
         console.log(all)
         console.log("after api call", state)
         getApplicationData(applicationId);
@@ -95,47 +94,48 @@ export default function useApplicationData() {
     });
   }
 
-  // get all the API datas we need
+  // Initial API load, only run when page is loaded
   useEffect(() => {
-    Promise.all([
-      axios.get('/api/applications'),
-      axios.get('/api/records'),
-      axios.get('/api/fields'),
-      axios.get('/api/values'),
-      axios.get(`http://localhost:3000/api/recordBySelectedFields/1`)
-    ]).then((all) => {
-      console.log('loading all data from API')
-      console.log(all[0]['data'])
-      console.log('after all data from API')
-      // load first app's data if there are apps
-      let first_application
-      if (all[0]['data'].length > 0) {
-        first_application = all[0]['data'][0]['id']
-      } else {
-        first_application = null
-      }
-      getApplicationData(first_application)
-      setState(prev => ({
-        ...prev,
-        applications: all[0]['data'],
-        records: all[1]['data'],
-        fields: all[2]['data'],
-        values: all[3]['data'],
-        selectedRecords: all[4]['data'].records,
-        selectedApplication: first_application
-      })
-      );
-    })
+    fetchAPI()
   }, []);
 
-  // useEffect(()=>{
-  //   const application = state.currentApplication
- 
-  //   setState(prev => ({
-  //     ...prev,
-  //     currentApplication: application,
-  //   }));
-  // }, [state.currentApplication])
+  const fetchAPI = () => {
+      Promise.all([
+        axios.get('/api/applications'),
+        axios.get('/api/records'),
+        axios.get('/api/fields'),
+        axios.get('/api/values'),
+      ]).then((all) => {
+        console.log('loading all data from API')
+        console.log(all[0]['data'])
+        console.log('after all data from API')
+        // load first app's data if there are apps
+        let first_application
+        if (all[0]['data'].length > 0) {
+          first_application = all[0]['data'][0]['id']
+          axios.get(`/api/recordBySelectedFields/${first_application}`)
+            .then((all) => {
+              setState(prev => ({
+                ...prev,
+                selectedRecords: all[0]
+              }));
+            })
+        } else {
+          first_application = null
+        }
+        getApplicationData(first_application)
+        setState(prev => ({
+          ...prev,
+          applications: all[0]['data'],
+          records: all[1]['data'],
+          fields: all[2]['data'],
+          values: all[3]['data'],
+          selectedApplication: first_application
+        })
+        );
+      })
+    }
+    
 
   const createNewRow = (applicationID) => {
     let params = {
@@ -225,6 +225,7 @@ export default function useApplicationData() {
   };
 
   const getApplicationData = (applicationID) => {
+    if (applicationID){
     Promise.all([
     axios.get(`/api/applications/${applicationID}`),
     // axios.get(`/api/records/`),
@@ -256,6 +257,9 @@ export default function useApplicationData() {
         console.log(state.selectedRecords)
       })
     });
+  } else {
+    console.log('No Applications found. Abort API request')
+  }
   };
 
   const createNewApplication = (applicationName) => {
@@ -274,7 +278,7 @@ export default function useApplicationData() {
 
   const deleteApplication = (applicationID) => {
     axios.delete(`/api/applications/${applicationID}`).then((all) => {
-      getApplicationData(applicationID)
+      fetchAPI()
     });
   };
   
@@ -297,6 +301,6 @@ export default function useApplicationData() {
     updateFieldValue,
     saveFieldValue,
     updateApplicationData,
-    saveApplicationData
+    saveApplicationData,
   };
 }

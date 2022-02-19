@@ -40,7 +40,7 @@ export default function NavBarConfig(props) {
           <Font appFontSize={props.appFontSize} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
           <Theme applicationTheme={props.applicationTheme} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
           <hr></hr>
-          <Delete deleteApplication={props.deleteApplication} applicationID={props.applicationID}/>
+          <Delete deleteApplication={props.deleteApplication} applicationID={props.applicationID} setMode={props.setMode}/>
         </Form>
 
         </nav>

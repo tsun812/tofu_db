@@ -67,12 +67,14 @@ export default function Application() {
               primaryField={primaryField}
               secondaryField={secondaryField}
               deleteApplication={deleteApplication}
+              setMode={setMode}
+              mode={mode}
             />
           }
         </section>
         <div className="body">
           <section className="top-buttons">
-          <HorizontalNav setMode={setMode}/>
+          <HorizontalNav setMode={setMode} mode={mode}/>
           </section>
           {mode === "Data" &&
           <section className="table">
@@ -94,6 +96,7 @@ export default function Application() {
             />
             <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
             <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
+            <button class="btn btn-primary" onClick={() => console.log(mode)}>Check Mode</button>
           </section>
           }
           {mode === "Customization" &&
