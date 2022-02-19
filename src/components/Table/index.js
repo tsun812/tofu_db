@@ -36,7 +36,6 @@ export default function Table({
               saveFieldValue={saveFieldValue}
               application_id={application_id}
             />
-            <th></th>
           </tr>
         </thead>
         <tbody>
