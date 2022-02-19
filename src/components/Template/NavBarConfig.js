@@ -29,11 +29,9 @@ export default function NavBarConfig(props) {
       <h2>App Settings</h2>
       <hr></hr>
         <nav className="sidebar__menu">
-
-          <Field key={1} fields={props.fields} name="Primary field" setPrimaryField={props.setPrimaryField} applicationID={props.applicationID}/>
-          <Field key={2} fields={props.fields} name="Secondary field" setSecondaryField={props.setSecondaryField} applicationID={props.applicationID}/>
-
-          <Form>
+        <Form>
+          <Field key={1} fields={props.fields} name="Primary field" selected={props.primaryField} setPrimaryField={props.setPrimaryField} applicationID={props.applicationID}/>
+          <Field key={2} fields={props.fields} name="Secondary field" selected={props.secondaryField} setSecondaryField={props.setSecondaryField} applicationID={props.applicationID}/>
           <AppID applicationID={props.applicationID}/>
           <AppName appName={props.appName} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
           <Description appDescription={props.appDescription} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
