@@ -6,6 +6,10 @@ import { get } from "request";
 import { Link } from "react-router-dom";
 
 export default function AppListItem(props) {
+  const { selected } = props;
+  const appnameclass = classNames("app_name", {
+    "app_name--selected": selected,
+  });
   const array = props.applications_array;
   const apps = Object.keys(array).map((key) => (
     <>
