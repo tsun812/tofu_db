@@ -25,10 +25,10 @@ export default function Table({
       <table className="table">
         <thead>
           <tr>
-            <th>
+            <th className="align-middle">
               <>{editStatus}</>
             </th>
-            <th>#</th>
+            <th className="align-middle">#</th>
             <TableHeaderList
               tableHeaderArray={tableHeaderArray}
               deleteColumn={deleteColumn}
