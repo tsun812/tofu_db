@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 export default function TableDataList({ tableDataArray, deleteRow, updateInputValue, saveInputValue, application_id }) {
   return (
     Object.keys(tableDataArray).map((rowData, index) => {
-      return <tr>
+      return <tr key={"row", tableDataArray[rowData].id}>
         <td>
         <Button variant="outline-danger" onClick={() => deleteRow(tableDataArray[rowData].id, application_id)}>Delete</Button>
         </td>
