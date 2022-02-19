@@ -6,7 +6,6 @@ import NavBarConfig from "./Template/NavBarConfig";
 import Grid from "./Template/Grid";
 import List from "./Template/List";
 import AppList from "./AppList/AppList";
-import Status from "./Table/Status";
 import Empty from "./Table/Empty";
 import HorizontalNav from "./HorizontalNav";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -73,10 +72,10 @@ export default function Application() {
               mode={mode}
             />
           }
-            <button class="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
-            <button class="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
-            <button class="btn btn-primary" onClick={() => console.log(mode)}>Check Mode</button>
-            <button class="btn btn-primary" onClick={() => console.log(state.selectedRecords)}>Check selectedRecords</button>
+            <button className="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
+            <button className="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
+            <button className="btn btn-primary" onClick={() => console.log(mode)}>Check Mode</button>
+            <button className="btn btn-primary" onClick={() => console.log(state.selectedRecords)}>Check selectedRecords</button>
         </section>
         {isEmpty === true && <Empty />}
         {isEmpty === false &&
