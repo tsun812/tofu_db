@@ -234,6 +234,7 @@ export default function useApplicationData() {
     // axios.get(`/api/fields/`),
     // axios.get(`/api/values/`),
     axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
+    axios.get(`/api/applications`),
     ])
     .then((all) => {
       //console.log('get Application Data Ran!')
@@ -243,6 +244,7 @@ export default function useApplicationData() {
         selectedApplication: applicationID,
         currentApplication: all[0]["data"],
         selectedRecords: all[1]["data"].records,
+        applications: all[2]["data"]
       }));
 
         
@@ -269,12 +271,10 @@ export default function useApplicationData() {
       app_name: applicationName
     };
     axios.post(`/api/applications/`, params).then((all) => {
-      //console.log("allllllllllllllll")
-      //console.log(all,"all")
-      setState((prev) => ({
-        ...prev,
-        applications: all["data"]
-      }));
+      console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
+      console.log(all)
+      console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
+      getApplicationData(all['data'].id)
     });
   };
 

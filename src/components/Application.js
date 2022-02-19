@@ -7,6 +7,7 @@ import Grid from "./Template/Grid";
 import List from "./Template/List";
 import AppList from "./AppList/AppList";
 import Status from "./Table/Status";
+import Empty from "./Table/Empty";
 import HorizontalNav from "./HorizontalNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
@@ -33,6 +34,7 @@ export default function Application() {
   let fetchItem = [{ key: "1", primary_field: "Strawberry", secondary_field: "Noun", position: 1 }, { key: "2", primary_field: "Pinapple", secondary_field: "Noun", position: 2 }, { key: "3", primary_field: "Apple", secondary_field: "Noun", position: 3 }]
   let appId = parseInt(state.selectedApplication)
   let fields = getFieldsById(state, appId)
+  let isEmpty = (state.applications.length === 0)
   //console.log(state.selectedApplication)
   //console.log(state.selectedRecords)
   // setPrimaryField("Building")
@@ -76,6 +78,8 @@ export default function Application() {
             <button class="btn btn-primary" onClick={() => console.log(mode)}>Check Mode</button>
             <button class="btn btn-primary" onClick={() => console.log(state.selectedRecords)}>Check selectedRecords</button>
         </section>
+        {isEmpty === true && <Empty />}
+        {isEmpty === false &&
         <div className="body">
           <section className="top-buttons">
           <HorizontalNav setMode={setMode} mode={mode}/>
@@ -117,7 +121,7 @@ export default function Application() {
         
           }
         </div>
-
+}
       </main>
     </Router>
   );
