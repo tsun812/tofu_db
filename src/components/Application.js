@@ -66,6 +66,7 @@ export default function Application() {
               saveApplicationData={saveApplicationData}
               primaryField={primaryField}
               secondaryField={secondaryField}
+              deleteApplication={deleteApplication}
             />
           }
         </section>
