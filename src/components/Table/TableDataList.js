@@ -9,7 +9,7 @@ export default function TableDataList({ tableDataArray, deleteRow, updateInputVa
         <td>
         <Button variant="outline-danger" onClick={() => deleteRow(tableDataArray[rowData].id, application_id)}>Delete</Button>
         </td>
-        <td>{index + 1}</td>
+        <td className='align-middle'>{index + 1}</td>
         <TableDataListItem
           rowData={tableDataArray[rowData].values}
           updateInputValue={updateInputValue}
