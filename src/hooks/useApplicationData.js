@@ -19,9 +19,9 @@ export default function useApplicationData() {
       { configName: "app_name", avatar: null },
       { configName: "img_url", avatar: null },
     ],
-    positions: null,
-    primary_field: null,
-    secondary_field: null,
+    positions: "",
+    primary_field: "",
+    secondary_field: "",
     editStatus: "Loaded",
     selectedRecords: {},
   });
@@ -119,10 +119,10 @@ export default function useApplicationData() {
               }));
             })
         } else {
-          first_application = null
+          first_application = ""
           setState(prev => ({
             ...prev,
-            selectedRecords: null
+            selectedRecords: ""
           }));
         }
         getApplicationData(first_application)
@@ -215,7 +215,7 @@ export default function useApplicationData() {
     axios.put(`/api/values/${value_id}`, params).then((all) => {
       setState((prev) => ({
         ...prev,
-        editStatus: "Data Saved!",
+        editStatus: "Saved!",
       }));
       getApplicationData(applicationID);
     });
