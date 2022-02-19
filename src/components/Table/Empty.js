@@ -1,6 +1,6 @@
 import React from 'react'
 export default function Empty() {
   return (
-    null
+    <h1>You don't have any apps yet!</h1>
   )
 }
