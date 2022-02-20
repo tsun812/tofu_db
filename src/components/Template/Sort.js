@@ -7,15 +7,14 @@ export default function Sort(props) {
   const { state } = useApplicationData()
 
   const handleSelect = (evtKey) => {
-    // console.log(evtKey)
-    // let id = parseInt(props.applicationID)
-    // if (props.name === "Primary field" && evtKey) {
-    //   props.setPrimaryField(evtKey, id)
-
-    // }
-    // else if (props.name === "Secondary field" && evtKey) {
-    //   props.setSecondaryField(evtKey, id)
-    // }
+    console.log(evtKey)
+    let id = parseInt(props.application_id)
+    if (evtKey === "Date added: oldest") {
+      props.setSortBy("date_oldest", id)
+    }
+    else if (evtKey === "Date added: newest") {
+      props.setSortBy("date_newest", id)
+    }
   }
   let sortOptions = ["Date added: oldest", "Date added: newest"]
   const options = sortOptions.map((item, index) => {
