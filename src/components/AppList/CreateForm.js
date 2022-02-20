@@ -5,6 +5,7 @@ import "./CreateForm.scss";
 
 export default function CreateForm({ createNewApplication }) {
   const [value, setValue] = useState();
+  const disabled = value === undefined || value === "" ? "disabled": "active";
   return (
     <div className="createAppForm">
       <Form>
@@ -29,6 +30,15 @@ export default function CreateForm({ createNewApplication }) {
           </Button>
           </div>
           <div className="CreateButtonDiv">
+            {disabled === "disabled" &&
+          <Button
+            variant="secondary"
+            type="button"
+            disabled
+          > Create
+          </Button>
+          }
+          {disabled === "active" &&
           <Button
             variant="primary"
             type="button"
@@ -42,10 +52,10 @@ export default function CreateForm({ createNewApplication }) {
             Create
             </Link>
           </Button>
+          }
           </div>
         </div>
       </Form>
-
       <Routes>
         <Route path="/" element={<s />} />
       </Routes>
