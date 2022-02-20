@@ -4,6 +4,7 @@
   padding-left: 3em;
   padding-top: 1em;
   overflow-x: scroll;
+  margin-bottom: 0px !important;
 
 .form-control {
   min-width: 200px;
@@ -16,4 +17,18 @@
   min-width: 200px;
   max-width: 200px;
 }
+}
+
+.editStatus{
+  min-width: 110px;
+}
+
+.fakeText{
+  height: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.bottom-buttons {
+  border-top: 0px !important;
+  overflow-x: scroll;
 }

@@ -26,7 +26,7 @@ export default function Table({
       <table className="table">
         <thead>
           <tr>
-            <th className="align-middle">
+            <th className="align-middle editStatus">
               <>{editStatus}</>
             </th>
             <th className="align-middle">#</th>
@@ -49,6 +49,9 @@ export default function Table({
             editStatus={editStatus}
           />
         </tbody>
+        <tfoot>
+          <p className="fakeText"></p>
+        </tfoot>
       </table>
     <section className="bottom-buttons">
         <Button onClick={() => createNewColumn(application_id)}>
