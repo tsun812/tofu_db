@@ -13,11 +13,9 @@
   height: 100%;
   display: inline-block;
   word-wrap: break-word;
-
   @include fade;
   color: #8395a7;
   padding-left: 2rem;
-
   
   &--selected {
       color: $dark-background;
@@ -32,6 +30,7 @@
       user-select: none;
       display: inline-block;
       word-wrap: break-word;
+      box-shadow: 2px 4px black;
     }
 }
 
@@ -40,4 +39,5 @@
   cursor: pointer;
   border-radius: 16px;
   color: white;
+  box-shadow: 2px 4px black;
 }
