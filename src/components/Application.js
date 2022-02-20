@@ -18,7 +18,7 @@ import {
 
 export default function Application() {
   const [mode, setMode] = useState("Data");
-  const { getApplicationData, setConfig, state, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData } = useApplicationData();
+  const { getApplicationData, setConfig, state, setSortBy, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData } = useApplicationData();
 
   //console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
@@ -110,10 +110,13 @@ export default function Application() {
             title={applicationName}
             url={applicationBackgroundImage} 
             description={applicationDescription} 
-            application_id={applicationID}/>
-            <Sort/>
+            application_id={applicationID}
+            />
+            <Sort  
+            setSortBy={setSortBy} 
+            application_id={applicationID}
+            />
             <List
-              setPositions={setPositions}
               layouts={layouts}
               selectedRecords={state.selectedRecords}
               application_id={applicationID}

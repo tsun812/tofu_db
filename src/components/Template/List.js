@@ -1,25 +1,24 @@
+import AppListItem from "components/AppList/AppListItem"
 import React from "react"
 import "./GridItem.scss"
 import "./List.scss"
-export default function Grid(props){
+export default function List(props){
 
  //console.log(layouts)
- let res = []
- if(props.selectedRecords){
- for (const [key, value] of Object.entries(props.selectedRecords)) {
-    res.push(<li className="wrapper" key={key}>
+  let res = props.selectedRecords.map((element, index)=>{
+   return(<li className="wrapper" key={index}>
     <div>
-    {value.primary}
+    {element.primary}
     </div>
     <div>
-    {value.secondary}
+    {element.secondary}
     </div>
   </li>
   )}
- }
+ )
   //console.log(res)
     return (
-     <ul>{res}</ul>
+     props.selectedRecords && <ul>{res}</ul>
     )
     
 }
