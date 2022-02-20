@@ -24,7 +24,7 @@ export default function AppList(props) {
     appName={application.app_name}
     getApplicationData={getApplicationData}
     deleteApplication={deleteApplication}
-    selected={application.app_name === props.applicationName}
+    selected={application.id === props.applicationID}
     setApplication={setApplication}
   />
 );
