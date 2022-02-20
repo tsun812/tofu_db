@@ -13,12 +13,10 @@
   height: 100%;
   display: inline-block;
   word-wrap: break-word;
-
   @include fade;
   color: #8395a7;
   padding-left: 2rem;
-
-  
+  margin-bottom: 4px;
   &--selected {
       color: $dark-background;
       background-color: $white;
@@ -29,9 +27,13 @@
       padding-bottom: 1.5em;
       padding-top: 1.5em;
       padding-left: 2em;
+      padding-right: 2em;
+      text-align: center;
       user-select: none;
       display: inline-block;
       word-wrap: break-word;
+      box-shadow: 2px 4px black;
+      text-shadow:0px 0px 0.5px $dark-background;
     }
 }
 
@@ -40,4 +42,9 @@
   cursor: pointer;
   border-radius: 16px;
   color: white;
+  box-shadow: 2px 4px black;
+}
+
+.app_name:active {
+  transform: translateY(2px);
 }
