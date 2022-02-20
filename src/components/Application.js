@@ -45,7 +45,7 @@ export default function Application() {
         <section className="sidebar">
         <div   className="sidebar--centered" style={{ textDecoration: "none" }}>
           <Link to="/" className="sidebar__logo" style={{ textDecoration: "none" }} >
-            TOFU DB
+            <h1>TOFU DB</h1>
           <span className="sidebar__tofu">🧈</span>
           </Link>
         </div>
