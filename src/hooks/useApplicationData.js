@@ -24,6 +24,7 @@ export default function useApplicationData() {
     secondary_field: null,
     editStatus: "Loaded",
     selectedRecords: {},
+    login: null
   });
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
@@ -295,6 +296,8 @@ export default function useApplicationData() {
       fetchAPI()
     });
   };
+
+  // const setLogin = (login) => setState({...state,login})
   
   return {
     getApplicationData,
@@ -305,6 +308,7 @@ export default function useApplicationData() {
     setPositions,
     setPrimaryField,
     setSecondaryField,
+    // setLogin,
     createNewRow,
     createNewColumn,
     createNewApplication,
