@@ -15,13 +15,8 @@
   word-wrap: break-word;
 
   @include fade;
-
   color: #8395a7;
-  height: 5rem;
   padding-left: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   
   &--selected {
@@ -41,8 +36,7 @@
 }
 
 .app_name:hover {
-  color: coral;
-  background-color: #ee5253;
+  background-color: coral;
   cursor: pointer;
   border-radius: 16px;
   color: white;
