@@ -5,7 +5,7 @@ import "./CreateForm.scss";
 
 export default function CreateForm({ createNewApplication }) {
   const [value, setValue] = useState();
-  const disabled = value === undefined || value === "" ? "disabled": "active";
+  const disabled = value === undefined || value === "" ? "disabled" : "active";
   return (
     <div className="createAppForm">
       <Form>
@@ -19,40 +19,41 @@ export default function CreateForm({ createNewApplication }) {
         </Form.Group>
         <div className="createcancel">
           <div className="cancelButtonDiv">
-          <Button variant="danger" type="submit">
+
             <Link
               className="cancelbutton"
               to="/"
               style={{ textDecoration: "none" }}
-            >
-              Cancel
+            ><Button variant="danger" type="submit">
+                Cancel
+              </Button>
             </Link>
-          </Button>
           </div>
           <div className="CreateButtonDiv">
             {disabled === "disabled" &&
-          <Button
-            variant="secondary"
-            type="button"
-            disabled
-          > Create
-          </Button>
-          }
-          {disabled === "active" &&
-          <Button
-            variant="primary"
-            type="button"
-            // onClick={(event) => createNewApplication(event.target.value)}
-            onClick={() => createNewApplication(value)}
-          ><Link
-          className="cancelbutton"
-          to="/"
-          style={{ textDecoration: "none" }}
-        >
-            Create
-            </Link>
-          </Button>
-          }
+              <Button
+                variant="secondary"
+                type="button"
+                disabled
+              > Create
+              </Button>
+            }
+            {disabled === "active" &&
+              <Link
+                className="cancelbutton"
+                to="/"
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                variant="primary"
+                type="button"
+                // onClick={(event) => createNewApplication(event.target.value)}
+                onClick={() => createNewApplication(value)}
+              >
+                  Create
+                </Button>
+              </Link>
+            }
           </div>
         </div>
       </Form>

@@ -4,10 +4,10 @@
   padding: 1em 1em 1em 1em !important;
   margin-left: 10%;
   margin-right: 10%;
+  margin-bottom: 10%;
   width: 80%;
   background-color: coral !important;
   border-color: coral !important;
-
 }
 
 .create-font {
@@ -15,7 +15,8 @@
 }
 
 .create:hover {
-  background-color: coral;
+  background-color: rgb(241, 106, 57) !important;
+  border-color: rgb(241, 106, 57) !important;
   color: white;
 }
 
