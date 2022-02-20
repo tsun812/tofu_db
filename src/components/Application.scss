@@ -52,6 +52,12 @@
   }
 }
 
+.searchsort{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+     
+}
 .top-buttons {
   padding-top: 2em;
   padding-left: 3em;
