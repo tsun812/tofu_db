@@ -1,3 +1,19 @@
-.bottom-buttons{
-  border-top: 0px;
+.table {
+  min-width: 700px;
+  max-width: 2000px;
+  padding-left: 3em;
+  padding-top: 1em;
+  overflow-x: scroll;
+
+.form-control {
+  min-width: 200px;
+  max-width: 200px;
+  overflow-x: scroll;
+
+}
+
+.form-input {
+  min-width: 200px;
+  max-width: 200px;
+}
 }

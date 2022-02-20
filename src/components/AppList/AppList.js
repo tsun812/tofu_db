@@ -32,7 +32,10 @@ export default function AppList(props) {
   return (
     
     <div className="AppList" >
+    <section className="myAppstitle">
     <h2>My Apps</h2>
+    <hr></hr>
+    </section>
     {results}
     <CreateDelete createNewApplication={createNewApplication} />
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import TableHeaderList from "./TableHeaderList";
 import TableDataList from "./TableDataList";
 import { Button } from "react-bootstrap";
+import "components/Table/tableStyles.scss";
 
 export default function Table({
   tableHeaderArray,

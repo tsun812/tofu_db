@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React from "react";
+import "./AppListItem.scss";
 import useApplicationData from "hooks/useApplicationData";
 import { useState } from "react";
 import { get } from "request";

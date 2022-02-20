@@ -5,6 +5,11 @@
     font-size: 100px;
   vertical-align: middle;
 }
+.myAppstitle{
+    padding: auto;
+    margin-left:20px;
+    margin-right: 20px;
+}
 .AppList {
     display: flex;
     justify-content: space-between;
@@ -14,7 +19,7 @@
     font: bold;
     font-size: small;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-left: 1.5em;
+    
 }
 
 .delete_button {
@@ -25,47 +30,6 @@
 .delete_button:hover {
     transform: scale(1.5);
     }
-
-.app_name {
-    display: flex;
-    color: white;
-    padding-bottom: 1em;
-    padding-top: 1em;
-    justify-content: left;
-    font-size: large;
-    
-    &--selected {
-        color: $dark-background;
-        background-color: $white;
-        border-radius: 16px;
-        height: 65px;
-        display: flex;
-        align-items: center;
-        padding-left: 2px;
-        padding-right: 1rem;
-        user-select: none;
-      }
-}
-
-.app_name:hover {
-    color: coral;
-}
-
-.create {
-    color: white;
-    margin-top: 3em;
-    font-size: x-large;
-    float: left;
-}
-
-.create-font {
-    color: black
-}
-
-.create:hover {
-    background-color: coral;    
-    color: white;
-}
 
 .sidebar__logo {
     display: flex;
