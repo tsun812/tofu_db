@@ -48,7 +48,7 @@ export default function Application() {
           <span className="sidebar__tofu">🧈</span>
           </Link>
         </div>
-        {mode === "Data" && <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} applicationName={applicationName} setApplication={setApplication}/>}
+        {mode === "Data" && <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} applicationName={applicationName} setApplication={setApplication} applicationID={applicationID}/>}
           {mode === "Customization" &&
             <NavBarConfig
               value={state.config}
