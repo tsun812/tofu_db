@@ -1,0 +1,23 @@
+.createAppForm{
+  padding: 10px;
+  margin-left:20px;
+  margin-right: 20px;
+}
+
+.createcancel {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.cancelbutton {
+  color:white;
+}
+
+.cancelbutton:hover {
+  color: white;
+}
+
+.CreateButtonDiv{
+  margin-left: 10px;
+}
