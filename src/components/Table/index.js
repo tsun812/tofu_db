@@ -49,6 +49,9 @@ export default function Table({
             editStatus={editStatus}
           />
         </tbody>
+        <tfoot>
+          <p className="fakeText"></p>
+        </tfoot>
       </table>
     <section className="bottom-buttons">
         <Button onClick={() => createNewColumn(application_id)}>
