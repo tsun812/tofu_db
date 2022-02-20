@@ -16,7 +16,7 @@
   @include fade;
   color: #8395a7;
   padding-left: 2rem;
-  
+  margin-bottom: 4px;
   &--selected {
       color: $dark-background;
       background-color: $white;
@@ -31,6 +31,7 @@
       display: inline-block;
       word-wrap: break-word;
       box-shadow: 2px 4px black;
+      // text-shadow:0px 0px 0.5px $dark-background;
     }
 }
 
@@ -40,4 +41,8 @@
   border-radius: 16px;
   color: white;
   box-shadow: 2px 4px black;
+}
+
+.app_name:active {
+  transform: translateY(2px);
 }
