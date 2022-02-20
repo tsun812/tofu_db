@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { getFieldsById } from "helpers/selectors";
 import Header from "./Template/Header";
 import Sort from "./Template/Sort";
+import Search from "./Template/Search";
 import {
   BrowserRouter as Router,Link
 } from "react-router-dom";
@@ -112,10 +113,13 @@ export default function Application() {
             description={applicationDescription} 
             application_id={applicationID}
             />
+            <section className="searchsort">
             <Sort  
             setSortBy={setSortBy} 
             application_id={applicationID}
             />
+            <Search />
+            </section>
             <List
               layouts={layouts}
               selectedRecords={state.selectedRecords}
