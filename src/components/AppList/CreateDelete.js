@@ -7,16 +7,19 @@ import { Button } from "react-bootstrap";
 
 export default function CreateDelete({ createNewApplication }) {
   const create = (
-  <Button className="create"><Link
+  <Link
       className="create-font"
       to="/app/create"
       style={{ textDecoration: "none"}}
     >
+      <Button className="create">
       Create a New app
-    </Link></Button>  
+      </Button>
+    </Link>
   );
   return (
     <>
+    <hr></hr>
       {create}
       <Routes>
         <Route path="/" element={<s />} />
