@@ -28,6 +28,15 @@ export default function useApplicationData() {
   const hello = () =>{console.log("hello")}
   const setConfig = (config) => setState({ ...state, config });
   const idNumber = parseInt(state.selectedApplication)
+  const setSortBy = (sortOption, id) => {
+
+    let params = {sort_by: sortOption}
+    return axios.put(`http://localhost:3000/api/applications/${id}`, params)
+    .then((all) => {
+     //console.log(state);
+     getApplicationData(id)
+     });
+  }
   const setPositions = (id, position, applicationId) => {
 
       let params = {position: position}
@@ -292,6 +301,7 @@ export default function useApplicationData() {
     setApplication,
     state,
     setConfig,
+    setSortBy,
     setPositions,
     setPrimaryField,
     setSecondaryField,
