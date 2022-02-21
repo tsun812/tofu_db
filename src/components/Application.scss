@@ -54,19 +54,29 @@
   }
 }
 
-.searchsort{
+.searchSortContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-     
+    margin: 20px 0px 20px 0px;
 }
+
+.displayStyleContainer{
+  margin: 20px 2% 20px 2%;
+}
+
 .top-buttons {
   margin-bottom: 1em;
 }
 
 
-
 .tofu-pic {
   height: 320px;
   width:320px;
+}
+
+.settingsPreview{
+  margin: 0px 5% 0px 5%;
+  min-width: 500px;
+  max-width: 1000px;
 }

@@ -1,6 +1,5 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
-.searchlayout{
- align-self: center;
- margin-left:9em;
+.searchLayout{
+ display: flex;
 }

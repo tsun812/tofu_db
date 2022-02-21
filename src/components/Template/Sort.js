@@ -25,8 +25,7 @@ export default function Sort(props) {
   )
 
   return (
-    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" >
-      <Form.Label>{props.name}</Form.Label>
+    <Form.Group className="sortButton" controlId="exampleForm.ControlInput1" >
       <Dropdown onSelect={(evtKey) => handleSelect(evtKey)} className="sort-button">
         <Dropdown.Toggle variant="primary" id="dropdown-basic">
           Sort by
