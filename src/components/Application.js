@@ -74,7 +74,8 @@ export default function Application() {
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
-
+  console.log('applicationTheme')
+  console.log(applicationTheme)
   return (
     <Router>
       <main className="layout">
@@ -193,12 +194,15 @@ export default function Application() {
             <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords}/>
             </section>
             <section className="displayStyleContainer">
+            {applicationTheme === "List" &&
             <List
               layouts={layouts}
               filteredRecords={state.filteredRecords}
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
               />
+            }
+            {applicationTheme === "Table" &&
               <ThemeTable 
               tableHeaderArray={tableHeaderArray}
               tableDataArray={tableRecordArray}
@@ -206,6 +210,7 @@ export default function Application() {
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
               />
+          }
               </section>
           </section>
           }
@@ -213,7 +218,7 @@ export default function Application() {
           </div>
         )}
       </main>
+      <button onClick={()=>console.log(applicationTheme)}>Check displaytheme</button>
       </Router>
-
   );
 }
