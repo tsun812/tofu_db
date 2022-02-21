@@ -45,7 +45,8 @@
 .body {
   display: flex;
   flex-direction: column;
-  padding-left: 5em;
+  padding: 2em;
+  width: 100%;
   overflow-x: scroll;
   &--button{
     align-self: center
@@ -63,10 +64,7 @@
   padding-left: 3em;
 }
 
-.login {
-  padding-top: 8em;
-  padding-left: 20em;
-}
+
 
 .tofu-pic {
   height: 320px;

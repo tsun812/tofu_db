@@ -1,0 +1,44 @@
+.loginContainer {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login {
+  width: 100%;
+  min-width: 500px;
+  max-width: 500px;
+  margin-bottom: 200px;
+  padding: 20px 100px 30px 100px;
+  border-radius: 20px;
+  border-color: rgb(190, 190, 190);
+  border-style: solid;
+  // box-shadow: 1px 2px;
+}
+
+.tofuImage{
+width: 200px;
+height: 180px;
+}
+
+.tofuImageContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
+.signInButtonContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.signInButton{
+  width: 100%;
+}
+
+.loginTitle{
+  font-size: 28px;
+  margin-bottom: 3px;
+}
