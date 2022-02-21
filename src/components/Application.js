@@ -156,6 +156,7 @@ export default function Application() {
             )}
 
             {mode === "Data" && (
+              <div className="tableContainer">
               <section className="table">
                 <Table
                   tableHeaderArray={tableHeaderArray}
@@ -174,6 +175,7 @@ export default function Application() {
                   tableTitle={state.selectedApplicationName}
                   />
               </section>
+              </div>
             )}
             {mode === "Customization" &&
           <section>
