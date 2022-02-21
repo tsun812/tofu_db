@@ -14,6 +14,7 @@ import Sort from "./Template/Sort";
 import Search from "./Template/Search";
 import { BrowserRouter as Router, Link} from "react-router-dom";
 import Login from "./login/Login";
+import ThemeTable from "./Template/ThemeTable";
 
 export default function Application() {
   const [mode, setMode] = useState("login");
@@ -123,7 +124,7 @@ export default function Application() {
             />
           )}
           ;
-          {/* <button
+          <button
             className="btn btn-primary"
             onClick={() => console.log(state)}
           >
@@ -143,7 +144,7 @@ export default function Application() {
             onClick={() => console.log(state.selectedRecords)}
           >
             Check selectedRecords
-          </button> */}
+          </button>
         </section>
         {isEmpty === true && <Empty />}
         {isEmpty === false && (
@@ -191,6 +192,13 @@ export default function Application() {
             </section>
             <List
               layouts={layouts}
+              filteredRecords={state.filteredRecords}
+              selectedRecords={state.selectedRecords}
+              application_id={applicationID}
+              />
+              <ThemeTable 
+              tableHeaderArray={tableHeaderArray}
+              tableDataArray={tableRecordArray}
               filteredRecords={state.filteredRecords}
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
