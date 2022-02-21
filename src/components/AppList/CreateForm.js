@@ -57,9 +57,7 @@ export default function CreateForm({ createNewApplication }) {
           </div>
         </div>
       </Form>
-      <Routes>
-        <Route path="/" element={<s />} />
-      </Routes>
+
     </div>
   );
 }

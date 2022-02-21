@@ -15,14 +15,13 @@ export default function CreateDelete({ createNewApplication }) {
       <Button className="create">
       Create a New app
       </Button>
-    </Link>
+   </Link>
   );
   return (
     <>
     <hr></hr>
       {create}
       <Routes>
-        <Route path="/" element={<s />} />
         <Route
           path="/app/create"
           element={<CreateForm createNewApplication={createNewApplication} />}

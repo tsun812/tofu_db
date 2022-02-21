@@ -20,6 +20,7 @@ export default function Application() {
   const {
     getApplicationData,
     setConfig,
+    setFilteredRecords,
     state,
     setSortBy,
     layouts,
@@ -72,6 +73,7 @@ export default function Application() {
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
+
   return (
     <Router>
       <main className="layout">
@@ -172,29 +174,34 @@ export default function Application() {
                   />
               </section>
             )}
-            {mode === "Customization" && (
-              <section>
-                <Header
-                  title={applicationName}
-                  url={applicationBackgroundImage}
-                  description={applicationDescription}
-                  application_id={applicationID}
-                  />
-                <section className="searchsort">
-                  <Sort setSortBy={setSortBy} application_id={applicationID} />
-                  <Search />
-                </section>
-                <List
-                  layouts={layouts}
-                  selectedRecords={state.selectedRecords}
-                  application_id={applicationID}
-                  />
-              </section>
-            )}
+            {mode === "Customization" &&
+          <section>
+            <Header 
+            title={applicationName}
+            url={applicationBackgroundImage} 
+            description={applicationDescription} 
+            application_id={applicationID}
+            />
+            <section className="searchsort">
+            <Sort  
+            setSortBy={setSortBy} 
+            application_id={applicationID}
+            />
+            <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords}/>
+            </section>
+            <List
+              layouts={layouts}
+              filteredRecords={state.filteredRecords}
+              selectedRecords={state.selectedRecords}
+              application_id={applicationID}
+              />
+          </section>
+          }
             {mode === "login" && <Login setMode={setMode} />}
           </div>
         )}
       </main>
-    </Router>
+      </Router>
+
   );
 }
