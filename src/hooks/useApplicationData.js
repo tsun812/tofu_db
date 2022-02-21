@@ -258,6 +258,7 @@ export default function useApplicationData() {
         selectedApplication: applicationID,
         currentApplication: all[0]["data"],
         selectedRecords: all[1]["data"].records,
+        filteredRecords: all[1]["data"].records,
         applications: all[2]["data"],
         records: all[3]["data"],
         fields: all[4]["data"],
@@ -271,7 +272,6 @@ export default function useApplicationData() {
         setState(prev => ({
           ...prev,
         fields: all['data'],
-        //selectedRecords: all[1]['data'].records,
        
         })
         );

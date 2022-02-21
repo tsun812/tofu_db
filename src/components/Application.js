@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Link} from "react-router-dom";
 import Login from "./login/Login";
 import ThemeTable from "./Template/ThemeTable";
 import ThemeCard from "./Template/ThemeCard";
+import { useEffect } from "react";
 
 export default function Application() {
   const [mode, setMode] = useState("login");
@@ -75,6 +76,7 @@ export default function Application() {
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
+  
   console.log('applicationTheme')
   console.log(applicationTheme)
   return (
@@ -201,6 +203,7 @@ export default function Application() {
               filteredRecords={state.filteredRecords}
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
+              mode={state.mode}
               />
             }
             {applicationTheme === "Table" &&
