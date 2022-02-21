@@ -14,12 +14,13 @@ import Header from "./Template/Header";
 import Sort from "./Template/Sort";
 import Search from "./Template/Search";
 import {
-  BrowserRouter as Router,Link
+  BrowserRouter as Router,Link, Route, Routes
 } from "react-router-dom";
+import Login from "./login/Login";
 
 export default function Application() {
-  const [mode, setMode] = useState("Data");
-  const { getApplicationData, setConfig, state, setSortBy, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData } = useApplicationData();
+  const [mode, setMode] = useState("login");
+  const { getApplicationData, setConfig, state, setSortBy, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData,setLogin } = useApplicationData();
 
   //console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
@@ -36,6 +37,7 @@ export default function Application() {
   let appId = parseInt(state.selectedApplication)
   let fields = getFieldsById(state, appId)
   let isEmpty = (state.applications.length === 0)
+  let isLoggedin = (state.login !== null)
   //console.log(state.selectedApplication)
   //console.log(state.selectedRecords)
   // setPrimaryField("Building")
@@ -49,31 +51,42 @@ export default function Application() {
           <span className="sidebar__tofu">🧈</span>
           </Link>
         </div>
-        {mode === "Data" && <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} applicationName={applicationName} setApplication={setApplication} applicationID={applicationID}/>}
+
+        {/* <Link to="/login"
+              style={{ textDecoration: "none"}}
+              className="login">Login</Link>
+      
+        <Routes>
+          <Route exact path="/login/" element={<Login setMode={setMode}/>}>
+          </Route>
+          </Routes> */}
+        
+        {mode === "Data" &&  <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} applicationName={applicationName} setApplication={setApplication} applicationID={applicationID}/>}
+        {mode === "login" &&  <Login setMode={setMode}/>}
           {mode === "Customization" &&
             <NavBarConfig
-              value={state.config}
-              configs={state.configs}
-              onChange={setConfig}
-              fields={fields}
-              setPrimaryField={setPrimaryField}
-              setSecondaryField={setSecondaryField}
-              updateApplicationData={updateApplicationData}
-              applicationID={applicationID}
-              appName={applicationName}
-              appDescription={applicationDescription}
-              appBackgroundImage={applicationBackgroundImage}
-              appFontSize={applicationFontSize}
-              applicationTheme={applicationTheme}
-              applicationID={appId}
-              saveApplicationData={saveApplicationData}
-              primaryField={primaryField}
-              secondaryField={secondaryField}
-              deleteApplication={deleteApplication}
-              setMode={setMode}
-              mode={mode}
+            value={state.config}
+            configs={state.configs}
+            onChange={setConfig}
+            fields={fields}
+            setPrimaryField={setPrimaryField}
+            setSecondaryField={setSecondaryField}
+            updateApplicationData={updateApplicationData}
+            applicationID={applicationID}
+            appName={applicationName}
+            appDescription={applicationDescription}
+            appBackgroundImage={applicationBackgroundImage}
+            appFontSize={applicationFontSize}
+            applicationTheme={applicationTheme}
+            applicationID={appId}
+            saveApplicationData={saveApplicationData}
+            primaryField={primaryField}
+            secondaryField={secondaryField}
+            deleteApplication={deleteApplication}
+            setMode={setMode}
+            mode={mode}
             />
-          }
+          };
             <button className="btn btn-primary" onClick={() => console.log(state)}>Check State</button>
             <button className="btn btn-primary" onClick={() => console.log(applicationID)}>Check applicationID</button>
             <button className="btn btn-primary" onClick={() => console.log(mode)}>Check Mode</button>
@@ -82,9 +95,10 @@ export default function Application() {
         {isEmpty === true && <Empty />}
         {isEmpty === false &&
         <div className="body">
+          {mode !== "login" &&
           <section className="top-buttons">
           <HorizontalNav setMode={setMode} mode={mode}/>
-          </section>
+          </section>}
           {mode === "Data" &&
           <section className="table">
             <Table
@@ -102,7 +116,7 @@ export default function Application() {
               saveFieldValue={saveFieldValue}
               editStatus={state.editStatus}
               tableTitle={state.selectedApplicationName}
-            />
+              />
           </section>
           }
           {mode === "Customization" &&
@@ -124,10 +138,10 @@ export default function Application() {
               layouts={layouts}
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
-             />
+              />
           </section>
         
-          }
+      }
         </div>
 }
       </main>
