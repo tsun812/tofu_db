@@ -13,7 +13,7 @@ export default function CreateDelete({ createNewApplication }) {
       style={{ textDecoration: "none"}}
     >
       <Button className="create">
-      Create a New app
+      Create a New App
       </Button>
    </Link>
   );
