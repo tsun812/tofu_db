@@ -45,7 +45,8 @@
 .body {
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  margin: 2em;
+  padding: 2em 3em 3em 3em;
   width: 100%;
   overflow-x: scroll;
   &--button{
@@ -60,8 +61,7 @@
      
 }
 .top-buttons {
-  padding-top: 2em;
-  padding-left: 3em;
+  margin-bottom: 1em;
 }
 
 
