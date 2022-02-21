@@ -18,7 +18,9 @@ export default function AppListItem(props) {
         <Link
         className={appnameclass}
         to={`app/${appID}`}
-        onClick={() => {setApplication(appID)}}
+        onClick={() => {
+          setApplication(appID)
+        }}
         style={{ textDecoration: "none" }}
       >
         {appName}
