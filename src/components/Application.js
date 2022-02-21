@@ -15,6 +15,7 @@ import Search from "./Template/Search";
 import { BrowserRouter as Router, Link} from "react-router-dom";
 import Login from "./login/Login";
 import ThemeTable from "./Template/ThemeTable";
+import ThemeCard from "./Template/ThemeCard";
 
 export default function Application() {
   const [mode, setMode] = useState("login");
@@ -211,6 +212,15 @@ export default function Application() {
               application_id={applicationID}
               />
           }
+          {applicationTheme === "Card" &&
+              <ThemeCard 
+              tableHeaderArray={tableHeaderArray}
+              tableDataArray={tableRecordArray}
+              filteredRecords={state.filteredRecords}
+              selectedRecords={state.selectedRecords}
+              application_id={applicationID}
+              />
+          }
               </section>
           </section>
           }
@@ -218,7 +228,6 @@ export default function Application() {
           </div>
         )}
       </main>
-      <button onClick={()=>console.log(applicationTheme)}>Check displaytheme</button>
       </Router>
   );
 }

@@ -6,7 +6,6 @@ export default function Theme({applicationTheme, updateApplicationData, saveAppl
       <Form.Label>Display theme</Form.Label>
       <Form.Select aria-label="Default select example" value={applicationTheme} onChange={(event) => updateApplicationData("display_theme" ,event.target.value)} onBlur={(event) => saveApplicationData(applicationID, "display_theme", event.target.value)}>
         <option value="List">List</option>
-        <option value="Grid">Grid</option>
         <option value="Card">Card</option>
         <option value="Table">Table</option>
       </Form.Select>
