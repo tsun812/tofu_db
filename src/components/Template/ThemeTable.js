@@ -12,7 +12,7 @@ export default function ThemeTable(props) {
         </tr>
       </thead>
       <tbody>
-          <ThemeTableData tableDataArray={props.tableDataArray}/>
+          <ThemeTableData tableDataArray={props.tableDataArray} selectedRecords={props.selectedRecords} filteredRecords={props.filteredRecords}/>
       </tbody>
     </table>
   )
