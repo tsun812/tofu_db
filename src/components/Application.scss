@@ -45,30 +45,38 @@
 .body {
   display: flex;
   flex-direction: column;
-  padding-left: 5em;
+  margin: 2em;
+  padding: 2em 3em 3em 3em;
+  width: 100%;
   overflow-x: scroll;
   &--button{
     align-self: center
   }
 }
 
-.searchsort{
+.searchSortContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-     
-}
-.top-buttons {
-  padding-top: 2em;
-  padding-left: 3em;
+    margin: 20px 0px 20px 0px;
 }
 
-.login {
-  padding-top: 8em;
-  padding-left: 20em;
+.displayStyleContainer{
+  margin: 20px 2% 20px 2%;
 }
+
+.top-buttons {
+  margin-bottom: 1em;
+}
+
 
 .tofu-pic {
   height: 320px;
   width:320px;
+}
+
+.settingsPreview{
+  margin: 0px 5% 0px 5%;
+  min-width: 500px;
+  max-width: 1000px;
 }

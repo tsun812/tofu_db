@@ -5,10 +5,14 @@
     font-size: 100px;
   vertical-align: middle;
 }
-.myAppstitle{
+.myAppsTitleContainer{
     padding: auto;
     margin-left:20px;
     margin-right: 20px;
+}
+
+.myAppsTitle{
+    font-size: 32px;
 }
 .AppList {
     display: flex;

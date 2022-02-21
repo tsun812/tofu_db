@@ -25,5 +25,5 @@ export default function List(props) {
     });
   }
 
-  return <ul>{res}</ul>;
+  return <ul className="listUL">{res}</ul>;
 }

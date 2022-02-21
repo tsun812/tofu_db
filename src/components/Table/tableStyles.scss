@@ -1,8 +1,6 @@
 .table {
   min-width: 700px;
   max-width: 2000px;
-  padding-left: 3em;
-  padding-top: 1em;
   overflow-x: scroll;
   margin-bottom: 0px !important;
 
@@ -17,6 +15,10 @@
   min-width: 200px;
   max-width: 200px;
 }
+}
+
+.tableTitle{
+  font-size: 40px;
 }
 
 .editStatus{
@@ -36,4 +38,8 @@
 .tableHeaderField {
   min-width: 200px;
   max-width: 200px;
+}
+
+.tableContainer{
+  width: fit-content;
 }

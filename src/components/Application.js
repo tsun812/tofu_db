@@ -156,6 +156,7 @@ export default function Application() {
             )}
 
             {mode === "Data" && (
+              <div className="tableContainer">
               <section className="table">
                 <Table
                   tableHeaderArray={tableHeaderArray}
@@ -174,22 +175,24 @@ export default function Application() {
                   tableTitle={state.selectedApplicationName}
                   />
               </section>
+              </div>
             )}
             {mode === "Customization" &&
-          <section>
+          <section className="settingsPreview">
             <Header 
             title={applicationName}
             url={applicationBackgroundImage} 
             description={applicationDescription} 
             application_id={applicationID}
             />
-            <section className="searchsort">
+            <section className="searchSortContainer">
             <Sort  
             setSortBy={setSortBy} 
             application_id={applicationID}
             />
             <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords}/>
             </section>
+            <section className="displayStyleContainer">
             <List
               layouts={layouts}
               filteredRecords={state.filteredRecords}
@@ -203,6 +206,7 @@ export default function Application() {
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
               />
+              </section>
           </section>
           }
             {mode === "login" && <Login setMode={setMode} />}
