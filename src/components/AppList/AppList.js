@@ -27,9 +27,9 @@ export default function AppList(props) {
   return (
     
     <div className="AppList" >
-    <section className="myAppstitle">
+    <section className="myAppsTitleContainer">
     <hr></hr>
-    <h2>My Apps</h2>
+    <h2 className="myAppsTitle">My Apps</h2>
     <hr></hr>
     </section>
     {results}
