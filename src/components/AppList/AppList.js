@@ -7,13 +7,8 @@ export default function AppList(props) {
   const {
     getApplicationData,
     createNewApplication,
-    applications_array,
     deleteApplication,
-    applications,
-    applicationName,
     setApplication,
-    apps,
-    app,
   } = props;
   
   const results = props.applications_array.map((application) => 
