@@ -84,8 +84,8 @@ export default function Application() {
               className="sidebar__logo"
               style={{ textDecoration: "none" }}
             >
-              <h1>TOFU DB</h1>
-              <span className="sidebar__tofu">🧈</span>
+            
+              <span className="sidebar__tofu"><img className="tofu-pic" src="/images/logo4.png" /></span>
             </Link>
           </div>
           {mode === "Data" && (
@@ -123,7 +123,7 @@ export default function Application() {
             />
           )}
           ;
-          <button
+          {/* <button
             className="btn btn-primary"
             onClick={() => console.log(state)}
           >
@@ -143,7 +143,7 @@ export default function Application() {
             onClick={() => console.log(state.selectedRecords)}
           >
             Check selectedRecords
-          </button>
+          </button> */}
         </section>
         {isEmpty === true && <Empty />}
         {isEmpty === false && (
