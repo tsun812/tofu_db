@@ -1,4 +1,3 @@
-import AppListItem from "components/AppList/AppListItem"
 import React from "react"
 import "./GridItem.scss"
 import "./List.scss"
