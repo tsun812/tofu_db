@@ -24,7 +24,6 @@ export default function Search(props) {
       console.log(record.secondary)
     return record.primary && record.secondary && ((record.primary.toUpperCase() === searchString) || (record.secondary.toUpperCase() === searchString))
     });
-    console.log(searchString)
     console.log(filteredRes)
     props.setFilteredRecords(filteredRes);  
   }
