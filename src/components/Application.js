@@ -131,6 +131,7 @@ export default function Application() {
         </div>
 }
       </main>
-    </Router>
+      </Router>
+
   );
 }

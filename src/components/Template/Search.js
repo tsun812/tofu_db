@@ -10,8 +10,16 @@ import "./Search.scss"
  
 export default function Search(props) {
   const element = <FontAwesomeIcon icon={faSearch} />
+  function handleSubmit (e) {
+    e.preventDefault();
+    console.log("hello");
+    let searchString = e.target.value.toUpperCase();
+    props.selectedRecords.filter((record) => {
+      return record.value.toUpperCase()== searchString;
+    });
+  }
   return (
-    <Form className="searchlayout">
+    <Form className="searchlayout" onSubmit={handleSubmit}>
       <Row>
         <Col xs={8}>
           <Form.Control placeholder="Enter keywords" />
