@@ -18,7 +18,7 @@ export default function List(props) {
     res = props.selectedRecords.map((element, index) => {
       return (
         <li className="wrapper" key={index}>
-          <div>{element.primary}</div>
+          <div className="primary">{element.primary}</div>
           <div>{element.secondary}</div>
         </li>
       );

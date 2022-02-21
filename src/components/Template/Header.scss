@@ -7,8 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 1em;
-  margin-left: 3em;
+  margin-left: 2.5em;
 }
 
 .imgBanner {
@@ -23,15 +22,15 @@
   padding-top: 1em;
   background-image: linear-gradient(
     to left,
-    violet,
-    indigo,
+  
     blue,
-    green,
     orange,
-    red
+    red,
+    ivory
   );
   -webkit-background-clip: text;
   color: transparent;
   font-family: monospace, monospace;
-  //margin-left:-1em;
+  font-weight:700px;
+  margin-left:-1.5em;
 }
