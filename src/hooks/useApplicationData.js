@@ -296,8 +296,6 @@ export default function useApplicationData() {
       fetchAPI()
     });
   };
-
-  // const setLogin = (login) => setState({...state,login})
   
   return {
     getApplicationData,
@@ -308,7 +306,6 @@ export default function useApplicationData() {
     setPositions,
     setPrimaryField,
     setSecondaryField,
-    // setLogin,
     createNewRow,
     createNewColumn,
     createNewApplication,
