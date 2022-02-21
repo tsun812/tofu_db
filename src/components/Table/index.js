@@ -22,7 +22,7 @@ export default function Table({
 }) {
   return (
     <>
-      <h1>{tableTitle}</h1>
+      <h1 className="tableTitle">{tableTitle}</h1>
       <table className="table">
         <thead>
           <tr>
