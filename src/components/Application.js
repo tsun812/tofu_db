@@ -14,7 +14,6 @@ import Sort from "./Template/Sort";
 import Search from "./Template/Search";
 import { BrowserRouter as Router, Link} from "react-router-dom";
 import Login from "./login/Login";
-import BeforeLogin from "./login/BeforeLogin";
 
 export default function Application() {
   const [mode, setMode] = useState("login");
