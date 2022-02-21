@@ -23,10 +23,14 @@ export default function useApplicationData() {
     primary_field: null,
     secondary_field: null,
     editStatus: "Loaded",
+    filteredRecords: {},
     selectedRecords: {},
     login: null
   });
-  const hello = () =>{console.log("hello")}
+
+  const setFilteredRecords = (filteredRecords) => {
+    setState({...state, filteredRecords: filteredRecords})
+  }
   const setConfig = (config) => setState({ ...state, config });
   const idNumber = parseInt(state.selectedApplication)
   const setSortBy = (sortOption, id) => {
@@ -303,6 +307,7 @@ export default function useApplicationData() {
     getApplicationData,
     setApplication,
     state,
+    setFilteredRecords,
     setConfig,
     setSortBy,
     setPositions,

@@ -20,7 +20,7 @@ import Login from "./login/Login";
 
 export default function Application() {
   const [mode, setMode] = useState("login");
-  const { getApplicationData, setConfig, state, setSortBy, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData,setLogin } = useApplicationData();
+  const { getApplicationData, setFilteredRecords, setConfig, state, setSortBy, setPositions, layouts, setPrimaryField, setSecondaryField, createNewRow, createNewColumn, deleteRow, deleteColumn, updateInputValue, saveInputValue, updateFieldValue, saveFieldValue, setApplication, createNewApplication, deleteApplication, updateApplicationData, saveApplicationData,setLogin } = useApplicationData();
 
   //console.log("application.js", state)
   const tableHeaderArray = ((state.currentApplication.fields)) ? state.currentApplication.fields : [];
@@ -38,9 +38,7 @@ export default function Application() {
   let fields = getFieldsById(state, appId)
   let isEmpty = (state.applications.length === 0)
   let isLoggedin = (state.login !== null)
-  //console.log(state.selectedApplication)
-  //console.log(state.selectedRecords)
-  // setPrimaryField("Building")
+
   return (
     <Router>
       <main className="layout">
@@ -51,15 +49,6 @@ export default function Application() {
           <span className="sidebar__tofu">🧈</span>
           </Link>
         </div>
-
-        {/* <Link to="/login"
-              style={{ textDecoration: "none"}}
-              className="login">Login</Link>
-      
-        <Routes>
-          <Route exact path="/login/" element={<Login setMode={setMode}/>}>
-          </Route>
-          </Routes> */}
         
         {mode === "Data" &&  <AppList getApplicationData={getApplicationData} createNewApplication={createNewApplication} deleteApplication={deleteApplication} applications_array={state.applications} applicationName={applicationName} setApplication={setApplication} applicationID={applicationID}/>}
         {mode === "login" &&  <Login setMode={setMode}/>}
@@ -132,10 +121,11 @@ export default function Application() {
             setSortBy={setSortBy} 
             application_id={applicationID}
             />
-            <Search />
+            <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords}/>
             </section>
             <List
               layouts={layouts}
+              filteredRecords={state.filteredRecords}
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
               />
