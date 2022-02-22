@@ -1,15 +1,14 @@
 import React from "react";
-import "./ThemeCard.scss";
+import "./ThemeCardListItem.scss";
 import { Card, Button } from "react-bootstrap";
 export default function ThemeCardListItem(props) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card style={{ width: '14rem'}}>
+      <Card.Img variant="top" src="/images/logo4.png" className="logo" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{props.primary}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the bulk of
-          the card's content.
+         {props.secondary}
         </Card.Text>
         <Button variant="primary">Details</Button>
       </Card.Body>
