@@ -6,16 +6,20 @@ export default function Details(props) {
   console.log('props.selectedRecordsDetails in Details.js')
   console.log(props.selectedRecord)
   return (
-    <table className="table">
-      <thead>
-        <tr>
-        <th>Field</th>
-        <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <DetailsList selectedRecord={props.selectedRecord} fieldlist={props.fieldlist} />
-      </tbody>
-    </table>
+    <>
+    <br></br>
+      <h1>Details</h1>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <DetailsList selectedRecord={props.selectedRecord} fieldlist={props.fieldlist} />
+        </tbody>
+      </table>
+    </>
   )
 }
