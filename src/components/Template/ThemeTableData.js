@@ -23,12 +23,20 @@ export default function ThemeTableData(props) {
   } else {
     recordsRender = props.selectedRecords;
   }
+  console.log('recordsRender')
+  console.log(recordsRender)
   return recordsRender.map((rowData, index) => {
     return (
       <tr key={("row", rowData.id)}>
         <td className="indexNum">{index + 1}</td>
         <td key={index * 2}> {rowData.primary} </td>
         <td key={index * 2 + 1}> {rowData.secondary} </td>
+        <td><button
+          className="btn btn-primary"
+          onClick={() => props.setRecordDetails(rowData.id)}
+        >
+          Details
+        </button></td>
       </tr>
     );
   });
