@@ -33,7 +33,7 @@ export default function ThemeTableData(props) {
         <td key={index * 2 + 1}> {rowData.secondary} </td>
         <td><button
           className="btn btn-primary"
-          onClick={() => props.setRecordDetails(rowData.id)}
+          onClick={() => {props.setRecordDetails(rowData.id); props.setDetail('show');}}
         >
           Details
         </button></td>

@@ -12,7 +12,7 @@ import { getFieldsById } from "helpers/selectors";
 import Header from "./Template/Header";
 import Sort from "./Template/Sort";
 import Search from "./Template/Search";
-import { BrowserRouter as Router, Link} from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import Login from "./login/Login";
 import ThemeTable from "./Template/ThemeTable";
 import ThemeCard from "./Template/ThemeCard";
@@ -21,6 +21,7 @@ import { useEffect } from "react";
 
 export default function Application() {
   const [mode, setMode] = useState("login");
+  const [detail, setDetail] = useState("hide")
   const {
     getApplicationData,
     setConfig,
@@ -76,14 +77,14 @@ export default function Application() {
     ? state.currentApplication.application.secondary_field
     : "";
   const selectedRecordsDetails = state.selectedRecordsDetails.values
-  ? state.selectedRecordsDetails
-  : {};
+    ? state.selectedRecordsDetails
+    : {};
   console.log('state.selectedRecordsDetails')
   console.log(state.selectedRecordsDetails)
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
-  
+
   console.log('applicationTheme')
   console.log(applicationTheme)
   return (
@@ -96,7 +97,7 @@ export default function Application() {
               className="sidebar__logo"
               style={{ textDecoration: "none" }}
             >
-            
+
               <span className="sidebar__tofu"><img className="tofu-pic" src="/images/logo4.png" /></span>
             </Link>
           </div>
@@ -180,82 +181,100 @@ export default function Application() {
 
             {mode === "Data" && (
               <div className="tableContainer">
-              <section className="table">
-                <Table
-                  tableHeaderArray={tableHeaderArray}
-                  tableDataArray={tableRecordArray}
-                  deleteRow={deleteRow}
-                  deleteColumn={deleteColumn}
-                  getApplicationData={getApplicationData}
-                  createNewRow={createNewRow}
-                  createNewColumn={createNewColumn}
-                  application_id={applicationID}
-                  updateInputValue={updateInputValue}
-                  saveInputValue={saveInputValue}
-                  updateFieldValue={updateFieldValue}
-                  saveFieldValue={saveFieldValue}
-                  editStatus={state.editStatus}
-                  tableTitle={state.selectedApplicationName}
+                <section className="table">
+                  <Table
+                    tableHeaderArray={tableHeaderArray}
+                    tableDataArray={tableRecordArray}
+                    deleteRow={deleteRow}
+                    deleteColumn={deleteColumn}
+                    getApplicationData={getApplicationData}
+                    createNewRow={createNewRow}
+                    createNewColumn={createNewColumn}
+                    application_id={applicationID}
+                    updateInputValue={updateInputValue}
+                    saveInputValue={saveInputValue}
+                    updateFieldValue={updateFieldValue}
+                    saveFieldValue={saveFieldValue}
+                    editStatus={state.editStatus}
+                    tableTitle={state.selectedApplicationName}
                   />
-              </section>
+                </section>
               </div>
             )}
             {mode === "Customization" &&
-          <section className="settingsPreview">
-            <Header 
-            title={applicationName}
-            url={applicationBackgroundImage} 
-            description={applicationDescription} 
-            application_id={applicationID}
-            />
-            <section className="searchSortContainer">
-            <Sort  
-            setSortBy={setSortBy} 
-            application_id={applicationID}
-            />
-            <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords}/>
-            </section>
-            <section className="displayStyleContainer">
-            {applicationTheme === "List" &&
-            <List
-              layouts={layouts}
-              filteredRecords={state.filteredRecords}
-              selectedRecords={state.selectedRecords}
-              application_id={applicationID}
-              mode={state.mode}
-              />
-            }
-            {applicationTheme === "Table" &&
-              <ThemeTable 
-              tableHeaderArray={tableHeaderArray}
-              tableDataArray={tableRecordArray}
-              filteredRecords={state.filteredRecords}
-              selectedRecords={state.selectedRecords}
-              application_id={applicationID}
-              setRecordDetails={setRecordDetails}
-              primaryField={primaryField}
-              secondaryField={secondaryField}
-              />
-          }
-          {applicationTheme === "Card" &&
-              <ThemeCard 
-              tableHeaderArray={tableHeaderArray}
-              tableDataArray={tableRecordArray}
-              filteredRecords={state.filteredRecords}
-              selectedRecords={state.selectedRecords}
-              application_id={applicationID}
-              />
-          }
-          <Details
-            selectedRecord={selectedRecordsDetails} fieldlist={state.fields}
-          />
+              <section className="settingsPreview">
+                <Header
+                  title={applicationName}
+                  url={applicationBackgroundImage}
+                  description={applicationDescription}
+                  application_id={applicationID}
+                />
+                <section className="searchSortContainer">
+                  <Sort
+                    setSortBy={setSortBy}
+                    application_id={applicationID}
+                  />
+                  <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords} />
+                </section>
+                <section className="displayStyleContainer">
+                  {detail === "hide" &&
+                    <>
+                      {applicationTheme === "List" &&
+                        <List
+                          layouts={layouts}
+                          filteredRecords={state.filteredRecords}
+                          selectedRecords={state.selectedRecords}
+                          application_id={applicationID}
+                          mode={state.mode}
+                          setDetail={setDetail}
+                        />
+                      }
+                      {applicationTheme === "Table" &&
+                        <ThemeTable
+                          tableHeaderArray={tableHeaderArray}
+                          tableDataArray={tableRecordArray}
+                          filteredRecords={state.filteredRecords}
+                          selectedRecords={state.selectedRecords}
+                          application_id={applicationID}
+                          setRecordDetails={setRecordDetails}
+                          primaryField={primaryField}
+                          secondaryField={secondaryField}
+                          setDetail={setDetail}
+                        />
+                      }
+                      {applicationTheme === "Card" &&
+                        <ThemeCard
+                          tableHeaderArray={tableHeaderArray}
+                          tableDataArray={tableRecordArray}
+                          filteredRecords={state.filteredRecords}
+                          selectedRecords={state.selectedRecords}
+                          application_id={applicationID}
+                          setRecordDetails={setRecordDetails}
+                          setDetail={setDetail}
+                        />
+                      }
+                    </>
+                  }
+                  {detail === "show" &&
+                    <>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => setDetail("hide")}
+                      >
+                        {`< Back`}
+                      </button>
+                      <Details
+                        selectedRecord={selectedRecordsDetails} fieldlist={state.fields}
+                      />
+                    </>
+                  }
+                </section>
               </section>
-          </section>
-          }
+            }
             {mode === "login" && <Login setMode={setMode} />}
           </div>
         )}
       </main>
-      </Router>
+    </Router>
   );
 }
