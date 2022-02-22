@@ -84,14 +84,15 @@ export default function Application() {
     ? state.selectedRecordsDetails
     : {};
   const selectedImageFieldID = imageField
-  console.log('state.selectedRecordsDetails')
-  console.log(state.selectedRecordsDetails)
+  const imgFieldName = tableHeaderArray[imageField] ? tableHeaderArray[imageField]['field_name'] : "";
+  console.log('fieldName')
+  console.log(imgFieldName)
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
 
-  console.log('applicationTheme')
-  console.log(applicationTheme)
+  // console.log('applicationTheme')
+  // console.log(applicationTheme)
   return (
     <Router>
       <main className="layout">
@@ -141,10 +142,11 @@ export default function Application() {
               mode={mode}
               setImageField={setImageField}
               fieldsArray={tableHeaderArray}
+              imgFieldName={imgFieldName}
             />
           )}
           ;
-          <button
+          {/* <button
             className="btn btn-primary"
             onClick={() => console.log(state)}
           >
@@ -182,7 +184,7 @@ export default function Application() {
             onClick={() => console.log(imageField)}
           >
             Check Selected Image Field
-          </button>
+          </button> */}
         </section>
         {isEmpty === true && <Empty />}
         {isEmpty === false && (
