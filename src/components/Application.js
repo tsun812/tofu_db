@@ -83,7 +83,7 @@ export default function Application() {
   const selectedRecordsDetails = state.selectedRecordsDetails.values
     ? state.selectedRecordsDetails
     : {};
-  const selectedImageFieldID = 4
+  const selectedImageFieldID = imageField
   console.log('state.selectedRecordsDetails')
   console.log(state.selectedRecordsDetails)
   let appId = parseInt(state.selectedApplication);

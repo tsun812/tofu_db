@@ -2,15 +2,21 @@ import React from "react";
 import "./ThemeCardListItem.scss";
 import { Card, Button } from "react-bootstrap";
 export default function ThemeCardListItem(props) {
-  console.log('recordData')
-  console.log(props.recordData.values)
+  // console.log('recordData')
+  // console.log(props.recordData.values)
   const list = props.recordData.values
-  const result = Object.keys(list).filter((value) =>
+  const result = Object.keys(list).filter((value) => 
     //compare and find the selected img field id
-    list[value]['field_id'] === props.selectedImageFieldID
+    // using == instead of === on purpose do not remove
+    list[value]['field_id'] == props.selectedImageFieldID
   )
   const valueID = result[0];
-  const imgURL = list[valueID]['field_value']
+  // console.log('list[valueID]')
+  // console.log(result)
+  let imgURL;
+  if (result.length !== 0) {
+   imgURL = list[valueID]['field_value']
+  }
   // if url is empty, then show default image
   const finalImgURL = imgURL === "" ? "/images/logo4.png" : imgURL
   // console.log('finalImgURL')

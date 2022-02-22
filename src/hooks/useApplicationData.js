@@ -22,6 +22,7 @@ export default function useApplicationData() {
     positions: null,
     primary_field: null,
     secondary_field: null,
+    background_color: null,
     editStatus: "Loaded",
     filteredRecords: {},
     selectedRecords: {},
