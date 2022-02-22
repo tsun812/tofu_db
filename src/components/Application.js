@@ -227,6 +227,7 @@ export default function Application() {
                           application_id={applicationID}
                           mode={state.mode}
                           setDetail={setDetail}
+                          setRecordDetails={setRecordDetails}
                         />
                       }
                       {applicationTheme === "Table" &&
