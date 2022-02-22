@@ -3,33 +3,40 @@ import { Dropdown, Form } from "react-bootstrap";
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Field(props) {
-  //console.log(props)
-  const { state } = useApplicationData()
+  console.log('props.fieldsArray')
+  console.log(props.fieldsArray)
 
   const handleSelect = (evtKey) => {
-    console.log("hello1")
-    console.log(evtKey)
-    console.log("hello2")
     let id = parseInt(props.applicationID)
+    console.log(evtKey)
     if (props.name === "Primary field" && evtKey) {
-      props.setPrimaryField(evtKey, id)
-
+      props.setPrimaryField(props.fieldsArray[evtKey]['field_name'], id)
     }
     else if (props.name === "Secondary field" && evtKey) {
-      props.setSecondaryField(evtKey, id)
-      //console.log(evtKey)
-      // console.log(state)
+      props.setSecondaryField(props.fieldsArray[evtKey]['field_name'], id)
+    }
+    else if (props.name === "Image field" && evtKey) {
+      props.setImageField(props.fieldsArray[evtKey]['id'], id)
     }
 
-    // console.log(evtKey)
-    // props.setSecondaryField(evtKey)
-
-
   }
-  const options = props.fields.map((item, index) => {
+
+  //this section is to make image field only show field_type is image 
+  let array = {};
+  if (props.name === "Image field") {
+    const filteredFieldID = Object.keys(props.fieldsArray).filter((field) =>
+      props.fieldsArray[field]['field_type'] === "Image"
+    )
+    filteredFieldID.map((id) => {
+      array[id] = props.fieldsArray[id]
+    })
+  } else {
+    array = props.fieldsArray
+  }
+
+  const options = Object.keys(array).map((item, index) => {
     return (
-      <Dropdown.Item key={index} eventKey={item} >{item}</Dropdown.Item>
-      // href="#/action-1"
+      <Dropdown.Item key={index} eventKey={props.fieldsArray[item]['id']} >{props.fieldsArray[item]['field_name']}</Dropdown.Item>
     )
   }
   )

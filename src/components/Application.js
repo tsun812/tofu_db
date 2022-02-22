@@ -45,6 +45,7 @@ export default function Application() {
     updateApplicationData,
     saveApplicationData,
     setRecordDetails,
+    setImageField,
   } = useApplicationData();
 
   //console.log("application.js", state)
@@ -76,17 +77,22 @@ export default function Application() {
   const secondaryField = state.currentApplication.application
     ? state.currentApplication.application.secondary_field
     : "";
+    const imageField = state.currentApplication.application
+    ? state.currentApplication.application.background_color
+    : "";
   const selectedRecordsDetails = state.selectedRecordsDetails.values
     ? state.selectedRecordsDetails
     : {};
-  console.log('state.selectedRecordsDetails')
-  console.log(state.selectedRecordsDetails)
+  const selectedImageFieldID = imageField
+  const imgFieldName = tableHeaderArray[imageField] ? tableHeaderArray[imageField]['field_name'] : "";
+  console.log('fieldName')
+  console.log(imgFieldName)
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
 
-  console.log('applicationTheme')
-  console.log(applicationTheme)
+  // console.log('applicationTheme')
+  // console.log(applicationTheme)
   return (
     <Router>
       <main className="layout">
@@ -130,13 +136,17 @@ export default function Application() {
               saveApplicationData={saveApplicationData}
               primaryField={primaryField}
               secondaryField={secondaryField}
+              imageField={imageField}
               deleteApplication={deleteApplication}
               setMode={setMode}
               mode={mode}
+              setImageField={setImageField}
+              fieldsArray={tableHeaderArray}
+              imgFieldName={imgFieldName}
             />
           )}
-          {/* ;
-          <button
+          ;
+          {/* <button
             className="btn btn-primary"
             onClick={() => console.log(state)}
           >
@@ -168,6 +178,12 @@ export default function Application() {
             onClick={() => setRecordDetails(1)}
           >
             Set selectedRecordsDetails
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => console.log(imageField)}
+          >
+            Check Selected Image Field
           </button> */}
         </section>
         {isEmpty === true && <Empty />}
@@ -246,12 +262,13 @@ export default function Application() {
                       {applicationTheme === "Card" &&
                         <ThemeCard
                           tableHeaderArray={tableHeaderArray}
-                          tableDataArray={tableRecordArray}
+                          dataArray={tableRecordArray}
                           filteredRecords={state.filteredRecords}
                           selectedRecords={state.selectedRecords}
                           application_id={applicationID}
                           setRecordDetails={setRecordDetails}
                           setDetail={setDetail}
+                          selectedImageFieldID={selectedImageFieldID}
                         />
                       }
                     </>
