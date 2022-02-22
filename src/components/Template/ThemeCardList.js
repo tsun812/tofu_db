@@ -23,6 +23,9 @@ export default function ThemeCardList(props) {
               <ThemeCardListItem
                 primary={item.primary}
                 secondary={item.secondary}
+                setRecordDetails={props.setRecordDetails}
+                recordID={item.id}
+                setDetail={props.setDetail}
               />
             </Col>
           );
