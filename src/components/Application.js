@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Link} from "react-router-dom";
 import Login from "./login/Login";
 import ThemeTable from "./Template/ThemeTable";
 import ThemeCard from "./Template/ThemeCard";
+import Details from "./Template/Details";
 import { useEffect } from "react";
 
 export default function Application() {
@@ -42,6 +43,7 @@ export default function Application() {
     deleteApplication,
     updateApplicationData,
     saveApplicationData,
+    setRecordDetails,
   } = useApplicationData();
 
   //console.log("application.js", state)
@@ -73,6 +75,11 @@ export default function Application() {
   const secondaryField = state.currentApplication.application
     ? state.currentApplication.application.secondary_field
     : "";
+  const selectedRecordsDetails = state.selectedRecordsDetails.values
+  ? state.selectedRecordsDetails
+  : {};
+  console.log('state.selectedRecordsDetails')
+  console.log(state.selectedRecordsDetails)
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
@@ -149,6 +156,18 @@ export default function Application() {
           >
             Check selectedRecords
           </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => console.log(selectedRecordsDetails)}
+          >
+            Show selectedRecordsDetails
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => setRecordDetails(1)}
+          >
+            Set selectedRecordsDetails
+          </button>
         </section>
         {isEmpty === true && <Empty />}
         {isEmpty === false && (
@@ -213,6 +232,7 @@ export default function Application() {
               filteredRecords={state.filteredRecords}
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
+              setRecordDetails={setRecordDetails}
               />
           }
           {applicationTheme === "Card" &&
@@ -224,6 +244,9 @@ export default function Application() {
               application_id={applicationID}
               />
           }
+          <Details
+            selectedRecord={selectedRecordsDetails} fieldlist={state.fields}
+          />
               </section>
           </section>
           }

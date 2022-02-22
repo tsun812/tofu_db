@@ -25,6 +25,7 @@ export default function useApplicationData() {
     editStatus: "Loaded",
     filteredRecords: {},
     selectedRecords: {},
+    selectedRecordsDetails: {},
     login: null
   });
 
@@ -271,7 +272,7 @@ export default function useApplicationData() {
       .then(all =>{
         setState(prev => ({
           ...prev,
-        fields: all['data'],
+          fields: all['data'],
        
         })
         );
@@ -301,6 +302,15 @@ export default function useApplicationData() {
     });
   };
   
+  const setRecordDetails = (recordID) => {
+    console.log(state.currentApplication.records[recordID])
+    const selectedRecordDetail = state.currentApplication.records[recordID]
+    setState(prev => ({
+      ...prev,
+      selectedRecordsDetails: selectedRecordDetail,
+    }));
+  }
+
   return {
     getApplicationData,
     setApplication,
@@ -323,5 +333,6 @@ export default function useApplicationData() {
     saveFieldValue,
     updateApplicationData,
     saveApplicationData,
+    setRecordDetails,
   };
 }
