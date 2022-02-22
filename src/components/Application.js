@@ -135,7 +135,7 @@ export default function Application() {
               mode={mode}
             />
           )}
-          ;
+          {/* ;
           <button
             className="btn btn-primary"
             onClick={() => console.log(state)}
@@ -168,7 +168,7 @@ export default function Application() {
             onClick={() => setRecordDetails(1)}
           >
             Set selectedRecordsDetails
-          </button>
+          </button> */}
         </section>
         {isEmpty === true && <Empty />}
         {isEmpty === false && (
@@ -265,7 +265,7 @@ export default function Application() {
                         {`< Back`}
                       </button>
                       <Details
-                        selectedRecord={selectedRecordsDetails} fieldlist={state.fields}
+                        selectedRecord={selectedRecordsDetails} fieldlist={state.fields} className="details"
                       />
                     </>
                   }
