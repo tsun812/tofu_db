@@ -25,7 +25,7 @@ export default function TableHeaderListItem({ application_id, field_value, field
       </InputGroup>
       <InputGroup className="tableHeaderField">
         <Form.Select aria-label="Default select example" value={field_type} onChange={(event) => {updateFieldValue(2, field_id, event.target.value);saveFieldValue(application_id, field_id, null ,event.target.value)}}>
-          <option value="String">String</option>
+          <option value="Text">Text</option>
           <option value="Image">Image</option>
         </Form.Select>
       </InputGroup>
