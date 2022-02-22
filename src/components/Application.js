@@ -233,6 +233,8 @@ export default function Application() {
               selectedRecords={state.selectedRecords}
               application_id={applicationID}
               setRecordDetails={setRecordDetails}
+              primaryField={primaryField}
+              secondaryField={secondaryField}
               />
           }
           {applicationTheme === "Card" &&

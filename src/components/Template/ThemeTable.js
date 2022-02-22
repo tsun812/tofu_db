@@ -8,7 +8,7 @@ export default function ThemeTable(props) {
       <thead>
         <tr>
         <th className='indexNum'>index</th>
-          <ThemeTableHeader tableHeaderArray={props.tableHeaderArray}/>
+          <ThemeTableHeader tableHeaderArray={props.tableHeaderArray} primaryField={props.primaryField} secondaryField={props.secondaryField}/>
         </tr>
       </thead>
       <tbody>
