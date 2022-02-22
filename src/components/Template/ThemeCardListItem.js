@@ -10,7 +10,7 @@ export default function ThemeCardListItem(props) {
         <Card.Text>
          {props.secondary}
         </Card.Text>
-        <Button variant="primary">Details</Button>
+        <Button variant="primary" onClick={() => {props.setRecordDetails(props.recordID); props.setDetail('show');}}>Details</Button>
       </Card.Body>
     </Card>
   )
