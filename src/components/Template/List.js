@@ -11,7 +11,7 @@ export default function List(props) {
       return (
         <li className="wrapper" key={index}>
           <div className="field">
-          <div>{element.primary}</div>
+          <div className="primary">{element.primary}</div>
           <div>{element.secondary}</div>
           </div>
           <button
