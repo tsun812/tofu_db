@@ -89,6 +89,22 @@ export default function useApplicationData() {
 
   };
 
+  const setImageField = (update, applicationId) => {
+    console.log(update)
+    setState({...state,
+      background_color: update
+    })
+
+    let params = {background_color: update}
+    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
+      .then((all) => {
+       //console.log(state)
+       getApplicationData(applicationId);
+       
+      });
+
+  };
+
   const updateApplicationData = (fieldName ,data) =>{
     const deepClone = JSON.parse(JSON.stringify(state.currentApplication));
     deepClone.application[fieldName] = data;
@@ -188,20 +204,39 @@ export default function useApplicationData() {
   };
 
   //this update the state when user is typing in input
-  const updateFieldValue = (field_id, field_name) => {
+  const updateFieldValue = (type, field_id, inputValue) => {
     const deepClone = JSON.parse(JSON.stringify(state.currentApplication));
-    deepClone["fields"][field_id]["field_name"] = field_name;
+    if (type === 1) {
+      console.log("route 1")
+    deepClone["fields"][field_id]["field_name"] = inputValue;
+    } 
+    if (type === 2) {
+      console.log("route 2")
+      deepClone["fields"][field_id]["field_type"] = inputValue;
+    }
     setState((prev) => ({
       ...prev,
       currentApplication: deepClone,
     }));
   };
   // this save values to database
-  const saveFieldValue = (applicationID, field_id, field_name) => {
+  const saveFieldValue = (applicationID, field_id, field_name, field_type) => {
     //console.log("Field value saved to API!");
-    let params = {
+    let params;
+    if (field_name){
+      console.log('route a')
+     params = {
       field_name: field_name,
-    };
+      };
+    }
+    if (field_type){
+      console.log('route b')
+      params = {
+        field_type: field_type,
+       };
+     }
+     console.log('params')
+console.log(params)
     axios.put(`/api/fields/${field_id}`, params).then((all) => {
       getApplicationData(applicationID);
     });
@@ -334,5 +369,6 @@ export default function useApplicationData() {
     updateApplicationData,
     saveApplicationData,
     setRecordDetails,
+    setImageField
   };
 }

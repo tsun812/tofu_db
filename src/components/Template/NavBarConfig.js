@@ -24,7 +24,8 @@ export default function NavBarConfig(props) {
       setCurrent = {event => props.onChange(props.value)}
       />
   )})
- 
+  console.log('fields')
+  console.log()
   return(
     <div className="app-setting">
       <section className="sidebar__text sidebar--centered">
@@ -33,8 +34,9 @@ export default function NavBarConfig(props) {
       <hr></hr>
         <nav className="sidebar__menu">
         <Form>
-          <Field key={1} fields={props.fields} name="Primary field" selected={props.primaryField} setPrimaryField={props.setPrimaryField} applicationID={props.applicationID}/>
-          <Field key={2} fields={props.fields} name="Secondary field" selected={props.secondaryField} setSecondaryField={props.setSecondaryField} applicationID={props.applicationID}/>
+          <Field key={1} fields={props.fields} name="Primary field" selected={props.primaryField} setPrimaryField={props.setPrimaryField} applicationID={props.applicationID} fieldsArray={props.fieldsArray}/>
+          <Field key={2} fields={props.fields} name="Secondary field" selected={props.secondaryField} setSecondaryField={props.setSecondaryField} applicationID={props.applicationID} fieldsArray={props.fieldsArray}/>
+          <Field key={3} fields={props.fields} name="Image field" selected={props.imageField} setImageField={props.setImageField} applicationID={props.applicationID} fieldsArray={props.fieldsArray}/>
           <AppID applicationID={props.applicationID}/>
           <AppName appName={props.appName} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
           <Description appDescription={props.appDescription} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>

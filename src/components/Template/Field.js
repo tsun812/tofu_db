@@ -3,30 +3,25 @@ import { Dropdown, Form } from "react-bootstrap";
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Field(props) {
-  //console.log(props)
-  const { state } = useApplicationData()
+  console.log('props.fieldsArray')
+console.log(props.fieldsArray)
 
   const handleSelect = (evtKey) => {
-    console.log("hello1")
-    console.log(evtKey)
-    console.log("hello2")
     let id = parseInt(props.applicationID)
     if (props.name === "Primary field" && evtKey) {
       props.setPrimaryField(evtKey, id)
-
     }
     else if (props.name === "Secondary field" && evtKey) {
       props.setSecondaryField(evtKey, id)
-      //console.log(evtKey)
-      // console.log(state)
     }
-
-    // console.log(evtKey)
-    // props.setSecondaryField(evtKey)
-
+    else if (props.name === "Image field" && evtKey) {
+      props.setImageField(evtKey, id)
+    }
 
   }
   const options = props.fields.map((item, index) => {
+    // console.log('item here!!!!!!!!!!!!!!!!!!!!!!!!!')
+    // console.log(item)
     return (
       <Dropdown.Item key={index} eventKey={item} >{item}</Dropdown.Item>
       // href="#/action-1"

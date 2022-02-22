@@ -12,6 +12,7 @@ export default function TableHeaderList({
       <TableHeaderListItem
         deleteColumn={deleteColumn}
         field_value={tableHeaderArray[header]["field_name"]}
+        field_type={tableHeaderArray[header]["field_type"]}
         key={tableHeaderArray[header]["id"]}
         field_id={tableHeaderArray[header]["id"]}
         application_id={tableHeaderArray[header]["application_id"]}
