@@ -3,6 +3,6 @@ import "./ThemeCard.scss";
 import ThemeCardList from "./ThemeCardList";
 export default function ThemeCard(props) {
   return (
-    <ThemeCardList />
+    <ThemeCardList selectedRecords={props.selectedRecords} filteredRecords={props.filteredRecords} className="card"/>
   )
 }
