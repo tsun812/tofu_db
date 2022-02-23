@@ -147,7 +147,7 @@ export default function Application() {
             />
           )}
           ;
-          {/* <button
+          <button
             className="btn btn-primary"
             onClick={() => console.log(state)}
           >
@@ -185,7 +185,7 @@ export default function Application() {
             onClick={() => console.log(imageField)}
           >
             Check Selected Image Field
-          </button> */}
+          </button>
         </section>
         {isEmpty === true && <Empty />}
         {isEmpty === false && (
