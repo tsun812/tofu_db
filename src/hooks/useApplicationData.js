@@ -322,12 +322,13 @@ console.log(params)
 
   const createNewApplication = (applicationName) => {
     let params = {
-      app_name: applicationName
+      app_name: applicationName,
+      display_theme: "List"
     };
     axios.post(`/api/applications/`, params).then((all) => {
-      console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
-      console.log(all)
-      console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
+      // console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
+      // console.log(all)
+      // console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
       getApplicationData(all['data'].id)
     });
   };
