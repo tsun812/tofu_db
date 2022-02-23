@@ -190,7 +190,7 @@ export default function useApplicationData() {
   const createNewColumn = (applicationID) => {
     let params = {
       field_name: "New Column",
-      field_type: "String",
+      field_type: "Text",
       application_id: applicationID,
     };
     axios.post(`/api/fields/`, params).then((all) => {

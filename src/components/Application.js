@@ -95,6 +95,7 @@ export default function Application() {
   // console.log(applicationTheme)
   return (
     <Router>
+      {mode !== "Live Site" && 
       <main className="layout">
         <section className="sidebar">
           <div className="sidebar--centered" style={{ textDecoration: "none" }}>
@@ -293,6 +294,81 @@ export default function Application() {
           </div>
         )}
       </main>
+    }
+    {mode === "Live Site" && 
+    <main className="liveSiteContainer">
+                  <section className="liveSite">
+                  <Header
+                    title={applicationName}
+                    url={applicationBackgroundImage}
+                    description={applicationDescription}
+                    application_id={applicationID}
+                  />
+                  <section className="searchSortContainer">
+                    <Sort
+                      setSortBy={setSortBy}
+                      application_id={applicationID}
+                    />
+                    <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords} />
+                  </section>
+                  <section className="displayStyleContainer">
+                    {detail === "hide" &&
+                      <>
+                        {applicationTheme === "List" &&
+                          <List
+                            layouts={layouts}
+                            filteredRecords={state.filteredRecords}
+                            selectedRecords={state.selectedRecords}
+                            application_id={applicationID}
+                            mode={state.mode}
+                            setDetail={setDetail}
+                            setRecordDetails={setRecordDetails}
+                          />
+                        }
+                        {applicationTheme === "Table" &&
+                          <ThemeTable
+                            tableHeaderArray={tableHeaderArray}
+                            tableDataArray={tableRecordArray}
+                            filteredRecords={state.filteredRecords}
+                            selectedRecords={state.selectedRecords}
+                            application_id={applicationID}
+                            setRecordDetails={setRecordDetails}
+                            primaryField={primaryField}
+                            secondaryField={secondaryField}
+                            setDetail={setDetail}
+                          />
+                        }
+                        {applicationTheme === "Card" &&
+                          <ThemeCard
+                            tableHeaderArray={tableHeaderArray}
+                            dataArray={tableRecordArray}
+                            filteredRecords={state.filteredRecords}
+                            selectedRecords={state.selectedRecords}
+                            application_id={applicationID}
+                            setRecordDetails={setRecordDetails}
+                            setDetail={setDetail}
+                            selectedImageFieldID={selectedImageFieldID}
+                          />
+                        }
+                      </>
+                    }
+                    {detail === "show" &&
+                      <>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => setDetail("hide")}
+                        >
+                          {`< Back`}
+                        </button>
+                        <Details
+                          selectedRecord={selectedRecordsDetails} fieldlist={state.fields} className="details"
+                        />
+                      </>
+                    }
+                  </section>
+                </section>
+                </main>
+    }
     </Router>
   );
 }
