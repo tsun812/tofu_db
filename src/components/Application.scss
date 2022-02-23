@@ -85,3 +85,18 @@
   border-color: black;
   border-style: solid;
 }
+
+.liveSite{
+  margin: 0px 0px 0px 0px;
+  min-width: 500px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.liveSiteContainer{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
