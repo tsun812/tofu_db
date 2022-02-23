@@ -37,11 +37,11 @@ export default function NavBarConfig(props) {
           <Field key={1} fields={props.fields} name="Primary field" selected={props.primaryField} setPrimaryField={props.setPrimaryField} applicationID={props.applicationID} fieldsArray={props.fieldsArray}/>
           <Field key={2} fields={props.fields} name="Secondary field" selected={props.secondaryField} setSecondaryField={props.setSecondaryField} applicationID={props.applicationID} fieldsArray={props.fieldsArray}/>
           <Field key={3} fields={props.fields} name="Image field" selected={props.imgFieldName} setImageField={props.setImageField} applicationID={props.applicationID} fieldsArray={props.fieldsArray}/>
-          <AppID applicationID={props.applicationID}/>
           <AppName appName={props.appName} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
-          <Description appDescription={props.appDescription} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
+          {/* <Description appDescription={props.appDescription} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/> */}
           <BackgroundImage appBackgroundImage={props.appBackgroundImage} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
           <Theme applicationTheme={props.applicationTheme} updateApplicationData={props.updateApplicationData} saveApplicationData={props.saveApplicationData} applicationID={props.applicationID}/>
+          {/* <AppID applicationID={props.applicationID}/> */}
           <hr></hr>
           <Delete deleteApplication={props.deleteApplication} applicationID={props.applicationID} setMode={props.setMode}/>
         </Form>
