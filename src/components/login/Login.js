@@ -22,11 +22,12 @@ export default function Login(props) {
           id="inputEmail"
           class="form-control"
           placeholder="Email address"
+          value="kdn376@gmail.com"
           required
           autofocus
         ></input>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required></input>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" value="12345"required></input>
         <div class="checkbox mb-3">
         </div>
         <div class="signInButtonContainer">
