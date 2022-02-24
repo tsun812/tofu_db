@@ -22,7 +22,7 @@ export default function ThemeCardListItem(props) {
   // console.log('finalImgURL')
   // console.log(finalImgURL)
   return (
-    <Card style={{ width: '14rem'}}>
+    <Card>
       <Card.Img variant="top" src={finalImgURL} className="logo" />
       <Card.Body>
         <Card.Title>{props.primary}</Card.Title>
