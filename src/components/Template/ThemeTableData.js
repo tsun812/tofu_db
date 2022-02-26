@@ -28,9 +28,9 @@ export default function ThemeTableData(props) {
   return recordsRender.map((rowData, index) => {
     return (
       <tr key={("row", rowData.id)}>
-        <td className="indexNum">{index + 1}</td>
-        <td key={index * 2}> {rowData.primary} </td>
-        <td key={index * 2 + 1}> {rowData.secondary} </td>
+        <td className="rowItem" >{index + 1}</td>
+        <td className="rowItem" key={index * 2}> {rowData.primary} </td>
+        <td className="rowItem" key={index * 2 + 1}> {rowData.secondary} </td>
         <td><button
           className="btn btn-primary"
           onClick={() => {props.setRecordDetails(rowData.id); props.setDetail('show');}}
