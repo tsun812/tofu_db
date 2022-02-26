@@ -1,23 +1,28 @@
-# Interview Scheduler
+# Tofu DB
 
-## Setup
+## Project overview
 
-Install dependencies with `npm install`.
+TofuDB is a customizable database builder with an interactive UI based on Ruby on Rails and React. We made this for users who want to create their own simple database driven website, and allow them to manage database structure and control how the data is presented. No coding needed!
 
-## Running Webpack Development Server
 
+## Getting started
+Install dependencies on the Client Server:
+```sh
+npm install
+```
+Running Webpack Development Server:
 ```sh
 npm start
 ```
+we'll need to run both Client Server and Api Server to get our application working. For Api Server, please head over to https://github.com/tsun812/tofu_db_api <br />
 
-## Running Jest Test Framework
-
+In a new terminal window, install the dependencies of Api Server by running:
 ```sh
-npm test
+bundle install
+```
+Running Api Server:
+```sh
+rails s
 ```
 
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+After setting up Api server, you should be able to view Tofu DB in http://localhost:8000/
