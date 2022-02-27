@@ -55,8 +55,7 @@ Preview of app with customizable settings where user could decide how the data i
 
 <img src="./docs/SortFilter.png" alt="Details" width="590" height="370"/>
 
----
-#### General applications
+## General applications
 
 <img src="./docs/Dictionary.png" alt="Dictionary" width="590" height="370"/></br> 
 
