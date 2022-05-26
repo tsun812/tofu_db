@@ -1,8 +1,6 @@
-import AppListItem from "components/AppList/AppListItem";
 import React from "react";
 import "./GridItem.scss";
 import "./List.scss";
-import { Button } from "react-bootstrap";
 export default function List(props) {
   let res;
   if (Array.isArray(props.filteredRecords) && props.filteredRecords.length > 0) {
