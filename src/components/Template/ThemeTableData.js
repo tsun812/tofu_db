@@ -1,6 +1,5 @@
 import React from "react";
 import "./ThemeTable.scss";
-import ThemeTableDataItem from "./ThemeTableDataItem";
 export default function ThemeTableData(props) {
   let recordsRender;
   if (

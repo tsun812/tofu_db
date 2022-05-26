@@ -17,7 +17,6 @@ import Login from "./login/Login";
 import ThemeTable from "./Template/ThemeTable";
 import ThemeCard from "./Template/ThemeCard";
 import Details from "./Template/Details";
-import { useEffect } from "react";
 
 export default function Application() {
   const [mode, setMode] = useState("login");

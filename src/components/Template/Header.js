@@ -1,6 +1,5 @@
 import React from "react";
 import "./Header.scss"
-import Grid from "./Grid";
 export default function Header(props) {
   return (
     <div className="titleAndImageContainer" >

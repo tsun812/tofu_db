@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import CreateForm from "./CreateForm";
 import "./CreateDelete.scss";
-import useApplicationData from "hooks/useApplicationData";
 import { Button } from "react-bootstrap";
 
 export default function CreateDelete({ createNewApplication }) {

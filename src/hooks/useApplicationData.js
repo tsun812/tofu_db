@@ -34,7 +34,6 @@ export default function useApplicationData() {
     setState({...state, filteredRecords: filteredRecords})
   }
   const setConfig = (config) => setState({ ...state, config });
-  const idNumber = parseInt(state.selectedApplication)
   const setSortBy = (sortOption, id) => {
 
     let params = {sort_by: sortOption}

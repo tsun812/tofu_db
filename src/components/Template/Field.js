@@ -1,6 +1,5 @@
 import React from "react";
 import { Dropdown, Form } from "react-bootstrap";
-import useApplicationData from "hooks/useApplicationData";
 
 export default function Field(props) {
 

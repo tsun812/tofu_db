@@ -1,10 +1,7 @@
 import React from "react";
 import { Dropdown, Form } from "react-bootstrap";
-import useApplicationData from "hooks/useApplicationData";
 import "./Sort.scss"
 export default function Sort(props) {
-  const { state } = useApplicationData()
-
   const handleSelect = (evtKey, event) => {
     event.target.parentElement.querySelectorAll( ".active" ).forEach( e =>
       e.classList.remove( "active" ) );
