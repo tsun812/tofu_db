@@ -50,7 +50,6 @@ export default function Table({
           />
         </tbody>
         <tfoot>
-          <p className="fakeText"></p>
         </tfoot>
       </table>
     <section className="bottom-buttons">
