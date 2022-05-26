@@ -100,7 +100,7 @@ export default function Application() {
               style={{ textDecoration: "none" }}
             >
 
-              <span className="sidebar__tofu"><img className="tofu-pic" src="/images/logo4.png" /></span>
+              <span className="sidebar__tofu"><img className="tofu-pic" alt="tofu-pic" src="/images/logo4.png" /></span>
             </Link>
           </div>
           {mode === "Data" && (
