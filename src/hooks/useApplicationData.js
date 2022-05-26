@@ -38,7 +38,7 @@ export default function useApplicationData() {
   const setSortBy = (sortOption, id) => {
 
     let params = {sort_by: sortOption}
-    return axios.put(`http://localhost:3000/api/applications/${id}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${id}`, params)
     .then((all) => {
      //console.log(state);
      getApplicationData(id)
@@ -47,7 +47,7 @@ export default function useApplicationData() {
   const setPositions = (id, position, applicationId) => {
 
       let params = {position: position}
-      return axios.put(`http://localhost:3000/api/records/${id}`, params)
+      return axios.put(`https://tofu-db-api.herokuapp.com/api/records/${id}`, params)
       .then((all) => {
        //console.log(state);
        getApplicationData(applicationId)
@@ -61,7 +61,7 @@ export default function useApplicationData() {
       primary_field: update
     })
     let params = {primary_field: update}
-    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${applicationId}`, params)
       .then((all) => {
         //console.log('alllllllllllllllllllll')
         //console.log(all)
@@ -81,7 +81,7 @@ export default function useApplicationData() {
     })
 
     let params = {secondary_field: update}
-    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${applicationId}`, params)
       .then((all) => {
        //console.log(state)
        getApplicationData(applicationId);
@@ -97,7 +97,7 @@ export default function useApplicationData() {
     })
 
     let params = {background_color: update}
-    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${applicationId}`, params)
       .then((all) => {
        //console.log(state)
        getApplicationData(applicationId);
@@ -281,7 +281,7 @@ console.log(params)
     if (applicationID){
     Promise.all([
     axios.get(`/api/applications/${applicationID}`),
-    axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
+    axios.get(`https://tofu-db-api.herokuapp.com/api/recordBySelectedFields/${applicationID}`),
     axios.get(`/api/applications`),
     axios.get(`/api/records/`),
     axios.get(`/api/fields/`),
@@ -303,7 +303,7 @@ console.log(params)
       }));
 
         
-      axios.get(`http://localhost:3000/api/fields`)
+      axios.get(`https://tofu-db-api.herokuapp.com/api/fields`)
  
       .then(all =>{
         setState(prev => ({
