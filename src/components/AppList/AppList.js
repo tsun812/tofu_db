@@ -11,7 +11,7 @@ export default function AppList(props) {
     setApplication,
     applications_array
   } = props;
-  console.log('props.applications_array = ', props.applications_array)
+  console.log('props.applications_array = ', applications_array)
   const results = applications_array.map((application) => 
   <AppListItem
     className="app-name"

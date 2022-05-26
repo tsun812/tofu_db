@@ -37,7 +37,7 @@ export default function useApplicationData() {
   const setSortBy = (sortOption, id) => {
 
     let params = {sort_by: sortOption}
-    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${id}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com//api/applications/${id}`, params)
     .then((all) => {
      getApplicationData(id)
      });
@@ -45,7 +45,7 @@ export default function useApplicationData() {
   const setPositions = (id, position, applicationId) => {
 
       let params = {position: position}
-      return axios.put(`https://tofu-db-api.herokuapp.com/api/records/${id}`, params)
+      return axios.put(`https://tofu-db-api.herokuapp.com//api/records/${id}`, params)
       .then((all) => {
        getApplicationData(applicationId)
        });
@@ -57,7 +57,7 @@ export default function useApplicationData() {
       primary_field: update
     })
     let params = {primary_field: update}
-    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${applicationId}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com//api/applications/${applicationId}`, params)
       .then((all) => {
         getApplicationData(applicationId);
       });
@@ -72,7 +72,7 @@ export default function useApplicationData() {
     })
 
     let params = {secondary_field: update}
-    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${applicationId}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com//api/applications/${applicationId}`, params)
       .then((all) => {
        getApplicationData(applicationId);
        
@@ -86,7 +86,7 @@ export default function useApplicationData() {
     })
 
     let params = {background_color: update}
-    return axios.put(`https://tofu-db-api.herokuapp.com/api/applications/${applicationId}`, params)
+    return axios.put(`https://tofu-db-api.herokuapp.com//api/applications/${applicationId}`, params)
       .then((all) => {
        getApplicationData(applicationId);
        
@@ -107,7 +107,7 @@ export default function useApplicationData() {
     let params = {
       [fieldname]: data,
     };
-    axios.put(`/api/applications/${applicationID}`, params)
+    axios.put(`https://tofu-db-api.herokuapp.com//api/applications/${applicationID}`, params)
     .then((all) => {
       getApplicationData(applicationID);
     });
@@ -120,16 +120,16 @@ export default function useApplicationData() {
 
   const fetchAPI = () => {
       Promise.all([
-        axios.get('/api/applications'),
-        axios.get('/api/records'),
-        axios.get('/api/fields'),
-        axios.get('/api/values'),
+        axios.get('https://tofu-db-api.herokuapp.com//api/applications'),
+        axios.get('https://tofu-db-api.herokuapp.com//api/records'),
+        axios.get('https://tofu-db-api.herokuapp.com//api/fields'),
+        axios.get('https://tofu-db-api.herokuapp.com//api/values'),
       ]).then((all) => {
         // load first app's data if there are apps
         let first_application
         if (all[0]['data'].length > 0) {
           first_application = all[0]['data'][0]['id']
-          axios.get(`/api/recordBySelectedFields/${first_application}`)
+          axios.get(`https://tofu-db-api.herokuapp.com//api/recordBySelectedFields/${first_application}`)
             .then((all) => {
               setState(prev => ({
                 ...prev,
@@ -162,13 +162,13 @@ export default function useApplicationData() {
       position: 0,
       application_id: applicationID,
     };
-    axios.post(`/api/records/`, params).then((all) => {
+    axios.post(`https://tofu-db-api.herokuapp.com//api/records/`, params).then((all) => {
       getApplicationData(applicationID);
     });
   };
 
   const deleteRow = (recordID, applicationID) => {
-    axios.delete(`/api/records/${recordID}`).then((all) => {
+    axios.delete(`https://tofu-db-api.herokuapp.com//api/records/${recordID}`).then((all) => {
       getApplicationData(applicationID);
     });
   };
@@ -179,13 +179,13 @@ export default function useApplicationData() {
       field_type: "Text",
       application_id: applicationID,
     };
-    axios.post(`/api/fields/`, params).then((all) => {
+    axios.post(`https://tofu-db-api.herokuapp.com//api/fields/`, params).then((all) => {
       getApplicationData(applicationID);
     });
   };
 
   const deleteColumn = (recordID, applicationID) => {
-    axios.delete(`/api/fields/${recordID}`).then((all) => {
+    axios.delete(`https://tofu-db-api.herokuapp.com//api/fields/${recordID}`).then((all) => {
       getApplicationData(applicationID);
     });
   };
@@ -217,7 +217,7 @@ export default function useApplicationData() {
         field_type: field_type,
        };
      }
-    axios.put(`/api/fields/${field_id}`, params).then((all) => {
+    axios.put(`https://tofu-db-api.herokuapp.com//api/fields/${field_id}`, params).then((all) => {
       getApplicationData(applicationID);
     });
   };
@@ -241,7 +241,7 @@ export default function useApplicationData() {
     let params = {
       field_value: value,
     };
-    axios.put(`/api/values/${value_id}`, params).then((all) => {
+    axios.put(`https://tofu-db-api.herokuapp.com//api/values/${value_id}`, params).then((all) => {
       setState((prev) => ({
         ...prev,
         editStatus: "Data Saved!",
@@ -258,12 +258,12 @@ export default function useApplicationData() {
   const getApplicationData = (applicationID) => {
     if (applicationID){
     Promise.all([
-    axios.get(`/api/applications/${applicationID}`),
-    axios.get(`https://tofu-db-api.herokuapp.com/api/recordBySelectedFields/${applicationID}`),
-    axios.get(`/api/applications`),
-    axios.get(`/api/records/`),
-    axios.get(`/api/fields/`),
-    axios.get(`/api/values/`),
+    axios.get(`https://tofu-db-api.herokuapp.com//api/applications/${applicationID}`),
+    axios.get(`https://tofu-db-api.herokuapp.com//api/recordBySelectedFields/${applicationID}`),
+    axios.get(`https://tofu-db-api.herokuapp.com//api/applications`),
+    axios.get(`https://tofu-db-api.herokuapp.com//api/records/`),
+    axios.get(`https://tofu-db-api.herokuapp.com//api/fields/`),
+    axios.get(`https://tofu-db-api.herokuapp.com//api/values/`),
     ])
     .then((all) => {
       setState((prev) => ({
@@ -301,13 +301,13 @@ export default function useApplicationData() {
       app_name: applicationName,
       display_theme: "List"
     };
-    axios.post(`/api/applications/`, params).then((all) => {
+    axios.post(`https://tofu-db-api.herokuapp.com//api/applications/`, params).then((all) => {
       getApplicationData(all['data'].id)
     });
   };
 
   const deleteApplication = (applicationID) => {
-    axios.delete(`/api/applications/${applicationID}`).then((all) => {
+    axios.delete(`https://tofu-db-api.herokuapp.com//api/applications/${applicationID}`).then((all) => {
       fetchAPI()
     });
   };
