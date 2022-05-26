@@ -6,7 +6,7 @@ export default function Login(props) {
     <div className="loginContainer">
       <div className="login">
         <div className="tofuImageContainer">
-          <img className="tofuImage" src="https://media.istockphoto.com/photos/block-and-cubes-of-tofu-picture-id465944034?k=20&m=465944034&s=612x612&w=0&h=OCejoEitg8O0ChNb3Kg40-dpOY4SUO7atNCFKZmpqKQ=" />
+          <img className="tofuImage" alt="tofuImage" src="https://media.istockphoto.com/photos/block-and-cubes-of-tofu-picture-id465944034?k=20&m=465944034&s=612x612&w=0&h=OCejoEitg8O0ChNb3Kg40-dpOY4SUO7atNCFKZmpqKQ=" />
         </div>
         <form
           className="login-form"
