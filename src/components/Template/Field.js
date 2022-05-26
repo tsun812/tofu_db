@@ -3,12 +3,9 @@ import { Dropdown, Form } from "react-bootstrap";
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Field(props) {
-  console.log('props.fieldsArray')
-  console.log(props.fieldsArray)
 
   const handleSelect = (evtKey) => {
     let id = parseInt(props.applicationID)
-    console.log(evtKey)
     if (props.name === "Primary field" && evtKey) {
       props.setPrimaryField(props.fieldsArray[evtKey]['field_name'], id)
     }

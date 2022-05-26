@@ -48,7 +48,6 @@ export default function Application() {
     setImageField,
   } = useApplicationData();
 
-  //console.log("application.js", state)
   const tableHeaderArray = state.currentApplication.fields
     ? state.currentApplication.fields
     : [];
@@ -85,14 +84,11 @@ export default function Application() {
     : {};
   const selectedImageFieldID = imageField
   const imgFieldName = tableHeaderArray[imageField] ? tableHeaderArray[imageField]['field_name'] : "";
-  console.log('fieldName')
-  console.log(imgFieldName)
+
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
 
-  // console.log('applicationTheme')
-  // console.log(applicationTheme)
   return (
     <Router>
       {mode !== "Live Site" && 

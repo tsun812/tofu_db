@@ -17,14 +17,11 @@ export default function Search(props) {
     let searchString = textInput.current.value.toUpperCase();
 
     if (!searchString) {
-      console.log(searchString)
       props.setFilteredRecords(props.selectedRecords)
     }
     const filteredRes = props.selectedRecords.filter((record) => {
-      console.log(record.secondary)
       return record.primary && record.secondary && ((record.primary.toUpperCase() === searchString) || (record.secondary.toUpperCase() === searchString))
     });
-    console.log(filteredRes)
     props.setFilteredRecords(filteredRes);
   }
   return (

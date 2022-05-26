@@ -24,8 +24,6 @@ export default function NavBarConfig(props) {
       setCurrent = {event => props.onChange(props.value)}
       />
   )})
-  console.log('fields')
-  console.log()
   return(
     <div className="app-setting">
       <section className="sidebar__text sidebar--centered">

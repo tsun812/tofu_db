@@ -4,7 +4,6 @@ import "./GridItem.scss";
 import "./List.scss";
 import { Button } from "react-bootstrap";
 export default function List(props) {
-  console.log(props.filteredRecords);
   let res;
   if (Array.isArray(props.filteredRecords) && props.filteredRecords.length > 0) {
     res = props.filteredRecords.map((element, index) => {
