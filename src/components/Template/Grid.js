@@ -17,7 +17,6 @@ export default function Grid(props){
   };   
   //const [layouts, setLayouts] = useState(initialLayouts);
   const onLayoutChange = (_, allLayouts) => {
-    console.log("hello")
     //props.setLayouts(allLayouts.md)
     allLayouts.md.forEach(item=>{
       let yAxis = item['y']
@@ -28,13 +27,11 @@ export default function Grid(props){
   
   };
 
- //console.log(layouts)
  let res = []
  if(props.selectedRecords){
  for (const [key, value] of Object.entries(props.selectedRecords)) {
   //let fetchItems = fetchItem.map(item => {
     let grid = {x:0, y:value.position, w:12, h:2}
-    //console.log(value)
     res.push(<div className="wrapper" key={key} data-grid={grid} >
     <div>
     {value.primary}
@@ -45,7 +42,6 @@ export default function Grid(props){
   </div>
   )}
  }
-  //console.log(res)
     return (
       <ResponsiveGridLayout className="layout" layouts={props.layouts}
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}

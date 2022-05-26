@@ -2,8 +2,6 @@ import React from 'react'
 import { Dropdown, DropdownButton, InputGroup, FormControl, Form } from "react-bootstrap";
 
 export default function TableHeaderListItem({ application_id, field_value, field_type, field_id, deleteColumn, updateFieldValue, saveFieldValue }) {
-  // console.log(`field_id =>${field_id}`)
-  console.log(`field_type->${field_type}`)
   return (
     <th>
       <InputGroup className="tableHeaderField">

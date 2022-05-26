@@ -3,8 +3,6 @@ import "./Details.scss";
 import DetailsList from "./DetailsList";
 
 export default function Details(props) {
-  console.log('props.selectedRecordsDetails in Details.js')
-  console.log(props.selectedRecord)
   return (
     <>
     <br></br>

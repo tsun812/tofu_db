@@ -1,12 +1,9 @@
 import React from "react";
 import "./ThemeCard.scss";
 import ThemeCardListItem from "./ThemeCardListItem";
-import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 export default function ThemeCardList(props) {
-  console.log('recordArray')
-  console.log(props.recordArray)
   let recordsRender;
   if (
     Array.isArray(props.filteredRecords) &&
@@ -16,8 +13,6 @@ export default function ThemeCardList(props) {
   } else {
     recordsRender = props.selectedRecords;
   }
-  console.log('recordsRender')
-  console.log(recordsRender)
   return (
     <Row xs={1} md={3} className="g-5">
       {recordsRender&&
