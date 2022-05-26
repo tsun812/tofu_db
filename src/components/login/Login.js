@@ -27,7 +27,7 @@ export default function Login(props) {
           autoFocus
         ></input>
         <label htmlFor="inputPassword" className="sr-only">Password</label>
-        <input type="password" id="inputPassword" className="form-control" placeholder="Password" value="12345"required></input>
+        <input type="password" id="inputPassword" className="form-control" placeholder="Password" defaultValue="12345"required></input>
         <div className="checkbox mb-3">
         </div>
         <div className="signInButtonContainer">
