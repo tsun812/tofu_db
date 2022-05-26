@@ -14,24 +14,24 @@ export default function Login(props) {
           action="/login/"
         ></form>
         <h1 className="loginTitle">Into the TOFU DB</h1>
-        <label for="inputEmail" class="sr-only">
+        <label htmlFor="inputEmail" className="sr-only">
           Email address
         </label>
         <input
           type="email"
           id="inputEmail"
-          class="form-control"
+          className="form-control"
           placeholder="Email address"
           value="kdn376@gmail.com"
           required
-          autofocus
+          autoFocus
         ></input>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" value="12345"required></input>
-        <div class="checkbox mb-3">
+        <label for="inputPassword" className="sr-only">Password</label>
+        <input type="password" id="inputPassword" className="form-control" placeholder="Password" value="12345"required></input>
+        <div className="checkbox mb-3">
         </div>
-        <div class="signInButtonContainer">
-          <button class="btn btn-lg btn-primary btn-block signInButton" type="submit" onClick={login}>Sign in</button>
+        <div className="signInButtonContainer">
+          <button className="btn btn-lg btn-primary btn-block signInButton" type="submit" onClick={login}>Sign in</button>
         </div>
       </div>
     </div>
