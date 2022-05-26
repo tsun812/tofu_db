@@ -9,9 +9,10 @@ export default function AppList(props) {
     createNewApplication,
     deleteApplication,
     setApplication,
+    applications_array
   } = props;
-  
-  const results = props.applications_array.map((application) => 
+  console.log('props.applications_array = ', props.applications_array)
+  const results = applications_array.map((application) => 
   <AppListItem
     className="app-name"
     key={application.id}
