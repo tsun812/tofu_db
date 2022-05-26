@@ -22,7 +22,7 @@ export default function Login(props) {
           id="inputEmail"
           className="form-control"
           placeholder="Email address"
-          value="kdn376@gmail.com"
+          defaultValue="testacc@gmail.com"
           required
           autoFocus
         ></input>
