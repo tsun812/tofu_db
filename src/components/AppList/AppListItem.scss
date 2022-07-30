@@ -18,21 +18,21 @@
   padding-left: 2rem;
   margin-bottom: 4px;
   &--selected {
-      color: $dark-background;
-      background-color: $white;
-      border-radius: 0px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      padding-bottom: 1.5em;
-      padding-top: 1.5em;
-      padding-left: 2em;
-      padding-right: 2em;
-      text-align: center;
-      user-select: none;
-      display: inline-block;
-      word-wrap: break-word;
-    }
+    color: $dark-background;
+    background-color: $white;
+    border-radius: 0px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    text-align: center;
+    user-select: none;
+    display: inline-block;
+    word-wrap: break-word;
+  }
 }
 
 .app_name:hover {

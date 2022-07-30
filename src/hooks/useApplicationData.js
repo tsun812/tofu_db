@@ -27,149 +27,126 @@ export default function useApplicationData() {
     filteredRecords: {},
     selectedRecords: {},
     selectedRecordsDetails: {},
-    login: null
+    login: null,
   });
 
   const setFilteredRecords = (filteredRecords) => {
-    setState({...state, filteredRecords: filteredRecords})
-  }
+    setState({ ...state, filteredRecords: filteredRecords });
+  };
   const setConfig = (config) => setState({ ...state, config });
-  const idNumber = parseInt(state.selectedApplication)
+  const idNumber = parseInt(state.selectedApplication);
   const setSortBy = (sortOption, id) => {
-
-    let params = {sort_by: sortOption}
-    return axios.put(`http://localhost:3000/api/applications/${id}`, params)
-    .then((all) => {
-     //console.log(state);
-     getApplicationData(id)
-     });
-  }
-  const setPositions = (id, position, applicationId) => {
-
-      let params = {position: position}
-      return axios.put(`http://localhost:3000/api/records/${id}`, params)
+    let params = { sort_by: sortOption };
+    return axios
+      .put(`http://localhost:3000/api/applications/${id}`, params)
       .then((all) => {
-       //console.log(state);
-       getApplicationData(applicationId)
-       });
-    }
-
+        getApplicationData(id);
+      });
+  };
+  // const setPositions = (id, position, applicationId) => {
+  //   let params = { position: position };
+  //   return axios
+  //     .put(`http://localhost:3000/api/records/${id}`, params)
+  //     .then((all) => {
+  //       getApplicationData(applicationId);
+  //     });
+  // };
 
   const setPrimaryField = (update, applicationId) => {
-    //console.log("before api call", applicationId)
-    setState({...state,
-      primary_field: update
-    })
-    let params = {primary_field: update}
-    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    //setState({ ...state, primary_field: update });
+    let params = { primary_field: update };
+    return axios
+      .put(`/api/applications/${applicationId}`, params)
       .then((all) => {
-        //console.log('alllllllllllllllllllll')
-        //console.log(all)
-        //console.log("after api call", state)
         getApplicationData(applicationId);
-        // window.location.reload()
       });
-
-    
   };
-  
 
   const setSecondaryField = (update, applicationId) => {
-    console.log(update)
-    setState({...state,
-      secondary_field: update
-    })
-
-    let params = {secondary_field: update}
-    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    // setState({ ...state, secondary_field: update });
+    let params = { secondary_field: update };
+    return axios
+      .put(`/api/applications/${applicationId}`, params)
       .then((all) => {
-       //console.log(state)
-       getApplicationData(applicationId);
-       
+        //console.log(state)
+        getApplicationData(applicationId);
       });
-
   };
 
   const setImageField = (update, applicationId) => {
-    console.log(update)
-    setState({...state,
-      background_color: update
-    })
+    console.log(update);
+    setState({ ...state, background_color: update });
 
-    let params = {background_color: update}
-    return axios.put(`http://localhost:3000/api/applications/${applicationId}`, params)
+    let params = { background_color: update };
+    return axios
+      .put(`/api/applications/${applicationId}`, params)
       .then((all) => {
-       //console.log(state)
-       getApplicationData(applicationId);
-       
+        //console.log(state)
+        getApplicationData(applicationId);
       });
-
   };
-
-  const updateApplicationData = (fieldName ,data) =>{
+  //updating field name when typing, update state
+  const updateApplicationData = (fieldName, data) => {
     const deepClone = JSON.parse(JSON.stringify(state.currentApplication));
     deepClone.application[fieldName] = data;
-    //console.log(deepClone)
     setState((prev) => ({
       ...prev,
       currentApplication: deepClone,
     }));
-  }
-
-  const saveApplicationData = (applicationID, fieldname ,data) =>{
+  };
+  //save field name to database, update state
+  const saveApplicationData = (applicationID, fieldname, data) => {
     let params = {
       [fieldname]: data,
     };
-    axios.put(`/api/applications/${applicationID}`, params)
-    .then((all) => {
+    axios.put(`/api/applications/${applicationID}`, params).then((all) => {
       //console.log('application data saved to database.')
       getApplicationData(applicationID);
     });
-  }
+  };
 
   // Initial API load, only run when page is loaded
   useEffect(() => {
-    fetchAPI()
+    fetchAPI();
   }, []);
 
   const fetchAPI = () => {
-      Promise.all([
-        axios.get('/api/applications'),
-        axios.get('/api/records'),
-        axios.get('/api/fields'),
-        axios.get('/api/values'),
-      ]).then((all) => {
-        // load first app's data if there are apps
-        let first_application
-        if (all[0]['data'].length > 0) {
-          first_application = all[0]['data'][0]['id']
-          axios.get(`/api/recordBySelectedFields/${first_application}`)
-            .then((all) => {
-              setState(prev => ({
-                ...prev,
-                selectedRecords: all.data.records
-              }));
-            })
-        } else {
-          first_application = null
-          setState(prev => ({
-            ...prev,
-            selectedRecords: null
-          }));
-        }
-        getApplicationData(first_application)
-        setState(prev => ({
+    Promise.all([
+      axios.get("/api/applications"),
+      axios.get("/api/records"),
+      axios.get("/api/fields"),
+      axios.get("/api/values"),
+    ]).then((all) => {
+      // load first app's data if there are apps
+      let first_application;
+      if (all[0]["data"].length > 0) {
+        first_application = all[0]["data"][0]["id"];
+        axios
+          .get(`/api/recordBySelectedFields/${first_application}`)
+          .then((all) => {
+            setState((prev) => ({
+              ...prev,
+              selectedRecords: all.data.records,
+            }));
+          });
+      } else {
+        first_application = null;
+        setState((prev) => ({
           ...prev,
-          applications: all[0]['data'],
-          records: all[1]['data'],
-          fields: all[2]['data'],
-          values: all[3]['data'],
-          selectedApplication: first_application
-        })
-        );
-      })
-    }
-    
+          selectedRecords: null,
+        }));
+      }
+      getApplicationData(first_application);
+      setState((prev) => ({
+        ...prev,
+        applications: all[0]["data"],
+        records: all[1]["data"],
+        fields: all[2]["data"],
+        values: all[3]["data"],
+        selectedApplication: first_application,
+      }));
+    });
+  };
 
   const createNewRow = (applicationID) => {
     let params = {
@@ -208,11 +185,11 @@ export default function useApplicationData() {
   const updateFieldValue = (type, field_id, inputValue) => {
     const deepClone = JSON.parse(JSON.stringify(state.currentApplication));
     if (type === 1) {
-      console.log("route 1")
-    deepClone["fields"][field_id]["field_name"] = inputValue;
-    } 
+      console.log("route 1");
+      deepClone["fields"][field_id]["field_name"] = inputValue;
+    }
     if (type === 2) {
-      console.log("route 2")
+      console.log("route 2");
       deepClone["fields"][field_id]["field_type"] = inputValue;
     }
     setState((prev) => ({
@@ -224,20 +201,20 @@ export default function useApplicationData() {
   const saveFieldValue = (applicationID, field_id, field_name, field_type) => {
     //console.log("Field value saved to API!");
     let params;
-    if (field_name){
-      console.log('route a')
-     params = {
-      field_name: field_name,
+    if (field_name) {
+      console.log("route a");
+      params = {
+        field_name: field_name,
       };
     }
-    if (field_type){
-      console.log('route b')
+    if (field_type) {
+      console.log("route b");
       params = {
         field_type: field_type,
-       };
-     }
-     console.log('params')
-console.log(params)
+      };
+    }
+    console.log("params");
+    console.log(params);
     axios.put(`/api/fields/${field_id}`, params).then((all) => {
       getApplicationData(applicationID);
     });
@@ -272,81 +249,80 @@ console.log(params)
     });
   };
 
-  //set day when user click on the name of the day, e.g."Monday"
+  //fetch all data belong to current app id when selected
   const setApplication = (application_id) => {
     getApplicationData(application_id);
   };
 
   const getApplicationData = (applicationID) => {
-    if (applicationID){
-    Promise.all([
-    axios.get(`/api/applications/${applicationID}`),
-    axios.get(`http://localhost:3000/api/recordBySelectedFields/${applicationID}`),
-    axios.get(`/api/applications`),
-    axios.get(`/api/records/`),
-    axios.get(`/api/fields/`),
-    axios.get(`/api/values/`),
-    ])
-    .then((all) => {
-      //console.log('get Application Data Ran!')
-      setState((prev) => ({
-        ...prev,
-        selectedApplicationName: all[0]["data"].application.app_name,
-        selectedApplication: applicationID,
-        currentApplication: all[0]["data"],
-        selectedRecords: all[1]["data"].records,
-        filteredRecords: all[1]["data"].records,
-        applications: all[2]["data"],
-        records: all[3]["data"],
-        fields: all[4]["data"],
-        values: all[5]["data"]
-      }));
-
-        
-      axios.get(`http://localhost:3000/api/fields`)
- 
-      .then(all =>{
-        setState(prev => ({
+    if (applicationID) {
+      Promise.all([
+        axios.get(`/api/applications/${applicationID}`),
+        axios.get(
+          `http://localhost:3000/api/recordBySelectedFields/${applicationID}`
+        ),
+        axios.get(`/api/applications`),
+        axios.get(`/api/records/`),
+        axios.get(`/api/fields/`),
+        axios.get(`/api/values/`),
+      ]).then((all) => {
+        //console.log('get Application Data Ran!')
+        setState((prev) => ({
           ...prev,
-          fields: all['data'],
-       
-        })
-        );
-        //console.log(state.selectedRecords)
-      })
-    });
-  } else {
-    console.log('No Applications found. Abort API request')
-  }
+          selectedApplicationName: all[0]["data"].application.app_name,
+          selectedApplication: applicationID,
+          currentApplication: all[0]["data"],
+          selectedRecords: all[1]["data"].records,
+          filteredRecords: all[1]["data"].records,
+          applications: all[2]["data"],
+          records: all[3]["data"],
+          fields: all[4]["data"],
+          values: all[5]["data"],
+        }));
+
+        axios
+          .get(`http://localhost:3000/api/fields`)
+
+          .then((all) => {
+            setState((prev) => ({
+              ...prev,
+              fields: all["data"],
+            }));
+            //console.log(state.selectedRecords)
+          });
+      });
+    } else {
+      console.log("No Applications found. Abort API request");
+    }
   };
 
   const createNewApplication = (applicationName) => {
     let params = {
       app_name: applicationName,
-      display_theme: "List"
+      display_theme: "List",
     };
     axios.post(`/api/applications/`, params).then((all) => {
       // console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
       // console.log(all)
       // console.log("WATCH HERE!!!!!!!!!!!!!!!!!!!!!!")
-      getApplicationData(all['data'].id)
+      getApplicationData(all["data"].id);
     });
   };
 
   const deleteApplication = (applicationID) => {
     axios.delete(`/api/applications/${applicationID}`).then((all) => {
-      fetchAPI()
+      fetchAPI();
     });
   };
-  
+
   const setRecordDetails = (recordID) => {
-    console.log(state.currentApplication.records[recordID])
-    const selectedRecordDetail = state.currentApplication.records[recordID]
-    setState(prev => ({
+    console.log(state.currentApplication.records[recordID]);
+    const selectedRecordDetail = state.currentApplication.records[recordID];
+    setState((prev) => ({
       ...prev,
       selectedRecordsDetails: selectedRecordDetail,
     }));
-  }
+  };
 
   return {
     getApplicationData,
@@ -355,7 +331,6 @@ console.log(params)
     setFilteredRecords,
     setConfig,
     setSortBy,
-    setPositions,
     setPrimaryField,
     setSecondaryField,
     createNewRow,
@@ -371,6 +346,6 @@ console.log(params)
     updateApplicationData,
     saveApplicationData,
     setRecordDetails,
-    setImageField
+    setImageField,
   };
 }
