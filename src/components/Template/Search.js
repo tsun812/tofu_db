@@ -17,16 +17,17 @@ export default function Search({ selectedRecords, setFilteredRecords }) {
     let regexE = RegExp("^" + searchString + "$");
     if (!searchString) {
       setFilteredRecords(selectedRecords);
+    } else {
+      const filteredRes = selectedRecords.filter((record) => {
+        return (
+          record.primary &&
+          record.secondary &&
+          (regexE.test(record.primary.toLowerCase()) ||
+            regexE.test(record.secondary.toLowerCase()))
+        );
+      });
+      setFilteredRecords(filteredRes);
     }
-    const filteredRes = selectedRecords.filter((record) => {
-      return (
-        record.primary &&
-        record.secondary &&
-        (regexE.test(record.primary.toLowerCase()) ||
-          regexE.test(record.secondary.toLowerCase()))
-      );
-    });
-    setFilteredRecords(filteredRes);
   }
   return (
     <Form className="searchLayout" onSubmit={handleSubmit}>

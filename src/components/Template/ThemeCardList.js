@@ -5,23 +5,21 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 export default function ThemeCardList(props) {
-  console.log('recordArray')
-  console.log(props.recordArray)
-  let recordsRender;
-  if (
-    Array.isArray(props.filteredRecords) &&
-    props.filteredRecords.length > 0
-  ) {
-    recordsRender = props.filteredRecords;
-  } else {
-    recordsRender = props.selectedRecords;
-  }
-  console.log('recordsRender')
-  console.log(recordsRender)
+  // console.log("recordArray");
+  // console.log(props.recordArray);
+  // let recordsRender;
+  // if (
+  //   Array.isArray(props.filteredRecords) &&
+  //   props.filteredRecords.length > 0
+  // ) {
+  //   recordsRender = props.filteredRecords;
+  // } else {
+  //   recordsRender = props.selectedRecords;
+  // }
   return (
     <Row xs={1} md={3} className="g-5">
-      {recordsRender&&
-        recordsRender.map((item) => {
+      {props.filteredRecords &&
+        props.filteredRecords.map((item) => {
           return (
             <Col>
               <ThemeCardListItem

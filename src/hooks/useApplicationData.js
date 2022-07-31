@@ -31,17 +31,19 @@ export default function useApplicationData() {
   });
 
   const setFilteredRecords = (filteredRecords) => {
-    setState({ ...state, filteredRecords: filteredRecords });
+    setState((prev) => ({
+      ...prev,
+      filteredRecords: filteredRecords,
+    }));
   };
   const setConfig = (config) => setState({ ...state, config });
   const idNumber = parseInt(state.selectedApplication);
-  const setSortBy = (sortOption, id) => {
-    let params = { sort_by: sortOption };
-    return axios
-      .put(`http://localhost:3000/api/applications/${id}`, params)
-      .then((all) => {
-        getApplicationData(id);
-      });
+  const setSortBy = () => {
+    let reverse = JSON.parse(JSON.stringify(state.filteredRecords)).reverse();
+    setState((prev) => ({
+      ...prev,
+      filteredRecords: reverse,
+    }));
   };
   // const setPositions = (id, position, applicationId) => {
   //   let params = { position: position };
