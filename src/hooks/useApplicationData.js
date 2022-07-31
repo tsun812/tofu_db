@@ -19,6 +19,7 @@ export default function useApplicationData() {
       { configName: "app_name", avatar: null },
       { configName: "img_url", avatar: null },
     ],
+    sort: "Date added: oldest",
     positions: null,
     primary_field: null,
     secondary_field: null,
@@ -38,10 +39,11 @@ export default function useApplicationData() {
   };
   const setConfig = (config) => setState({ ...state, config });
   const idNumber = parseInt(state.selectedApplication);
-  const setSortBy = () => {
+  const setSortBy = (sortOption) => {
     let reverse = JSON.parse(JSON.stringify(state.filteredRecords)).reverse();
     setState((prev) => ({
       ...prev,
+      sort: sortOption,
       filteredRecords: reverse,
     }));
   };

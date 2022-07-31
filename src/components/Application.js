@@ -21,7 +21,7 @@ import { useEffect } from "react";
 
 export default function Application() {
   const [mode, setMode] = useState("login");
-  const [detail, setDetail] = useState("hide")
+  const [detail, setDetail] = useState("hide");
   const {
     getApplicationData,
     setConfig,
@@ -77,16 +77,19 @@ export default function Application() {
   const secondaryField = state.currentApplication.application
     ? state.currentApplication.application.secondary_field
     : "";
-    const imageField = state.currentApplication.application
+  const imageField = state.currentApplication.application
     ? state.currentApplication.application.background_color
     : "";
   const selectedRecordsDetails = state.selectedRecordsDetails.values
     ? state.selectedRecordsDetails
     : {};
-  const selectedImageFieldID = imageField
-  const imgFieldName = tableHeaderArray[imageField] ? tableHeaderArray[imageField]['field_name'] : "";
-  console.log('fieldName')
-  console.log(imgFieldName)
+  const selectedImageFieldID = imageField;
+  const imgFieldName = tableHeaderArray[imageField]
+    ? tableHeaderArray[imageField]["field_name"]
+    : "";
+  const sort = state.sort;
+  console.log("fieldName");
+  console.log(imgFieldName);
   let appId = parseInt(state.selectedApplication);
   let fields = getFieldsById(state, appId);
   let isEmpty = state.applications.length === 0;
@@ -95,59 +98,63 @@ export default function Application() {
   // console.log(applicationTheme)
   return (
     <Router>
-      {mode !== "Live Site" && 
-      <main className="layout">
-        <section className="sidebar">
-          <div className="sidebar--centered" style={{ textDecoration: "none" }}>
-            <Link
-              to="/"
-              className="sidebar__logo"
+      {mode !== "Live Site" && (
+        <main className="layout">
+          <section className="sidebar">
+            <div
+              className="sidebar--centered"
               style={{ textDecoration: "none" }}
             >
-
-              <span className="sidebar__tofu"><img className="tofu-pic" src="/images/logo4.png" /></span>
-            </Link>
-          </div>
-          {mode === "Data" && (
-            <AppList
-              getApplicationData={getApplicationData}
-              createNewApplication={createNewApplication}
-              deleteApplication={deleteApplication}
-              applications_array={state.applications}
-              applicationName={applicationName}
-              setApplication={setApplication}
-              applicationID={applicationID}
-            />
-          )}
-          {mode === "Customization" && (
-            <NavBarConfig
-              value={state.config}
-              configs={state.configs}
-              onChange={setConfig}
-              fields={fields}
-              setPrimaryField={setPrimaryField}
-              setSecondaryField={setSecondaryField}
-              updateApplicationData={updateApplicationData}
-              applicationID={applicationID}
-              appName={applicationName}
-              appDescription={applicationDescription}
-              appBackgroundImage={applicationBackgroundImage}
-              appFontSize={applicationFontSize}
-              applicationTheme={applicationTheme}
-              saveApplicationData={saveApplicationData}
-              primaryField={primaryField}
-              secondaryField={secondaryField}
-              imageField={imageField}
-              deleteApplication={deleteApplication}
-              setMode={setMode}
-              mode={mode}
-              setImageField={setImageField}
-              fieldsArray={tableHeaderArray}
-              imgFieldName={imgFieldName}
-            />
-          )}
-          ;
-          {/* <button
+              <Link
+                to="/"
+                className="sidebar__logo"
+                style={{ textDecoration: "none" }}
+              >
+                <span className="sidebar__tofu">
+                  <img className="tofu-pic" src="/images/logo4.png" />
+                </span>
+              </Link>
+            </div>
+            {mode === "Data" && (
+              <AppList
+                getApplicationData={getApplicationData}
+                createNewApplication={createNewApplication}
+                deleteApplication={deleteApplication}
+                applications_array={state.applications}
+                applicationName={applicationName}
+                setApplication={setApplication}
+                applicationID={applicationID}
+              />
+            )}
+            {mode === "Customization" && (
+              <NavBarConfig
+                value={state.config}
+                configs={state.configs}
+                onChange={setConfig}
+                fields={fields}
+                setPrimaryField={setPrimaryField}
+                setSecondaryField={setSecondaryField}
+                updateApplicationData={updateApplicationData}
+                applicationID={applicationID}
+                appName={applicationName}
+                appDescription={applicationDescription}
+                appBackgroundImage={applicationBackgroundImage}
+                appFontSize={applicationFontSize}
+                applicationTheme={applicationTheme}
+                saveApplicationData={saveApplicationData}
+                primaryField={primaryField}
+                secondaryField={secondaryField}
+                imageField={imageField}
+                deleteApplication={deleteApplication}
+                setMode={setMode}
+                mode={mode}
+                setImageField={setImageField}
+                fieldsArray={tableHeaderArray}
+                imgFieldName={imgFieldName}
+              />
+            )}
+            ;
+            {/* <button
             className="btn btn-primary"
             onClick={() => console.log(state)}
           >
@@ -186,118 +193,40 @@ export default function Application() {
           >
             Check Selected Image Field
           </button> */}
-        </section>
-        {isEmpty === true && <Empty />}
-        {isEmpty === false && (
-          <div className="body">
-            {mode !== "login" && (
-              <section className="top-buttons">
-                <HorizontalNav setMode={setMode} mode={mode} />
-              </section>
-            )}
+          </section>
+          {isEmpty === true && <Empty />}
+          {isEmpty === false && (
+            <div className="body">
+              {mode !== "login" && (
+                <section className="top-buttons">
+                  <HorizontalNav setMode={setMode} mode={mode} />
+                </section>
+              )}
 
-            {mode === "Data" && (
-              <div className="tableContainer">
-                <section className="table">
-                  <Table
-                    tableHeaderArray={tableHeaderArray}
-                    tableDataArray={tableRecordArray}
-                    deleteRow={deleteRow}
-                    deleteColumn={deleteColumn}
-                    getApplicationData={getApplicationData}
-                    createNewRow={createNewRow}
-                    createNewColumn={createNewColumn}
-                    application_id={applicationID}
-                    updateInputValue={updateInputValue}
-                    saveInputValue={saveInputValue}
-                    updateFieldValue={updateFieldValue}
-                    saveFieldValue={saveFieldValue}
-                    editStatus={state.editStatus}
-                    tableTitle={state.selectedApplicationName}
-                  />
-                </section>
-              </div>
-            )}
-            {mode === "Customization" &&
-              <section className="settingsPreview">
-                <Header
-                  title={applicationName}
-                  url={applicationBackgroundImage}
-                  description={applicationDescription}
-                  application_id={applicationID}
-                />
-                <section className="searchSortContainer">
-                  <Sort
-                    setSortBy={setSortBy}
-                    application_id={applicationID}
-                  />
-                  <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords} />
-                </section>
-                <section className="displayStyleContainer">
-                  {detail === "hide" &&
-                    <>
-                      {applicationTheme === "List" &&
-                        <List
-                          layouts={layouts}
-                          filteredRecords={state.filteredRecords}
-                          selectedRecords={state.selectedRecords}
-                          application_id={applicationID}
-                          mode={state.mode}
-                          setDetail={setDetail}
-                          setRecordDetails={setRecordDetails}
-                        />
-                      }
-                      {applicationTheme === "Table" &&
-                        <ThemeTable
-                          tableHeaderArray={tableHeaderArray}
-                          tableDataArray={tableRecordArray}
-                          filteredRecords={state.filteredRecords}
-                          selectedRecords={state.selectedRecords}
-                          application_id={applicationID}
-                          setRecordDetails={setRecordDetails}
-                          primaryField={primaryField}
-                          secondaryField={secondaryField}
-                          setDetail={setDetail}
-                        />
-                      }
-                      {applicationTheme === "Card" &&
-                        <ThemeCard
-                          tableHeaderArray={tableHeaderArray}
-                          dataArray={tableRecordArray}
-                          filteredRecords={state.filteredRecords}
-                          selectedRecords={state.selectedRecords}
-                          application_id={applicationID}
-                          setRecordDetails={setRecordDetails}
-                          setDetail={setDetail}
-                          selectedImageFieldID={selectedImageFieldID}
-                        />
-                      }
-                    </>
-                  }
-                  {detail === "show" &&
-                    <>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => setDetail("hide")}
-                      >
-                        {`< Back`}
-                      </button>
-                      <Details
-                        selectedRecord={selectedRecordsDetails} fieldlist={state.fields} className="details"
-                      />
-                    </>
-                  }
-                </section>
-              </section>
-            }
-            {mode === "login" && <Login setMode={setMode} />}
-          </div>
-        )}
-      </main>
-    }
-    {mode === "Live Site" && 
-    <main className="liveSiteContainer">
-                  <section className="liveSite">
+              {mode === "Data" && (
+                <div className="tableContainer">
+                  <section className="table">
+                    <Table
+                      tableHeaderArray={tableHeaderArray}
+                      tableDataArray={tableRecordArray}
+                      deleteRow={deleteRow}
+                      deleteColumn={deleteColumn}
+                      getApplicationData={getApplicationData}
+                      createNewRow={createNewRow}
+                      createNewColumn={createNewColumn}
+                      application_id={applicationID}
+                      updateInputValue={updateInputValue}
+                      saveInputValue={saveInputValue}
+                      updateFieldValue={updateFieldValue}
+                      saveFieldValue={saveFieldValue}
+                      editStatus={state.editStatus}
+                      tableTitle={state.selectedApplicationName}
+                    />
+                  </section>
+                </div>
+              )}
+              {mode === "Customization" && (
+                <section className="settingsPreview">
                   <Header
                     title={applicationName}
                     url={applicationBackgroundImage}
@@ -307,14 +236,18 @@ export default function Application() {
                   <section className="searchSortContainer">
                     <Sort
                       setSortBy={setSortBy}
+                      sort={sort}
                       application_id={applicationID}
                     />
-                    <Search selectedRecords={state.selectedRecords} setFilteredRecords={setFilteredRecords} />
+                    <Search
+                      selectedRecords={state.selectedRecords}
+                      setFilteredRecords={setFilteredRecords}
+                    />
                   </section>
                   <section className="displayStyleContainer">
-                    {detail === "hide" &&
+                    {detail === "hide" && (
                       <>
-                        {applicationTheme === "List" &&
+                        {applicationTheme === "List" && (
                           <List
                             layouts={layouts}
                             filteredRecords={state.filteredRecords}
@@ -324,8 +257,8 @@ export default function Application() {
                             setDetail={setDetail}
                             setRecordDetails={setRecordDetails}
                           />
-                        }
-                        {applicationTheme === "Table" &&
+                        )}
+                        {applicationTheme === "Table" && (
                           <ThemeTable
                             tableHeaderArray={tableHeaderArray}
                             tableDataArray={tableRecordArray}
@@ -337,8 +270,8 @@ export default function Application() {
                             secondaryField={secondaryField}
                             setDetail={setDetail}
                           />
-                        }
-                        {applicationTheme === "Card" &&
+                        )}
+                        {applicationTheme === "Card" && (
                           <ThemeCard
                             tableHeaderArray={tableHeaderArray}
                             dataArray={tableRecordArray}
@@ -349,10 +282,10 @@ export default function Application() {
                             setDetail={setDetail}
                             selectedImageFieldID={selectedImageFieldID}
                           />
-                        }
+                        )}
                       </>
-                    }
-                    {detail === "show" &&
+                    )}
+                    {detail === "show" && (
                       <>
                         <button
                           className="btn btn-primary"
@@ -361,14 +294,96 @@ export default function Application() {
                           {`< Back`}
                         </button>
                         <Details
-                          selectedRecord={selectedRecordsDetails} fieldlist={state.fields} className="details"
+                          selectedRecord={selectedRecordsDetails}
+                          fieldlist={state.fields}
+                          className="details"
                         />
                       </>
-                    }
+                    )}
                   </section>
                 </section>
-                </main>
-    }
+              )}
+              {mode === "login" && <Login setMode={setMode} />}
+            </div>
+          )}
+        </main>
+      )}
+      {mode === "Live Site" && (
+        <main className="liveSiteContainer">
+          <section className="liveSite">
+            <Header
+              title={applicationName}
+              url={applicationBackgroundImage}
+              description={applicationDescription}
+              application_id={applicationID}
+            />
+            <section className="searchSortContainer">
+              <Sort setSortBy={setSortBy} sort={sort} />
+              <Search
+                selectedRecords={state.selectedRecords}
+                setFilteredRecords={setFilteredRecords}
+              />
+            </section>
+            <section className="displayStyleContainer">
+              {detail === "hide" && (
+                <>
+                  {applicationTheme === "List" && (
+                    <List
+                      layouts={layouts}
+                      filteredRecords={state.filteredRecords}
+                      selectedRecords={state.selectedRecords}
+                      application_id={applicationID}
+                      mode={state.mode}
+                      setDetail={setDetail}
+                      setRecordDetails={setRecordDetails}
+                    />
+                  )}
+                  {applicationTheme === "Table" && (
+                    <ThemeTable
+                      tableHeaderArray={tableHeaderArray}
+                      tableDataArray={tableRecordArray}
+                      filteredRecords={state.filteredRecords}
+                      selectedRecords={state.selectedRecords}
+                      application_id={applicationID}
+                      setRecordDetails={setRecordDetails}
+                      primaryField={primaryField}
+                      secondaryField={secondaryField}
+                      setDetail={setDetail}
+                    />
+                  )}
+                  {applicationTheme === "Card" && (
+                    <ThemeCard
+                      tableHeaderArray={tableHeaderArray}
+                      dataArray={tableRecordArray}
+                      filteredRecords={state.filteredRecords}
+                      selectedRecords={state.selectedRecords}
+                      application_id={applicationID}
+                      setRecordDetails={setRecordDetails}
+                      setDetail={setDetail}
+                      selectedImageFieldID={selectedImageFieldID}
+                    />
+                  )}
+                </>
+              )}
+              {detail === "show" && (
+                <>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => setDetail("hide")}
+                  >
+                    {`< Back`}
+                  </button>
+                  <Details
+                    selectedRecord={selectedRecordsDetails}
+                    fieldlist={state.fields}
+                    className="details"
+                  />
+                </>
+              )}
+            </section>
+          </section>
+        </main>
+      )}
     </Router>
   );
 }

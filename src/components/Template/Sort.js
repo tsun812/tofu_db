@@ -2,14 +2,16 @@ import React from "react";
 import { Dropdown, Form } from "react-bootstrap";
 import useApplicationData from "hooks/useApplicationData";
 import "./Sort.scss";
-export default function Sort(props) {
+export default function Sort({ setSortBy, sort }) {
   const handleSelect = (evtKey, event) => {
-    event.target.parentElement
-      .querySelectorAll(".active")
-      .forEach((e) => e.classList.remove("active"));
+    console.log(evtKey);
+    console.log(sort);
+    event.target.parentElement.querySelectorAll(".active").forEach((e) => {
+      e.classList.remove("active");
+    });
     event.target.classList.add("active");
-    if (evtKey === "Date added: newest") {
-      props.setSortBy();
+    if (sort !== evtKey) {
+      setSortBy(evtKey);
     }
   };
 
